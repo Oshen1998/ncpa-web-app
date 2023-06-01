@@ -1,11 +1,73 @@
 <div class="container-fluid main-container">
   <div class="row main-container-row">
     <div class="col col-style">
-      <h2>Hello</h2>
+      <div class="row">
+        <h3 class="sign-in-text-styles">Sign in to your Account</h3>
+        <form>
+          <div>
+            <mat-form-field class="input-styles" appearance="outline">
+              <mat-label>Username</mat-label>
+              <input matInput placeholder="Placeholder" />
+              <mat-icon matSuffix>person</mat-icon>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="input-styles" appearance="outline">
+              <mat-label>Password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+              >
+                <mat-icon>key</mat-icon>
+                <!-- <mat-icon>{{
+                  hide ? "visibility_off" : "visibility"
+                }}</mat-icon> -->
+              </button>
+            </mat-form-field>
+          </div>
+          <div>
+            <button class="btn-styles" mat-raised-button color="primary">
+              Sign In
+            </button>
+          </div>
+        </form>
+        <div class="forgot-password">
+          <a href="http://localhost:4200/forgotpassword">Forgot Password?</a>
+      </div>
+      </div>
     </div>
     <div class="col col-style main-photo-container">
-      <div class="photo-container">
-        <img src="assets/images/sign_in.jpg" alt="sign in" />
+      <div class="content-style">
+        <div class="col">
+          <div class="row common-logo-styles">
+            <img class="logo-styles" src="assets/images/NCPA_logo.png" />
+          </div>
+          <div class="row word-content">
+            <h2 class="main-text-style">
+              National Child Protection Authority<br />Application center
+            </h2>
+          </div>
+          <div class="row common-logo-styles">
+            <img
+              class="logo-styles"
+              src="../../../../assets/images/scs_logo.png"
+            />
+          </div>
+        </div>
+        <!-- <div>
+          <h2 class="main-text-style">
+            National Child Protection Authority<br />Application center
+          </h2>
+        </div>
+        <div>
+          <h2>
+            National Child Protection Authority<br />Application center
+          </h2>
+        </div> -->
       </div>
     </div>
   </div>
