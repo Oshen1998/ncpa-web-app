@@ -7,7 +7,7 @@
           <div>
             <mat-form-field class="input-styles" appearance="outline">
               <mat-label>Username</mat-label>
-              <input matInput placeholder="Placeholder" />
+              <input matInput placeholder="" />
               <mat-icon matSuffix>person</mat-icon>
             </mat-form-field>
           </div>
@@ -15,17 +15,9 @@
             <mat-form-field class="input-styles" appearance="outline">
               <mat-label>Password</mat-label>
               <input matInput [type]="hide ? 'password' : 'text'" />
-              <button
-                mat-icon-button
-                matSuffix
-                (click)="hide = !hide"
-                [attr.aria-label]="'Hide password'"
-                [attr.aria-pressed]="hide"
-              >
-                <mat-icon>key</mat-icon>
-                <!-- <mat-icon>{{
-                  hide ? "visibility_off" : "visibility"
-                }}</mat-icon> -->
+              <button mat-icon-button matSuffix (click)="hide = !hide">
+                <!-- <mat-icon>key</mat-icon> -->
+                <mat-icon>{{ !hide ? "visibility_off" : 'key' }}</mat-icon>
               </button>
             </mat-form-field>
           </div>
@@ -36,8 +28,8 @@
           </div>
         </form>
         <div class="forgot-password">
-          <a href="http://localhost:4200/forgotpassword">Forgot Password?</a>
-      </div>
+          <a href="http://localhost:4200/ForgotPassword">Forgot Password?</a>
+        </div>
       </div>
     </div>
     <div class="col col-style main-photo-container">
@@ -58,16 +50,6 @@
             />
           </div>
         </div>
-        <!-- <div>
-          <h2 class="main-text-style">
-            National Child Protection Authority<br />Application center
-          </h2>
-        </div>
-        <div>
-          <h2>
-            National Child Protection Authority<br />Application center
-          </h2>
-        </div> -->
       </div>
     </div>
   </div>

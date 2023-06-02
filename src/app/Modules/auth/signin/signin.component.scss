@@ -3,10 +3,6 @@
   width: 100vw;
 }
 
-.signin-content {
-  color: #042fbb;
-  font-size: 18px;
-}
 
 .main-container-row {
   height: 100vh;
@@ -24,6 +20,9 @@
   width: 50vw;
   margin: -6px -15px;
   opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .main-photo-container {
   background-image: url("../../../../assets/images/sign_in.jpg");
@@ -38,19 +37,7 @@
   text-align: center;
 }
 
-.custom-width {
-  width: 250px;
-}
 
-// .button-row{
-//   width: 250px;
-// }
-.content-style {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
 
 .input-styles {
   width: 100%;
@@ -85,20 +72,3 @@
   margin-top: 20px;
 }
 
-// .forgot-password{
-//   color: #042fbb;
-//   font-size: 15px;
-// }
-
-// .signup{
-//   color: #0C8FF3;
-// }
-
-// .sign-up-link{
-//   color: #042fbb;
-// }
-
-// .scs-logo{
-//   height: 100px;
-//   width: 150px;
-// }
