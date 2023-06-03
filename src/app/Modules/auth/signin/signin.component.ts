@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent {
-
+  hide = true;
+  // email = new FormControl
 }
