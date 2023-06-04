@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./reset-password.component.scss'],
 })
 export class ResetPasswordComponent {
-  hide = true;
+  hide1 = true;
+  hide2 = true;
 }
