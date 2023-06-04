@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomMaterialModule } from './material.module';
 import { AuthModule } from './Modules/auth/auth.module';
 
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
