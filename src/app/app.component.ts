@@ -13,6 +13,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     // TODO: Should change, this is not the correct method
-    this.router.navigate(['/app/auth/login']);
+   // this.router.navigate(['/app/auth/login']);
   }
 }
