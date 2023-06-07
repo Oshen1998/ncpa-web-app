@@ -1,0 +1,18 @@
+<ng-container>
+<div class="m-5 p-5">
+  <div class="row mx-4 mb-2 px-4" *ngFor="let item of noticeList; let i = index">
+    <mat-expansion-panel [expanded]="false" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{item.title}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+        {{item.content}}
+      <mat-action-row>
+        <button *ngIf="item.isRead" mat-button color="primary" (click)="onRead(i)">Mark as Unread</button>
+        <button *ngIf="!item.isRead" mat-button color="primary" (click)="onRead(i)">Mark as Read</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </div>
+</div>
+</ng-container>

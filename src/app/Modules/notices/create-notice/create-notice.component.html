@@ -1,0 +1,98 @@
+
+
+<div class="container">
+  <div class="row py-3">
+    <div class="col-12 col-md-8 mb-3">
+      <mat-card>
+        <mat-card-title-group>
+          <mat-card-title
+            mat-dialog-title
+            class="d-flex align-items-center mb-1"
+          >
+            <span
+              style="font-size: 20px; align-items: center; display: flex"
+            >
+              <mat-icon
+                class="heading-icon mr-2"
+                >newspaper</mat-icon
+              >
+              &nbsp; Create Notice
+            </span>
+          </mat-card-title>
+          <mat-card-subtitle style="margin-left: 0.1rem">
+             create a notice from here </mat-card-subtitle>
+        </mat-card-title-group>
+
+        <mat-divider></mat-divider>
+
+        <mat-card-content class="pt-4">
+          <form [formGroup]="noticeFormGroup">
+
+            <div class="row">
+              <div class="col">
+                <mat-form-field
+                  class="mb-2"
+                  appearance="fill"
+                  style="width: 100%"
+                >
+                  <mat-label> Title </mat-label>
+                  <input
+                    type="text"
+                    #titleField
+                    matInput
+                    maxlength="70"
+                    placeholder="Title"
+                    formControlName="title"
+                    required
+                  />
+                  <mat-hint align="end"
+                    >Enter the title</mat-hint
+                  >
+                  <mat-error>Title is Required</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <mat-form-field
+                  class="mb-2"
+                  appearance="fill"
+                  style="width: 100%"
+                >
+                  <mat-label> Content </mat-label>
+                  <input
+                    type="textarea"
+                    matInput
+                    placeholder="Content"
+                    formControlName="content"
+                    required
+                  />
+                  <mat-error>Content is Required</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+
+          </form>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <div class="d-flex justify-content-end">
+            <button
+              (click)="onSave()"
+              class="m-2"
+              mat-raised-button
+              color="primary"
+              [disabled]="noticeFormGroup.invalid || noticeFormGroup.pristine"
+            >
+             Save
+            </button>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+
