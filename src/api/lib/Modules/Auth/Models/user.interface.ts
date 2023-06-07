@@ -1,17 +1,19 @@
-import { Types } from 'mongoose';
-
-interface IName {
-  first_name: string;
-  last_name: string;
-}
+import { USER_TYPES } from 'Modules/Common/constants';
+import mongoose, { Types } from 'mongoose';
 
 export interface IUser {
   _id?: Types.ObjectId;
-  name: IName;
-  email: String;
-  phone_number?: String;
-  account_type: string;
+  first_name: string;
+  last_name?: string;
   nic: string;
-  gender?: String;
-  is_deleted?: Boolean;
+  email: string;
+  account_type: USER_TYPES;
+  phone_number?: string;
+  gender?: string;
+  is_deleted?: boolean;
+}
+export interface ILogin {
+  user_id: mongoose.Types.ObjectId | string;
+  username: string;
+  password: string;
 }

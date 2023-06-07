@@ -1,67 +1,76 @@
 import { Request, Response } from 'express';
-import e = require('express');
 import {
+  duplicateDocuments,
+  failureResponse,
   insufficientParameters,
   mongoError,
+  notfoundDocument,
   successResponse,
-} from 'Modules/Common/common-response-service';
-import { IUser } from 'Modules/Auth/Models/user.interface';
-import UserService from 'Services/Auth/auth.service';
-
+} from '../../Modules/Common/responses/common-response-service';
+import { ILogin, IUser } from '../../Modules/Auth/Models/user.interface';
+import UserService from '../../Services/Auth/auth.service';
+import UserCredentialService from '../../Services/Auth/credential.service';
+import { ValidateSchema } from '../../Modules/Common/validation';
+import {
+  userLoginSchema,
+  userRegisterValidationSchema,
+} from '../../Modules/Auth/Validations/auth.validation';
 export class UserController {
   private user_service: UserService = new UserService();
+  private user_credential: UserCredentialService = new UserCredentialService();
 
-  public create_user(req: Request, res: Response) {
-    // TODO: Need to implement AJV Validation
-    if (
-      req.body.name &&
-      req.body.name.first_name &&
-      req.body.name.middle_name &&
-      req.body.name.last_name &&
-      req.body.email &&
-      req.body.phone_number &&
-      req.body.gender
-    ) {
+  public async create_user(req: Request, res: Response) {
+    const isValid = ValidateSchema(userRegisterValidationSchema, req.body);
+
+    if (isValid) {
       const user_params: IUser = {
-        name: {
-          first_name: req.body.name.first_name,
-          last_name: req.body.name.last_name,
-        },
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
         email: req.body.email,
         phone_number: req.body.phone_number,
         nic: req.body.nic,
         account_type: req.body.account_type,
         gender: req.body.gender,
       };
-      this.user_service.createUser(
-        user_params,
-        (err: any, user_data: IUser) => {
-          if (err) {
-            mongoError(err, res);
-          } else {
-            successResponse('create user successfully.', user_data, res);
-          }
-        }
-      );
+
+      const { nic } = req.body;
+      const isExist = await this.user_service.findById(nic);
+
+      if (!isExist) {
+        return duplicateDocuments(res);
+      }
+
+      const createdUser = await this.user_service.createUser(user_params);
+      if (createdUser) {
+        successResponse('Successfully Created', createdUser, res);
+      } else {
+        failureResponse('Something went wrong.', res);
+      }
     } else {
       // error response if some fields are missing in request body
       insufficientParameters(res);
     }
   }
 
-  public get_user(req: Request, res: Response) {
-    if (req.params.id) {
-      const user_filter = { _id: req.params.id };
-      this.user_service.filterUser(
-        user_filter,
-        (err: any, user_data: IUser) => {
-          if (err) {
-            mongoError(err, res);
-          } else {
-            successResponse('get user successfully.', user_data, res);
-          }
-        }
-      );
+  public async user_login(req: Request, res: Response) {
+    const isValid = ValidateSchema(userLoginSchema, req.body);
+
+    if (isValid) {
+      const { username, password } = req.body;
+
+      const existUser = await this.user_service.findById(username);
+
+      if (existUser) {
+        const user_params: ILogin = {
+          username: username,
+          password: password,
+          user_id: existUser._id,
+        };
+        const createdUser = this.user_credential.createUser(user_params);
+        successResponse('Successfully Created', createdUser, res);
+      } else {
+        notfoundDocument(res);
+      }
     } else {
       insufficientParameters(res);
     }

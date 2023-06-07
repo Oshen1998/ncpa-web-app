@@ -1,26 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
-const common_response_service_1 = require("Modules/Common/common-response-service");
+const common_response_service_1 = require("Modules/Common/responses/common-response-service");
 const auth_service_1 = require("Services/Auth/auth.service");
+const validation_1 = require("Modules/Common/validation");
+const auth_validation_1 = require("Modules/Auth/Validations/auth.validation");
 class UserController {
     constructor() {
         this.user_service = new auth_service_1.default();
     }
     create_user(req, res) {
-        // TODO: Need to implement AJV Validation
-        if (req.body.name &&
-            req.body.name.first_name &&
-            req.body.name.middle_name &&
+        const isValid = (0, validation_1.ValidateSchema)(auth_validation_1.userRegisterValidationSchema, req.body);
+        console.log('isValid');
+        console.log(isValid);
+        if (req.body.first_name &&
             req.body.name.last_name &&
             req.body.email &&
             req.body.phone_number &&
             req.body.gender) {
             const user_params = {
-                name: {
-                    first_name: req.body.name.first_name,
-                    last_name: req.body.name.last_name,
-                },
+                first_name: req.body.name.first_name,
+                last_name: req.body.name.last_name,
                 email: req.body.email,
                 phone_number: req.body.phone_number,
                 nic: req.body.nic,

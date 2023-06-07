@@ -1,32 +1,39 @@
+import { USER_TYPES } from 'Modules/Common/constants';
 import * as mongoose from 'mongoose';
+import { IUser } from '../Models/user.interface';
 
 const Schema = mongoose.Schema;
+export type IUserModel = IUser & Document;
 
-const schema = new Schema({
-  name: {
-    type: {
-      first_name: String,
-      last_name: String,
-    },
-  },
-  email: {
+const IUserSchema = new Schema<IUserModel>({
+  first_name: {
     type: String,
-    require: true,
+    required: true,
   },
-  phone_number: {
+  last_name: {
     type: String,
-    require: false,
-  },
-  gender: {
-    type: String,
-  },
-  account_type: {
-    type: String,
-    require: true,
   },
   nic: {
     type: String,
-    require: true,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  phone_number: {
+    type: String,
+    required: true,
+  },
+  gender: {
+    type: String,
+    required: true,
+  },
+  account_type: {
+    type: String,
+    enum: [USER_TYPES.ADMIN, USER_TYPES.USER],
+    default: USER_TYPES.USER,
+    required: true,
   },
   is_deleted: {
     type: Boolean,
@@ -34,4 +41,4 @@ const schema = new Schema({
   },
 });
 
-export default mongoose.model('users', schema);
+export default mongoose.model('user', IUserSchema);

@@ -1,23 +1,28 @@
 import { IUser } from 'Modules/Auth/Models/user.interface';
-import users from '../../Modules/Auth/Schemas/users.schema';
+import users, { IUserModel } from '../../Modules/Auth/Schemas/users.schema';
+import { Types } from 'mongoose';
 
 export default class UserService {
-  public createUser(user_params: IUser, callback: any) {
+  public async createUser(user_params: IUser): Promise<IUserModel> {
     const _session = new users(user_params);
-    _session.save(callback);
+    return await _session.save();
   }
 
-  public filterUser(query: any, callback: any) {
-    users.findOne(query, callback);
+  public findById(nic: string): Promise<IUserModel> {
+    return users.findById(nic);
   }
 
-  public updateUser(user_params: IUser, callback: any) {
+  public async filterUser(query: any): Promise<IUserModel> {
+    return users.findOne(query);
+  }
+
+  public updateUser(user_params: IUser): Promise<IUserModel> {
     const query = { _id: user_params._id };
-    users.findOneAndUpdate(query, user_params, callback);
+    return users.findOneAndUpdate(query, user_params);
   }
 
-  public deleteUser(_id: String, callback: any) {
+  public deleteUser(_id: Types.ObjectId) {
     const query = { _id: _id };
-    users.deleteOne(query, callback);
+    return users.deleteOne(query);
   }
 }
