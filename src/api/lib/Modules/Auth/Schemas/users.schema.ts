@@ -3,9 +3,9 @@ import * as mongoose from 'mongoose';
 import { IUser } from '../Models/user.interface';
 
 const Schema = mongoose.Schema;
-export type IUserModel = IUser & Document;
+export type IUserModel = Document & IUser;
 
-const IUserSchema = new Schema<IUserModel>({
+const schema = new Schema<IUserModel>({
   first_name: {
     type: String,
     required: true,
@@ -41,4 +41,4 @@ const IUserSchema = new Schema<IUserModel>({
   },
 });
 
-export default mongoose.model('user', IUserSchema);
+export default mongoose.model('user', schema);

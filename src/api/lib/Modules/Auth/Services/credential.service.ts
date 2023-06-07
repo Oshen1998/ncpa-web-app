@@ -1,8 +1,8 @@
 import { ILogin, IUser } from 'Modules/Auth/Models/user.interface';
-import credential from '../../Modules/Auth/Schemas/users-credential.schema';
+import credential from '../Schemas/users-credential.schema';
 
 export default class UserCredentialService {
-  public createUser(user_params: ILogin) {
+  public createUserCredentials(user_params: ILogin) {
     const _session = new credential(user_params);
     return _session.save();
   }
