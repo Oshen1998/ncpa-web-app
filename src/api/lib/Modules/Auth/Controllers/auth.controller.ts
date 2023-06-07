@@ -6,15 +6,16 @@ import {
   mongoError,
   notfoundDocument,
   successResponse,
-} from '../../Modules/Common/responses/common-response-service';
-import { ILogin, IUser } from '../../Modules/Auth/Models/user.interface';
-import UserService from '../../Services/Auth/auth.service';
-import UserCredentialService from '../../Services/Auth/credential.service';
-import { ValidateSchema } from '../../Modules/Common/validation';
+} from '../../Common/responses/common-response-service';
+import { ILogin, IUser } from '../Models/user.interface';
+import UserService from '../Services/auth.service';
+import UserCredentialService from '../Services/credential.service';
+import { ValidateSchema } from '../../Common/validation';
 import {
   userLoginSchema,
   userRegisterValidationSchema,
-} from '../../Modules/Auth/Validations/auth.validation';
+} from '../Validations/auth.validation';
+import { encrypt } from '../../../Modules/Common/encryption';
 export class UserController {
   private user_service: UserService = new UserService();
   private user_credential: UserCredentialService = new UserCredentialService();
@@ -33,18 +34,34 @@ export class UserController {
         gender: req.body.gender,
       };
 
-      const { nic } = req.body;
-      const isExist = await this.user_service.findById(nic);
+      const isExist = await this.user_service.findByNic(user_params.nic);
 
-      if (!isExist) {
+      if (isExist) {
         return duplicateDocuments(res);
       }
 
       const createdUser = await this.user_service.createUser(user_params);
+      const { nic, _id } = createdUser;
+
       if (createdUser) {
-        successResponse('Successfully Created', createdUser, res);
+        const encryptedPassword = encrypt('123456');
+        const credentials: ILogin = {
+          username: nic,
+          password: encryptedPassword,
+          user_id: _id,
+        };
+        const createdUserCredentials =
+          await this.user_credential.createUserCredentials(credentials);
+        if (createdUserCredentials) {
+          successResponse('Successfully Created!', createdUser, res);
+        } else {
+          failureResponse(
+            'Something went wrong! (When credential adding.)',
+            res
+          );
+        }
       } else {
-        failureResponse('Something went wrong.', res);
+        failureResponse('Something went wrong! (When user adding).', res);
       }
     } else {
       // error response if some fields are missing in request body
@@ -58,16 +75,10 @@ export class UserController {
     if (isValid) {
       const { username, password } = req.body;
 
-      const existUser = await this.user_service.findById(username);
+      const existUser = await this.user_service.findByNic(username);
 
       if (existUser) {
-        const user_params: ILogin = {
-          username: username,
-          password: password,
-          user_id: existUser._id,
-        };
-        const createdUser = this.user_credential.createUser(user_params);
-        successResponse('Successfully Created', createdUser, res);
+        //
       } else {
         notfoundDocument(res);
       }

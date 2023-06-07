@@ -4,7 +4,7 @@ import { ILogin } from '../Models/user.interface';
 const Schema = mongoose.Schema;
 export type ILoginModel = Document & ILogin;
 
-const loginSchema = new Schema<ILoginModel>({
+const schema = new Schema<ILoginModel>({
   username: {
     type: String,
     required: true,
@@ -19,4 +19,4 @@ const loginSchema = new Schema<ILoginModel>({
   },
 });
 
-export default mongoose.model('user_credential', loginSchema);
+export default mongoose.model('user_credential', schema);

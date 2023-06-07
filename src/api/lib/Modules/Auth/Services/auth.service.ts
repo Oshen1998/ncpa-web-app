@@ -1,5 +1,5 @@
 import { IUser } from 'Modules/Auth/Models/user.interface';
-import users, { IUserModel } from '../../Modules/Auth/Schemas/users.schema';
+import users, { IUserModel } from '../Schemas/users.schema';
 import { Types } from 'mongoose';
 
 export default class UserService {
@@ -8,8 +8,12 @@ export default class UserService {
     return await _session.save();
   }
 
-  public findById(nic: string): Promise<IUserModel> {
-    return users.findById(nic);
+  public findByNic(nic: string): Promise<IUserModel> {
+    return users.findOne({nic: nic});
+  }
+
+  public findById(_id: Types.ObjectId | string): Promise<IUserModel> {
+    return users.findById(_id);
   }
 
   public async filterUser(query: any): Promise<IUserModel> {

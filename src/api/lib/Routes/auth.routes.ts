@@ -1,4 +1,4 @@
-import { UserController } from '../Controllers/Auth/auth.controller';
+import { UserController } from '../Modules/Auth/Controllers/auth.controller';
 import { Application, Request, Response } from 'express';
 
 export class AuthRoutes {
