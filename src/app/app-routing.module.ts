@@ -9,7 +9,7 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       {
-        path: 'launchpad',
+        path: 'app/launchpad',
         loadChildren: () => import('./Modules/launchpad/launchpad.module').then(m => m.LaunchpadModule)
       },
       {
