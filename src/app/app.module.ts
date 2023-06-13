@@ -6,9 +6,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomMaterialModule } from './material.module';
 import { AuthModule } from './Modules/auth/auth.module';
-
+import { VacanciesComponent } from './Pages/Vacancies/Vacancies.component';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    VacanciesComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
