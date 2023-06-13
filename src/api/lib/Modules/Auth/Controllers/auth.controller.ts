@@ -114,4 +114,8 @@ export class UserController {
       insufficientParameters(res);
     }
   }
+
+  // password update
+
+  // forgot password
 }
