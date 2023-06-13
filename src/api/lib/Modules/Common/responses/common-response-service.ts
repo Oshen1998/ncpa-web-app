@@ -6,15 +6,14 @@ export function successResponse(message: string, DATA: any, res: Response) {
     STATUS: 'SUCCESS',
     MESSAGE: message,
     SUCCESS: true,
-    DATA,
+    DATA: DATA,
   });
 }
 
-export function failureResponse(message: string, DATA: any, res: Response) {
-  res.status(RESPONSE_STATUS_CODES.SUCCESS).json({
+export function failureResponse(message: string, res: Response) {
+  res.status(RESPONSE_STATUS_CODES.INTERNAL_SERVER_ERROR).json({
     STATUS: 'FAILURE',
     MESSAGE: message,
-    DATA,
   });
 }
 
@@ -26,10 +25,27 @@ export function insufficientParameters(res: Response) {
   });
 }
 
+export function duplicateDocuments(res: Response) {
+  res.status(RESPONSE_STATUS_CODES.DUPLICATE).json({
+    STATUS: 'FAILURE',
+    MESSAGE: 'Duplicate Documents',
+    SUCCESS: false,
+    DATA: {},
+  });
+}
+
 export function mongoError(err: any, res: Response) {
   res.status(RESPONSE_STATUS_CODES.INTERNAL_SERVER_ERROR).json({
     STATUS: 'FAILURE',
     MESSAGE: 'MongoDB error',
     DATA: err,
+  });
+}
+
+export function notfoundDocument(res: Response) {
+  res.status(RESPONSE_STATUS_CODES.INTERNAL_SERVER_ERROR).json({
+    STATUS: 'FAILURE',
+    MESSAGE: 'Not Data Found',
+    SUCCESS: false,
   });
 }

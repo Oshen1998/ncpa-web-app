@@ -6,14 +6,15 @@
   "scripts": {
     "watch-mode": "tsc -w",
     "start": "nodemon ./lib/server.ts",
-    "dev": "tsc && tsc -w nodemon ./dist/server.js",
     "prod": "tsc && nodemon ./dist/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ajv": "^8.12.0",
     "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "helmet": "^7.0.0",

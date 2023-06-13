@@ -1,23 +1,23 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as mongoose from 'mongoose';
-import { TestRoutes } from '../Routes/test.routes';
 import { MissMatchRoutes } from '../Routes/missmatch.routes';
+import { AuthRoutes } from '../Routes/auth.routes';
 require('dotenv').config();
 
 class App {
   public app: express.Application;
   public mongoUrl = process.env.DB_URL;
 
-  private test_routes: TestRoutes = new TestRoutes();
   private mismatch_route: MissMatchRoutes = new MissMatchRoutes();
+  private auth_routes: AuthRoutes = new AuthRoutes();
 
   constructor() {
     this.app = express();
     this.config();
     this.mongoSetup();
+    this.auth_routes.route(this.app);
     this.mismatch_route.route(this.app);
-    this.test_routes.route(this.app);
   }
 
   private config(): void {

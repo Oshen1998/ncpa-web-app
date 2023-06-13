@@ -3,11 +3,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const schema = new Schema({
-    name: {
-        type: {
-            first_name: String,
-            last_name: String,
-        },
+    first_name: {
+        type: String,
+        require: true,
+    },
+    last_name: {
+        type: String,
+    },
+    nic: {
+        type: String,
+        require: true,
     },
     email: {
         type: String,
@@ -19,13 +24,12 @@ const schema = new Schema({
     },
     gender: {
         type: String,
+        require: false,
     },
     account_type: {
         type: String,
-        require: true,
-    },
-    nic: {
-        type: String,
+        enum: ["ADMIN" /* USER_TYPES.ADMIN */, "USER" /* USER_TYPES.USER */],
+        default: "USER" /* USER_TYPES.USER */,
         require: true,
     },
     is_deleted: {
@@ -33,4 +37,4 @@ const schema = new Schema({
         default: false,
     },
 });
-exports.default = mongoose.model('users', schema);
+exports.default = mongoose.model('user', schema);
