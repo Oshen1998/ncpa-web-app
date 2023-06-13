@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import {
   duplicateDocuments,
   failureResponse,
+  forbiddenError,
   insufficientParameters,
   mongoError,
   notfoundDocument,
@@ -15,11 +16,13 @@ import {
   userLoginSchema,
   userRegisterValidationSchema,
 } from '../Validations/auth.validation';
-import { encrypt } from '../../../Modules/Common/encryption';
+import { decrypt, encrypt } from '../../../Modules/Common/encryption';
+import { generateAccessToken } from '../../../Modules/Common/services/jwt.service';
 export class UserController {
   private user_service: UserService = new UserService();
   private user_credential: UserCredentialService = new UserCredentialService();
 
+  // user registration
   public async create_user(req: Request, res: Response) {
     const isValid = ValidateSchema(userRegisterValidationSchema, req.body);
 
@@ -69,16 +72,41 @@ export class UserController {
     }
   }
 
+  // user login
   public async user_login(req: Request, res: Response) {
     const isValid = ValidateSchema(userLoginSchema, req.body);
 
     if (isValid) {
       const { username, password } = req.body;
 
-      const existUser = await this.user_service.findByNic(username);
+      const existUser = await this.user_credential.filterUser({
+        username: username,
+      });
 
       if (existUser) {
-        //
+        // need to check password comparison
+        const decryptedPassword = decrypt(existUser.password);
+        if (decryptedPassword.toString() === password.toString()) {
+          // if password matched then get user data and encrypt it using jwt
+          const generateToken = await generateAccessToken(
+            existUser.user_id.toString()
+          );
+
+          if (!generateToken) {
+            return failureResponse(
+              'Something went wrong with token generating',
+              res
+            );
+          } else {
+            successResponse(
+              'Successfully Login',
+              { token: generateToken },
+              res
+            );
+          }
+        } else {
+          forbiddenError(res, 'Password Miss match!');
+        }
       } else {
         notfoundDocument(res);
       }

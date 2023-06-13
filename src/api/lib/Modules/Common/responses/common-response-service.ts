@@ -49,3 +49,11 @@ export function notfoundDocument(res: Response) {
     SUCCESS: false,
   });
 }
+
+export function forbiddenError(res: Response, message: string) {
+  res.status(RESPONSE_STATUS_CODES.FORBIDDEN).json({
+    STATUS: 'FORBIDDEN',
+    MESSAGE: message,
+    SUCCESS: false,
+  });
+}
