@@ -6,7 +6,12 @@ export class AuthRoutes {
 
   public route(app: Application) {
     app.post('/api/auth/register', (req: Request, res: Response) => {
-      this.user_controller.create_user(req, res);
+      this.user_controller
+        .create_user(req, res)
+        .catch(() => console.log('error on auth/register'));
+    });
+    app.post('/api/auth/login', (req: Request, res: Response) => {
+      this.user_controller.user_login(req, res);
     });
   }
 }

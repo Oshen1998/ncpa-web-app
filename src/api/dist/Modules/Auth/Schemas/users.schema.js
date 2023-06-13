@@ -5,32 +5,32 @@ const Schema = mongoose.Schema;
 const schema = new Schema({
     first_name: {
         type: String,
-        require: true,
+        required: true,
     },
     last_name: {
         type: String,
     },
     nic: {
         type: String,
-        require: true,
+        required: true,
     },
     email: {
         type: String,
-        require: true,
+        required: true,
     },
     phone_number: {
         type: String,
-        require: false,
+        required: true,
     },
     gender: {
         type: String,
-        require: false,
+        required: true,
     },
     account_type: {
         type: String,
         enum: ["ADMIN" /* USER_TYPES.ADMIN */, "USER" /* USER_TYPES.USER */],
         default: "USER" /* USER_TYPES.USER */,
-        require: true,
+        required: true,
     },
     is_deleted: {
         type: Boolean,

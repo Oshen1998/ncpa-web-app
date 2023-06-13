@@ -12,19 +12,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const test_routes_1 = require("../Routes/test.routes");
 const missmatch_routes_1 = require("../Routes/missmatch.routes");
+const auth_routes_1 = require("../Routes/auth.routes");
 require('dotenv').config();
 class App {
     constructor() {
         this.mongoUrl = process.env.DB_URL;
-        this.test_routes = new test_routes_1.TestRoutes();
         this.mismatch_route = new missmatch_routes_1.MissMatchRoutes();
+        this.auth_routes = new auth_routes_1.AuthRoutes();
         this.app = express();
         this.config();
         this.mongoSetup();
+        this.auth_routes.route(this.app);
         this.mismatch_route.route(this.app);
-        this.test_routes.route(this.app);
     }
     config() {
         // support application/json type post data
