@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
-
 const routes: Routes = [
   {
     path: '',
@@ -10,13 +9,19 @@ const routes: Routes = [
     children: [
       {
         path: 'app/launchpad',
-        loadChildren: () => import('./Modules/launchpad/launchpad.module').then(m => m.LaunchpadModule)
+        loadChildren: () =>
+          import('./Modules/launchpad/launchpad.module').then(
+            (m) => m.LaunchpadModule
+          ),
       },
       {
         path: 'notice',
-        loadChildren: () => import('./Modules/notices/notices.module').then(m => m.NoticesModule)
+        loadChildren: () =>
+          import('./Modules/notices/notices.module').then(
+            (m) => m.NoticesModule
+          ),
       },
-    ]
+    ],
   },
   {
     path: 'app/auth',

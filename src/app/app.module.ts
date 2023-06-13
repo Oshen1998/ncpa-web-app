@@ -21,6 +21,7 @@ import { SidebarComponent } from './Pages/sidebar/sidebar.component';
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
+    VacanciesComponent,
   ],
   imports: [
     BrowserModule,
