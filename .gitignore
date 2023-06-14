@@ -8,7 +8,6 @@
 
 # Node
 /node_modules
-src/api/node_modules
 src/api/dist
 npm-debug.log
 yarn-error.log
@@ -42,3 +41,4 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+src/api/node_modules
