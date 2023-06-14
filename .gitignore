@@ -44,3 +44,4 @@ Thumbs.db
 src/api/node_modules
 node_modules
 src/api/node_modules
+src/api/.env
