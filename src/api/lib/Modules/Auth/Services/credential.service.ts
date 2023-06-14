@@ -7,8 +7,9 @@ export default class UserCredentialService {
     return _session.save();
   }
 
-  public filterUser(query: any) {
-    return credential.findOne(query);
+  public async filterUser(query: any): Promise<ILogin> {
+    const user =  credential.findOne(query);
+    return user;
   }
 
   public findById(nic: string) {
