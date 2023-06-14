@@ -42,3 +42,4 @@ testem.log
 .DS_Store
 Thumbs.db
 src/api/node_modules
+node_modules
