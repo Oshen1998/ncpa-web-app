@@ -4,6 +4,11 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'app/auth/login',
+    pathMatch: 'full',
+  },
+  {
     path: 'app/auth',
     loadChildren: () =>
       import('./modules/auth/auth.module').then((m) => m.AuthModule),
