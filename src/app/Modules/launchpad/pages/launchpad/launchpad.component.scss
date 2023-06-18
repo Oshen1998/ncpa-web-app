@@ -1,0 +1,11 @@
+.main-container {
+  overflow-x: auto;
+  overflow-y: auto;
+  height: 80vh;
+  width: 80vw;
+}
+.main-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

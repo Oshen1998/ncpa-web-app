@@ -1,36 +1,54 @@
-
-<div class="containor">
-    
-    <div class="row">
-        <div class="col-12">
-            <ngx-charts-bar-vertical 
-            [view]="[500,200]"
-            [results]="saleData"
-            [xAxisLabel]="'Products'"
-            [legendTitle]="'Product Sale Chart'"
-            [yAxisLabel]="'Sale'"
-            [legend]="true"
-            [showXAxisLabel]="true"
-            [showYAxisLabel]="true"
-            [xAxis]="true"
-            [yAxis]="true"
-            [gradient]="true">
-        </ngx-charts-bar-vertical>
-        </div>
-        <div class="col-12">
-            <ngx-charts-pie-chart 
-            [results]="saleData"
-            [legend]="true"
-            [legendTitle]="'Product Sale Report'" 
-            [view]="[500,300]"
-            [labels]="true" >
-        </ngx-charts-pie-chart>
-        </div>
-        <div class="col-12">
-            <ngx-charts-pie-grid 
-            [results]="saleData" 
-            [view]="[600,300]">
-          </ngx-charts-pie-grid>
-        </div>
+<div class="container main-container">
+  <div class="row main-row">
+    <div class="col">
+      <ngx-charts-bar-vertical
+        [view]="[500, 200]"
+        [results]="saleData"
+        [legendTitle]="'Product Sale Chart'"
+        [legend]="true"
+        [showXAxisLabel]="true"
+        [showYAxisLabel]="true"
+        [xAxis]="true"
+        [yAxis]="true"
+        [gradient]="true"
+      >
+      </ngx-charts-bar-vertical>
     </div>
+    <div class="col">
+      <ngx-charts-pie-chart
+        [results]="saleData"
+        [legend]="true"
+        [legendTitle]="'Product Sale Report'"
+        [view]="[500, 300]"
+        [labels]="true"
+      >
+      </ngx-charts-pie-chart>
     </div>
+    <div class="col">
+      <ngx-charts-pie-chart
+        [results]="saleData"
+        [legend]="true"
+        [legendTitle]="'Product Sale Report'"
+        [view]="[500, 300]"
+        [labels]="true"
+      >
+      </ngx-charts-pie-chart>
+    </div>
+    <div class="col">
+      <ngx-charts-pie-chart
+        [results]="saleData"
+        [legend]="true"
+        [legendTitle]="'Product Sale Report'"
+        [view]="[500, 300]"
+        [labels]="true"
+      >
+      </ngx-charts-pie-chart>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <ngx-charts-pie-grid [results]="saleData" [view]="[600, 300]">
+      </ngx-charts-pie-grid>
+    </div>
+  </div>
+</div>

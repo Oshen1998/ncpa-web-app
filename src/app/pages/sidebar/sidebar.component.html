@@ -1,18 +1,57 @@
-<mat-nav-list>
-    <div class="profile-card">
-        <div class="header">
-            <h2>NCPA by SCS</h2>
-            <h4>example@email.com</h4>
-        </div>
-        <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="a dog img">
+<mat-toolbar class="tool-bar">
+  <div class="row" style="width: 100%">
+    <div class="col">
+      <button
+        mat-icon-button
+        *ngIf="sidenav.mode === 'over'"
+        (click)="sidenav.toggle()"
+      >
+        <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+        <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+      </button>
     </div>
+    <div class="col account-circle">
+      <p class="account-text">Hello, NCPA</p>
+    </div>
+    <button class="" mat-icon-button>
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <img
+      class="avatar mat-elevation-z8"
+      src="../../../assets/images/NCPA_logo.png"
+      alt="test"
+    />
+
+    <h4 class="name">NCPA</h4>
+    <mat-divider></mat-divider>
+    <button routerLink="app/launchpad" mat-button class="menu-button">
+      <mat-icon style="color: white">home</mat-icon>
+      <span style="color: white">Launchpad</span>
+    </button>
+    <button routerLink="app/recruitment" mat-button class="menu-button">
+      <mat-icon style="color: white">people</mat-icon>
+      <span style="color: white">Recruitment</span>
+    </button>
+    <button routerLink="app/notice" mat-button class="menu-button">
+      <mat-icon style="color: white">speaker_notes</mat-icon>
+      <span style="color: white">Notices</span>
+    </button>
 
     <mat-divider></mat-divider>
 
-    <h2 matSubheader>Pages</h2>
-
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/launchpad">LaunchPad</a>
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/notice/create">Create Notice</a>
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/notice/view">View Notice</a>
-
-</mat-nav-list>
+    <button mat-button class="menu-button">
+      <mat-icon style="color: white">help</mat-icon>
+      <span style="color: white">Help</span>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

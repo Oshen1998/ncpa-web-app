@@ -4,29 +4,36 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
+    path: 'app/auth',
+    loadChildren: () =>
+      import('./modules/auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
     path: '',
     component: DashboardComponent,
     children: [
       {
         path: 'app/launchpad',
         loadChildren: () =>
-          import('./Modules/launchpad/launchpad.module').then(
+          import('./modules/launchpad/launchpad.module').then(
             (m) => m.LaunchpadModule
           ),
       },
       {
-        path: 'notice',
+        path: 'app/notice',
         loadChildren: () =>
-          import('./Modules/notices/notices.module').then(
+          import('./modules/notices/notices.module').then(
             (m) => m.NoticesModule
           ),
       },
+      {
+        path: 'app/recruitment',
+        loadChildren: () =>
+          import('./modules/recruitments/recruitments.module').then(
+            (m) => m.RecruitmentsModule
+          ),
+      },
     ],
-  },
-  {
-    path: 'app/auth',
-    loadChildren: () =>
-      import('./Modules/auth/auth.module').then((m) => m.AuthModule),
   },
 ];
 
