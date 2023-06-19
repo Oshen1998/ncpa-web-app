@@ -25,10 +25,10 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'app/notice',
+        path: 'app/application',
         loadChildren: () =>
-          import('./modules/notices/notices.module').then(
-            (m) => m.NoticesModule
+          import('./modules/application/application.module').then(
+            (m) => m.ApplicationModule
           ),
       },
       {

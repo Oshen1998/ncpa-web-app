@@ -10,7 +10,7 @@ import { CustomMaterialModule } from './material.module';
 // Modules
 import { AuthModule } from './modules/auth/auth.module';
 import { LaunchpadModule } from './modules/launchpad/launchpad.module';
-import { NoticesModule } from './modules/notices/notices.module';
+import { ApplicationModule } from './modules/application/application.module';
 
 // Components
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -35,7 +35,7 @@ import { HeaderComponent } from './pages/header/header.component';
     CustomMaterialModule,
     AuthModule,
     LaunchpadModule,
-    NoticesModule,
+    ApplicationModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
