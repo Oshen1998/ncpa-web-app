@@ -1,16 +1,7 @@
-<div class="main-container" style="position: relative; scroll-behavior: smooth">
-  <div
-    style="
-      position: relative;
-      scroll-behavior: smooth;
-      overflow-x: auto;
-      overflow-y: auto;
-      height: 75vh;
-      padding: 15px;
-    "
-  >
-    <span>
-      <mat-stepper linear #stepper>
+<div class="content mat-elevation-z8" style="position: relative">
+  <div class="container-fluid">
+    <div class="container">
+      <!-- <mat-stepper orientation="vertical">
         <mat-step [stepControl]="firstFormGroup">
           <form [formGroup]="firstFormGroup">
             <ng-template matStepLabel>PAGE 1</ng-template>
@@ -28,15 +19,57 @@
             </div>
           </form>
         </mat-step>
-        <!-- <mat-step [stepControl]="secondFormGroup" [optional]="isOptional">
-          <form>
-            <ng-template matStepLabel>Fill out your address</ng-template>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>PAGE 1</ng-template>
             <mat-form-field>
-              <mat-label>Address</mat-label>
+              <mat-label>Name</mat-label>
               <input
                 matInput
-                formControlName="secondCtrl"
-                placeholder="Ex. 1 Main St, New York, NY"
+                placeholder="Last name, First name"
+                formControlName="firstCtrl"
+                required
+              />
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="thirdFormGroup">
+          <form [formGroup]="thirdFormGroup">
+            <ng-template matStepLabel>PAGE 1</ng-template>
+            <mat-form-field>
+              <mat-label>Name</mat-label>
+              <input
+                matInput
+                placeholder="Last name, First name"
+                formControlName="firstCtrl"
+                required
+              />
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+      </mat-stepper> -->
+
+      <form [formGroup]="formGroup">
+        <mat-horizontal-stepper formArrayName="form">
+          <mat-step
+            [formGroupName]="i"
+            *ngFor="
+              let customerGroup of formGroup.controls.form.controls;
+              let i = index
+            "
+          >
+            <ng-template matStepLabel>Step {{ i + 1 }}</ng-template>
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Address"
+                formControlName="cont"
                 required
               />
             </mat-form-field>
@@ -44,30 +77,27 @@
               <button mat-button matStepperPrevious>Back</button>
               <button mat-button matStepperNext>Next</button>
             </div>
-          </form>
-        </mat-step>
-        <mat-step>
-          <ng-template matStepLabel>Done</ng-template>
-          <p>You are now done.</p>
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
-          </div>
-        </mat-step> -->
-      </mat-stepper>
-    </span>
-  </div>
-  <div style="position: absolute; bottom: 5px; right: 10px">
-    <button
-      class="m-3"
-      mat-stroked-button
-      color="primary"
-      matTooltip="Add Page"
-    >
-      Add Page
-    </button>
-    <button mat-fab color="primary" matTooltip="Add Field">
-      <mat-icon>add</mat-icon>
-    </button>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </form>
+    </div>
+    <div style="position: absolute; bottom: 10px; right: 10px">
+      <button
+        style="right: 10px"
+        mat-raised-button
+        color="primary"
+        matTooltip="New Field"
+      >
+        Add Page
+      </button>
+      <button
+        mat-fab
+        color="primary"
+        matTooltip="New Application"
+        aria-label="Example icon button with a delete icon"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
   </div>
 </div>

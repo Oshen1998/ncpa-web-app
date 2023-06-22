@@ -3,7 +3,7 @@
     <div class="col">
       <button mat-icon-button (click)="sidenav.toggle()">
         <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
-        <mat-icon *ngIf="sidenav.opened"> apps </mat-icon>
+        <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
       </button>
     </div>
     <div class="col account-circle">
@@ -46,8 +46,8 @@
     </button>
   </mat-sidenav>
   <mat-sidenav-content>
-    <div class="content mat-elevation-z8">
-      <router-outlet></router-outlet>
-    </div>
+    <!-- <div class="content mat-elevation-z8"> -->
+    <router-outlet></router-outlet>
+    <!-- </div> -->
   </mat-sidenav-content>
 </mat-sidenav-container>

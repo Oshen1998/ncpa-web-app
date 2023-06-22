@@ -4,6 +4,9 @@ import {
   Validators,
   FormsModule,
   ReactiveFormsModule,
+  FormControl,
+  FormArray,
+  FormGroup,
 } from '@angular/forms';
 
 @Component({
@@ -16,6 +19,9 @@ export class RecruitmentApplicationComponent {
     firstCtrl: ['', Validators.required],
   });
   secondFormGroup = this._formBuilder.group({
+    secondCtrl: '',
+  });
+  thirdFormGroup = this._formBuilder.group({
     secondCtrl: '',
   });
   isOptional = false;
