@@ -1,0 +1,26 @@
+<form>
+  <ng-template ngFor let-input>
+    <ng-container [ngSwitch]="input.controlType">
+      <ng-template [ngSwitchCase]="FIELD_TYPES.TEXT">
+        <div class="form-group">
+          <!-- Text Here -->
+        </div>
+      </ng-template>
+      <ng-template [ngSwitchCase]="FIELD_TYPES.DROPDOWNS">
+        <div class="form-group">
+          <!-- DropDowns Here -->
+        </div>
+      </ng-template>
+      <ng-template [ngSwitchCase]="FIELD_TYPES.RADIO">
+        <div class="form-group">
+          <!-- Radio Actions Here -->
+        </div>
+      </ng-template>
+      <ng-template [ngSwitchCase]="FIELD_TYPES.FILE">
+        <div class="form-group">
+          <!-- Files here -->
+        </div>
+      </ng-template>
+    </ng-container>
+  </ng-template>
+</form>

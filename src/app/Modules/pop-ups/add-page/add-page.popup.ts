@@ -8,15 +8,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { CustomMaterialModule } from 'src/app/material.module';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
-export interface IPreliminaryInfo {
+export interface IAddPage {
   title: string;
-  subTitle?: string;
-  extraInfo?: string;
 }
 
 @Component({
-  selector: 'app-application-preliminary.pop-up',
-  templateUrl: 'application-preliminary.pop-up.html',
+  selector: 'add-page.popup',
+  templateUrl: 'add-page.popup.html',
   standalone: true,
   imports: [
     MatButtonModule,
@@ -25,21 +23,18 @@ export interface IPreliminaryInfo {
     ReactiveFormsModule,
   ],
 })
-export class ApplicationPreliminaryPopup {
+export class AddPagePopUp {
   constructor(
-    private dialogRef: MatDialogRef<ApplicationPreliminaryPopup>,
-    @Inject(MAT_DIALOG_DATA) data: IPreliminaryInfo
+    private dialogRef: MatDialogRef<AddPagePopUp>,
+    @Inject(MAT_DIALOG_DATA) data: IAddPage
   ) {}
 
   title = new FormControl('', [Validators.required]);
-  subTitle = new FormControl('', []);
-  extraInfo = new FormControl('', []);
 
   sendData() {
     const _data = {
-      title: this.title.value,
-      subTitle: this.subTitle.value,
-      extraInfo: this.extraInfo.value,
+      actualPageName: this.title.value,
+      pageName: this.title.value?.replaceAll(' ', '_').toLowerCase(),
     };
     this.dialogRef.close(_data);
   }

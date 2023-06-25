@@ -1,100 +1,58 @@
 <div class="content mat-elevation-z8" style="position: relative">
   <div class="container-fluid">
     <div class="container">
-      <!-- <mat-stepper orientation="vertical">
-        <mat-step [stepControl]="firstFormGroup">
-          <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>PAGE 1</ng-template>
-            <mat-form-field>
-              <mat-label>Name</mat-label>
-              <input
-                matInput
-                placeholder="Last name, First name"
-                formControlName="firstCtrl"
-                required
-              />
-            </mat-form-field>
+      <mat-stepper style="background-color: transparent" labelPosition="bottom">
+        <mat-step
+          #step
+          *ngFor="let group of formArray; let i = index"
+          [stepControl]="FormGroup"
+        >
+          <form [formGroup]="FormGroup">
+            <ng-template matStepLabel>{{ group.actualPageName }}</ng-template>
+            <!-- Header Section -->
+            <div *ngIf="group.pageNo === 1" class="container">
+              <div *ngIf="pageTitle !== ''" class="row">
+                <h2 class="header">{{ pageTitle }}</h2>
+              </div>
+              <div *ngIf="pageSubTitle !== ''" class="row">
+                <h4 class="header">{{ pageSubTitle }}</h4>
+              </div>
+              <div *ngIf="pageExtraInfo !== ''" class="row">
+                <h5 class="header">{{ pageExtraInfo }}</h5>
+              </div>
+              <mat-divider *ngIf="pageTitle !== ''"></mat-divider>
+            </div>
+            <!-- Render Fields Here -->
+            <ng-container>
+              <app-application-form></app-application-form>
+            </ng-container>
             <div>
               <button mat-button matStepperNext>Next</button>
+            </div>
+            <div>
+              <button mat-button (click)="removePage(i, group)">
+                Remove Page
+              </button>
             </div>
           </form>
         </mat-step>
-        <mat-step [stepControl]="secondFormGroup">
-          <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>PAGE 1</ng-template>
-            <mat-form-field>
-              <mat-label>Name</mat-label>
-              <input
-                matInput
-                placeholder="Last name, First name"
-                formControlName="firstCtrl"
-                required
-              />
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-          </form>
-        </mat-step>
-        <mat-step [stepControl]="thirdFormGroup">
-          <form [formGroup]="thirdFormGroup">
-            <ng-template matStepLabel>PAGE 1</ng-template>
-            <mat-form-field>
-              <mat-label>Name</mat-label>
-              <input
-                matInput
-                placeholder="Last name, First name"
-                formControlName="firstCtrl"
-                required
-              />
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-          </form>
-        </mat-step>
-      </mat-stepper> -->
-
-      <form [formGroup]="formGroup">
-        <mat-horizontal-stepper formArrayName="form">
-          <mat-step
-            [formGroupName]="i"
-            *ngFor="
-              let customerGroup of formGroup.controls.form.controls;
-              let i = index
-            "
-          >
-            <ng-template matStepLabel>Step {{ i + 1 }}</ng-template>
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Address"
-                formControlName="cont"
-                required
-              />
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-          </mat-step>
-        </mat-horizontal-stepper>
-      </form>
+      </mat-stepper>
     </div>
     <div style="position: absolute; bottom: 10px; right: 10px">
       <button
+        (click)="addPage()"
         style="right: 10px"
         mat-raised-button
         color="primary"
-        matTooltip="New Field"
+        matTooltip="Add New Page"
       >
         Add Page
       </button>
       <button
+        (click)="AddFields()"
         mat-fab
         color="primary"
-        matTooltip="New Application"
-        aria-label="Example icon button with a delete icon"
+        matTooltip="Add Fields"
       >
         <mat-icon>add</mat-icon>
       </button>

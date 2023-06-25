@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Add Page</h1>
+<mat-dialog-content>
+  <div>
+    <mat-form-field style="width: 100%; margin-top: 10px">
+      <mat-label>Page Name</mat-label>
+      <input
+        matInput
+        placeholder="Application Of Manager"
+        [formControl]="title"
+        required
+      />
+      <mat-error>required</mat-error>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    mat-button
+    [mat-dialog-close]="true"
+    (click)="sendData()"
+    cdkFocusInitial
+    [disabled]="!title.value"
+  >
+    Add
+  </button>
+</mat-dialog-actions>

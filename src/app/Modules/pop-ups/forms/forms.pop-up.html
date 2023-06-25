@@ -1,0 +1,58 @@
+<h1 mat-dialog-title>Add A New Field</h1>
+<mat-dialog-content>
+  <div>
+    <!-- Question -->
+    <mat-form-field style="width: 100%; margin-top: 10px">
+      <mat-label>Question</mat-label>
+      <input
+        matInput
+        placeholder="Question"
+        [formControl]="question"
+        required
+      />
+      <mat-error>Question is required!</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <!-- Select Question :- Answer Type -->
+    <div class="row">
+      <div class="col">
+        <mat-form-field style="width: 100%">
+          <mat-label>Answer Category</mat-label>
+          <mat-select [(ngModel)]="selectedAnswerType" name="answerCategory" required>
+            <mat-option *ngFor="let food of answerType" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Answer category is required!</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+         <!-- Select Question :- Page -->
+        <mat-form-field style="width: 100%">
+          <mat-label>Page</mat-label>
+          <mat-select required [(ngModel)]="selectedPage" name="food">
+            <mat-option *ngFor="let page of pageDetails" [value]="page.value">
+              {{page.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Page is required!</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div>
+    <!--  -->
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    mat-button
+    [mat-dialog-close]="true"
+    (click)="sendData()"
+    cdkFocusInitial
+  >
+    Add
+  </button>
+</mat-dialog-actions>

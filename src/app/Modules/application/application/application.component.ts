@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApplicationPreliminaryPopup } from '../../pop-ups/application-preliminary/application-preliminary.pop-up';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ApplicationDataStore } from 'src/app/dataStores/application.datastore.service';
 
 @Component({
   selector: 'app-application',
@@ -9,7 +10,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./application.component.scss'],
 })
 export class ApplicationComponent implements OnInit {
-  constructor(private dialog: MatDialog, private router: Router) {}
+  constructor(
+    private dialog: MatDialog,
+    private router: Router,
+    private applicationDetails: ApplicationDataStore
+  ) {}
 
   ngOnInit(): void {}
 
@@ -21,6 +26,7 @@ export class ApplicationComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((data) => {
       if (data) {
+        this.applicationDetails.setInitialPageHeaderDetails(data);
         this.router.navigate(['app/application/form']);
       }
     });

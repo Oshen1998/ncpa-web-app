@@ -9,5 +9,15 @@
   align-items: flex-start;
 
   font-size: 2rem;
-  color: lightgray;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: "center";
+  margin: 3px;
 }
