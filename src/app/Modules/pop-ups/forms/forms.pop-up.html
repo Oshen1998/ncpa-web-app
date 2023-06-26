@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Add A New Field</h1>
+<h1 mat-dialog-title>ADD A NEW FIELD</h1>
 <mat-dialog-content>
   <div>
     <!-- Question -->
@@ -14,12 +14,19 @@
     </mat-form-field>
   </div>
   <div>
+    <!-- Placeholder -->
+    <mat-form-field style="width: 100%; margin-top: 10px">
+      <mat-label>Placeholder</mat-label>
+      <input matInput placeholder="Question" [formControl]="placeholder" />
+    </mat-form-field>
+  </div>
+  <div>
     <!-- Select Question :- Answer Type -->
     <div class="row">
       <div class="col">
         <mat-form-field style="width: 100%">
           <mat-label>Answer Category</mat-label>
-          <mat-select [(ngModel)]="selectedAnswerType" name="answerCategory" required>
+          <mat-select [(ngModel)]="controlName" name="answerCategory" required>
             <mat-option *ngFor="let food of answerType" [value]="food.value">
               {{food.viewValue}}
             </mat-option>
@@ -28,7 +35,7 @@
         </mat-form-field>
       </div>
       <div class="col">
-         <!-- Select Question :- Page -->
+        <!-- Select Question :- Page -->
         <mat-form-field style="width: 100%">
           <mat-label>Page</mat-label>
           <mat-select required [(ngModel)]="selectedPage" name="food">

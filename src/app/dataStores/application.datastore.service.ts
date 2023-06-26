@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, take } from 'rxjs';
+import { BehaviorSubject, Observable, from, take } from 'rxjs';
 
 // constant
 export const CONTROLLER_TYPES = {
@@ -7,6 +7,7 @@ export const CONTROLLER_TYPES = {
   RADIO: 'RADIO',
   FILE: 'FILE',
   DROPDOWNS: 'DROPDOWNS',
+  CHECKBOX: 'CHECKBOX',
 };
 
 // ---------------------- Constant End ---------------------------
@@ -44,16 +45,17 @@ export class ApplicationDataStore {
   getInitialPageHeaderDetails(): Observable<IInitPage> {
     return this.pageHeaderDetails;
   }
+
   getPageDetails(): Observable<IPageDetail[]> {
     return this.pageDetails;
   }
 
   // Set Values
   setInitialPageHeaderDetails(initialValues: IInitPage) {
-    return this.pageHeader.next(initialValues);
+    this.pageHeader.next(initialValues);
   }
 
   setPageData(data: IPageDetail[]) {
-    return this.pageData.next(data);
+    this.pageData.next(data);
   }
 }

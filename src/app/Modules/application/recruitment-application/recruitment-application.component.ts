@@ -6,13 +6,27 @@ import {
   ApplicationDataStore,
   IPageDetail,
 } from 'src/app/dataStores/application.datastore.service';
-import { FormsPopUp } from '../../pop-ups/forms/forms.pop-up';
+import { FormsPopUp, IFieldDetails } from '../../pop-ups/forms/forms.pop-up';
+
+export interface IFields {
+  question: string;
+  controlName: string;
+  controlType: string;
+  valueType: string;
+  placeholder?: string;
+  validators?: {
+    required?: boolean;
+    minLength?: number;
+    maxLength?: number;
+    other?: any;
+  };
+}
 
 export interface IFormArray {
   pageName: string;
   actualPageName: string;
   pageNo: number;
-  fields?: any[];
+  fields?: IFields[];
 }
 
 @Component({
@@ -67,6 +81,7 @@ export class RecruitmentApplicationComponent implements OnInit {
           pageName: result.pageName,
           actualPageName: result.actualPageName,
           pageNo: this.count,
+          fields: [],
         };
 
         // push details to formArray
@@ -94,9 +109,23 @@ export class RecruitmentApplicationComponent implements OnInit {
       width: '50%',
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
+    dialogRef.afterClosed().subscribe((result: IFieldDetails) => {
       if (result) {
-        // Manage here
+        const index = this.formArray.findIndex(
+          (item) => item.pageName.toString() === result.selectedPage.toString()
+        );
+        if (index >= 0) {
+          const length = this.formArray[index].fields?.length
+          const fieldData: IFields = {
+            controlName: `question_${length ? length + 1: 1}`,
+            question: result.question,
+            controlType: result.controlName,
+            valueType: result.controlName,
+            validators: {},
+          };
+          this.formArray[index].fields?.push(fieldData);
+          console.log(this.formArray);
+        }
       }
     });
   }

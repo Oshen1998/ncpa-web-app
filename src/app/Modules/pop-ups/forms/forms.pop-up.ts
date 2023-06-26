@@ -1,9 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import {
-  MAT_DIALOG_DATA,
-  MatDialogModule,
-  MatDialogRef,
-} from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { CustomMaterialModule } from 'src/app/material.module';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -20,6 +16,13 @@ interface IAnswer {
   viewValue: string;
 }
 
+export interface IFieldDetails {
+  question: string;
+  placeholder?: string;
+  controlName: string;
+  selectedPage: string;
+}
+
 @Component({
   selector: 'app-forms.pop-up',
   templateUrl: 'forms.pop-up.html',
@@ -34,47 +37,42 @@ interface IAnswer {
     MatSelectModule,
     NgFor,
   ],
-  providers: [ApplicationDataStore],
 })
 export class FormsPopUp implements OnInit {
-  selectedAnswerType: string = '';
+  controlName: string = '';
   selectedPage: string = '';
   pageDetails: IPageDetail[] = [];
 
   constructor(
     private dialogRef: MatDialogRef<FormsPopUp>,
-    @Inject(MAT_DIALOG_DATA) data: IAnswer,
     private applicationDataStore: ApplicationDataStore
-  ) {
-    this.applicationDataStore.getPageDetails().subscribe((res) => {
-      res.forEach((value) => {
-        console.log(value);
+  ) {}
 
-        this.pageDetails.push(value);
+  ngOnInit(): void {
+    this.applicationDataStore.getPageDetails().subscribe((res) => {
+      res.forEach((item) => {
+        this.pageDetails.push(item);
       });
     });
   }
 
-  ngOnInit(): void {
-    console.log('here');
-  }
-
   answerType: IAnswer[] = [
     { value: CONTROLLER_TYPES.TEXT, viewValue: 'Text' },
-    { value: CONTROLLER_TYPES.RADIO, viewValue: 'Select' },
+    { value: CONTROLLER_TYPES.RADIO, viewValue: 'Select Options' },
     { value: CONTROLLER_TYPES.DROPDOWNS, viewValue: 'Dropdown' },
+    { value: CONTROLLER_TYPES.CHECKBOX, viewValue: 'Check Box' },
     { value: CONTROLLER_TYPES.FILE, viewValue: 'File' },
   ];
 
   question = new FormControl('', [Validators.required]);
-  subTitle = new FormControl('', []);
-  extraInfo = new FormControl('', []);
+  placeholder = new FormControl('', []);
 
   sendData() {
-    const _data = {
-      title: this.question.value,
-      subTitle: this.subTitle.value,
-      extraInfo: this.extraInfo.value,
+    const _data: IFieldDetails = {
+      question: this.question.value || '',
+      placeholder: this.question.value ? this.question.value : '',
+      selectedPage: this.selectedPage,
+      controlName: this.controlName,
     };
     this.dialogRef.close(_data);
   }

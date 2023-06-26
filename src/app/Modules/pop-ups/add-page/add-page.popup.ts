@@ -24,18 +24,15 @@ export interface IAddPage {
   ],
 })
 export class AddPagePopUp {
-  constructor(
-    private dialogRef: MatDialogRef<AddPagePopUp>,
-    @Inject(MAT_DIALOG_DATA) data: IAddPage
-  ) {}
+  constructor(private dialogRef: MatDialogRef<AddPagePopUp>) {}
 
   title = new FormControl('', [Validators.required]);
 
   sendData() {
-    const _data = {
+    const data = {
       actualPageName: this.title.value,
       pageName: this.title.value?.replaceAll(' ', '_').toLowerCase(),
     };
-    this.dialogRef.close(_data);
+    this.dialogRef.close(data);
   }
 }
