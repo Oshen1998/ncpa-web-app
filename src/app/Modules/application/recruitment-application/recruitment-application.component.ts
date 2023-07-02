@@ -58,7 +58,11 @@ export class RecruitmentApplicationComponent implements OnInit {
     private applicationDataStore: ApplicationDataStore
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.formArray.length === 0) {
+      this.addPage();
+    }
+  }
 
   addPage() {
     const dialogRef = this.dialog.open(AddPagePopUp, {
@@ -107,6 +111,7 @@ export class RecruitmentApplicationComponent implements OnInit {
     const dialogRef = this.dialog.open(FormsPopUp, {
       disableClose: true,
       width: '50%',
+      maxHeight: '75%',
     });
 
     dialogRef.afterClosed().subscribe((result: IFieldDetails) => {
@@ -115,9 +120,9 @@ export class RecruitmentApplicationComponent implements OnInit {
           (item) => item.pageName.toString() === result.selectedPage.toString()
         );
         if (index >= 0) {
-          const length = this.formArray[index].fields?.length
+          const length = this.formArray[index].fields?.length;
           const fieldData: IFields = {
-            controlName: `question_${length ? length + 1: 1}`,
+            controlName: `question_${length ? length + 1 : 1}`,
             question: result.question,
             controlType: result.controlName,
             valueType: result.controlName,

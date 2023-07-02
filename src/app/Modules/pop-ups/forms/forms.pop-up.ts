@@ -4,14 +4,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { CustomMaterialModule } from 'src/app/material.module';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import {
   ApplicationDataStore,
   CONTROLLER_TYPES,
   IPageDetail,
 } from 'src/app/dataStores/application.datastore.service';
 
-interface IAnswer {
+interface ICommonKeyValuePair {
   value: string;
   viewValue: string;
 }
@@ -36,11 +36,16 @@ export interface IFieldDetails {
     ReactiveFormsModule,
     MatSelectModule,
     NgFor,
+    NgIf,
   ],
 })
 export class FormsPopUp implements OnInit {
   controlName: string = '';
   selectedPage: string = '';
+  selectTextType: string = '';
+  parallelAnswer = false;
+  required = false;
+
   pageDetails: IPageDetail[] = [];
 
   constructor(
@@ -56,16 +61,39 @@ export class FormsPopUp implements OnInit {
     });
   }
 
-  answerType: IAnswer[] = [
+  answerType: ICommonKeyValuePair[] = [
     { value: CONTROLLER_TYPES.TEXT, viewValue: 'Text' },
-    { value: CONTROLLER_TYPES.RADIO, viewValue: 'Select Options' },
-    { value: CONTROLLER_TYPES.DROPDOWNS, viewValue: 'Dropdown' },
-    { value: CONTROLLER_TYPES.CHECKBOX, viewValue: 'Check Box' },
+    { value: CONTROLLER_TYPES.RADIO, viewValue: 'Radio Button' },
+    { value: CONTROLLER_TYPES.DROPDOWNS, viewValue: 'Select Option' },
+    { value: CONTROLLER_TYPES.CHECKBOX, viewValue: 'Select Options (Multi)' },
     { value: CONTROLLER_TYPES.FILE, viewValue: 'File' },
+  ];
+
+  tempReferenceCategory: ICommonKeyValuePair[] = [
+    { value: '1', viewValue: 'Subjects' },
+    { value: '3', viewValue: 'Qualifications' },
+    { value: '4', viewValue: 'Grades' },
+  ];
+
+  tempReferenceCategoryInfo: ICommonKeyValuePair[] = [
+    { value: '1', viewValue: 'O/L Subjects' },
+    { value: '3', viewValue: 'A/L Subject' },
+    { value: '4', viewValue: 'Grade Values' },
+  ];
+
+  textTypes: ICommonKeyValuePair[] = [
+    { value: '1', viewValue: 'Plain Text' },
+    { value: '2', viewValue: 'Email' },
+    { value: '3', viewValue: 'Phone' },
+    { value: '4', viewValue: 'NIC' },
   ];
 
   question = new FormControl('', [Validators.required]);
   placeholder = new FormControl('', []);
+  radioOptionOne = new FormControl('', [Validators.required]);
+  radioOptionTwo = new FormControl('', [Validators.required]);
+  referenceCategory = new FormControl('', [Validators.required]);
+  referenceCategoryInfo = new FormControl('', [Validators.required]);
 
   sendData() {
     const _data: IFieldDetails = {

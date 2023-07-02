@@ -22,6 +22,7 @@ export class ApplicationComponent implements OnInit {
     const dialogRef = this.dialog.open(ApplicationPreliminaryPopup, {
       disableClose: true,
       width: '50%',
+      maxHeight: '75%',
     });
 
     dialogRef.afterClosed().subscribe((data) => {

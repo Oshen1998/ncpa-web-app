@@ -38,6 +38,13 @@ const routes: Routes = [
             (m) => m.RecruitmentsModule
           ),
       },
+      {
+        path: 'app/reference',
+        loadChildren: () =>
+          import('./modules/reference/reference.module').then(
+            (m) => m.ReferenceModule
+          ),
+      },
     ],
   },
 ];

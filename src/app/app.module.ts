@@ -18,6 +18,7 @@ import { VacanciesComponent } from './pages/Vacancies/Vacancies.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { SidebarComponent } from './pages/sidebar/sidebar.component';
 import { HeaderComponent } from './pages/header/header.component';
+import { ReferenceModule } from './modules/reference/reference.module';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { HeaderComponent } from './pages/header/header.component';
     AuthModule,
     LaunchpadModule,
     ApplicationModule,
+    ReferenceModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
