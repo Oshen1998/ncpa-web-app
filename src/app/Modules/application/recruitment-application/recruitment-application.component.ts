@@ -67,7 +67,7 @@ export class RecruitmentApplicationComponent implements OnInit {
   addPage() {
     const dialogRef = this.dialog.open(AddPagePopUp, {
       disableClose: true,
-      width: '50%',
+      width: '500px',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -110,8 +110,7 @@ export class RecruitmentApplicationComponent implements OnInit {
     this.applicationDataStore.setPageData(this.pageDetails);
     const dialogRef = this.dialog.open(FormsPopUp, {
       disableClose: true,
-      width: '50%',
-      maxHeight: '75%',
+      // width: '50%',
     });
 
     dialogRef.afterClosed().subscribe((result: IFieldDetails) => {

@@ -26,7 +26,7 @@
     <h4 class="name">NCPA</h4>
     <mat-divider></mat-divider>
     <button routerLink="app/launchpad" mat-button class="menu-button">
-      <mat-icon style="color: white">home</mat-icon>
+      <mat-icon style="color: white">dashboard</mat-icon>
       <span style="color: white">Launchpad</span>
     </button>
     <button routerLink="app/recruitment" mat-button class="menu-button">
@@ -37,10 +37,36 @@
       <mat-icon style="color: white">newspaper</mat-icon>
       <span style="color: white">Application</span>
     </button>
-    <button routerLink="app/reference" mat-button class="menu-button">
-      <mat-icon style="color: white">speaker_notes</mat-icon>
-      <span style="color: white">Reference</span>
-    </button>
+    <div>
+      <button
+        (click)="onReference()"
+        routerLink="app/reference"
+        mat-button
+        class="menu-button"
+      >
+        <mat-icon style="color: white">speaker_notes</mat-icon>
+        <span style="color: white">Reference</span>
+      </button>
+      <ul *ngIf="isReferenceClicked">
+        <button
+          (click)="onTriggerAddCategory()"
+          mat-raised-button
+          class="menu-button"
+        >
+          <span style="color: black">Add Category</span>
+        </button>
+        <a style="text-decoration: none" *ngFor="let item of references">
+          <button
+            (click)="onChangeRef(item.referenceName)"
+            mat-button
+            class="menu-button"
+          >
+            <mat-icon style="color: white">dns</mat-icon>
+            <span style="color: white">{{ item.referenceName }}</span>
+          </button>
+        </a>
+      </ul>
+    </div>
 
     <mat-divider></mat-divider>
 
@@ -50,8 +76,6 @@
     </button>
   </mat-sidenav>
   <mat-sidenav-content>
-    <!-- <div class="content mat-elevation-z8"> -->
     <router-outlet></router-outlet>
-    <!-- </div> -->
   </mat-sidenav-content>
 </mat-sidenav-container>
