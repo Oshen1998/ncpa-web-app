@@ -1,0 +1,85 @@
+<div>
+  <h3 mat-dialog-title>Add New Category</h3>
+</div>
+<mat-divider></mat-divider>
+<mat-dialog-content>
+  <!-- Category Name -->
+  <div>
+    <mat-form-field style="width: 100%">
+      <mat-label>Category Name</mat-label>
+      <input
+        matInput
+        placeholder="Subjects"
+        [formControl]="category"
+        required
+      />
+      <mat-error>Category is required!</mat-error>
+    </mat-form-field>
+  </div>
+  <mat-divider></mat-divider>
+  <!-- Add fields -->
+  <div class="container">
+    <div
+      class="row mt-2"
+      style="display: flex; justify-content: end; align-items: end"
+    >
+      <button
+        (click)="addFields()"
+        mat-raised-button
+        color="primary"
+        style="width: 150px"
+      >
+        Add Fields
+      </button>
+    </div>
+  </div>
+  <!-- Add fields  -->
+  <ng-container [formGroup]="fieldFormGroup">
+    <div formArrayName="fields">
+      <div *ngFor="let item of fields.controls;let i = index">
+        <div class="container w-100 mt-3" [formGroupName]="i">
+          <div class="row">
+            <div class="col">
+              <mat-form-field style="width: 100%">
+                <mat-label>Key</mat-label>
+                <input
+                  matInput
+                  placeholder="Key"
+                  formControlName="key"
+                  required
+                />
+                <mat-error>Key is required!</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field style="width: 100%">
+                <mat-label>Type</mat-label>
+                <mat-select
+                  formControlName="type"
+                  name="food"
+                >
+                  <mat-option *ngFor="let type of types" [value]="type.key">
+                    {{type.value}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    mat-raised-button
+    color="primary"
+    [mat-dialog-close]="true"
+    (click)="sendData()"
+    cdkFocusInitial
+    [disabled]="!category.value"
+  >
+    Add
+  </button>
+</mat-dialog-actions>

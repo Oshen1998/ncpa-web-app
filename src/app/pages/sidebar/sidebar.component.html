@@ -15,7 +15,7 @@
   </div>
 </mat-toolbar>
 
-<mat-sidenav-container>
+<mat-sidenav-container >
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
     <img
       class="avatar mat-elevation-z8"
@@ -57,12 +57,12 @@
         </button>
         <a style="text-decoration: none" *ngFor="let item of references">
           <button
-            (click)="onChangeRef(item.referenceName)"
+            (click)="onChangeRef(item.name)"
             mat-button
             class="menu-button"
           >
             <mat-icon style="color: white">dns</mat-icon>
-            <span style="color: white">{{ item.referenceName }}</span>
+            <span style="color: white">{{ item.name }}</span>
           </button>
         </a>
       </ul>

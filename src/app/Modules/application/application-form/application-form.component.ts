@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CONTROLLER_TYPES } from 'src/app/dataStores/application.datastore.service';
+import { CONTROLLER_TYPES } from 'src/app/constants';
 
 @Component({
   selector: 'app-application-form',

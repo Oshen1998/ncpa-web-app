@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { AddPagePopUp } from '../../pop-ups/add-page/add-page.popup';
+import { AddPagePopUp } from '../../../popups/add-page/add-page.popup';
 import {
   ApplicationDataStore,
-  IPageDetail,
 } from 'src/app/dataStores/application.datastore.service';
-import { FormsPopUp, IFieldDetails } from '../../pop-ups/forms/forms.pop-up';
+import { FormsPopUp, IFieldDetails } from '../../../popups/forms/forms.pop-up';
+import { IPageDetail } from 'src/app/interfaces/application.interfaces';
 
 export interface IFields {
   question: string;
@@ -67,7 +67,7 @@ export class RecruitmentApplicationComponent implements OnInit {
   addPage() {
     const dialogRef = this.dialog.open(AddPagePopUp, {
       disableClose: true,
-      width: '500px',
+      width: '600px',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -110,7 +110,7 @@ export class RecruitmentApplicationComponent implements OnInit {
     this.applicationDataStore.setPageData(this.pageDetails);
     const dialogRef = this.dialog.open(FormsPopUp, {
       disableClose: true,
-      // width: '50%',
+      width: '600px',
     });
 
     dialogRef.afterClosed().subscribe((result: IFieldDetails) => {

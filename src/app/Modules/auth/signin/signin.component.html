@@ -16,7 +16,9 @@
               <mat-label>Confirm Password</mat-label>
               <input matInput [type]="hide ? 'password' : 'text'" />
               <button mat-icon-button matSuffix (click)="hide = !hide">
-                <mat-icon>{{ !hide ? "remove_red_eye" : "visibility_off" }}</mat-icon>
+                <mat-icon>{{
+                  !hide ? "remove_red_eye" : "visibility_off"
+                }}</mat-icon>
               </button>
             </mat-form-field>
           </div>
@@ -35,7 +37,11 @@
       <div class="content-style">
         <div class="col">
           <div class="row common-logo-styles">
-            <img  alt="ncp-logo"  class="logo-styles" src="assets/images/NCPA_logo.png" />
+            <img
+              alt="ncp-logo"
+              class="logo-styles"
+              src="assets/images/NCPA_logo.png"
+            />
           </div>
           <div class="row word-content">
             <h2 class="main-text-style">

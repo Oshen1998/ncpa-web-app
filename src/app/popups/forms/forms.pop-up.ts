@@ -5,11 +5,9 @@ import { CustomMaterialModule } from 'src/app/material.module';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { NgFor, NgIf } from '@angular/common';
-import {
-  ApplicationDataStore,
-  CONTROLLER_TYPES,
-  IPageDetail,
-} from 'src/app/dataStores/application.datastore.service';
+import { ApplicationDataStore } from 'src/app/dataStores/application.datastore.service';
+import { CONTROLLER_TYPES } from 'src/app/constants';
+import { IPageDetail } from 'src/app/interfaces/application.interfaces';
 
 interface ICommonKeyValuePair {
   value: string;

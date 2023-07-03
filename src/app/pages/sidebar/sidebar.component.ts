@@ -2,6 +2,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { ReferenceDataService } from 'src/app/dataStores/reference.datastore.service';
+import { IReferenceCategory } from 'src/app/interfaces/reference.interface';
 
 @Component({
   selector: 'app-sidebar',
@@ -13,11 +14,16 @@ export class SidebarComponent {
   sidenav!: MatSidenav;
 
   isReferenceClicked = false;
+  references: IReferenceCategory[] = [];
 
   constructor(
     private observer: BreakpointObserver,
     private referenceDataService: ReferenceDataService
-  ) {}
+  ) {
+    this.referenceDataService.getReferenceCategoryData().subscribe((res) => {
+      res.forEach((item) => this.references.push(item));
+    });
+  }
 
   ngAfterViewInit() {
     this.observer.observe(['(max-width: 1000px)']).subscribe((res) => {
@@ -31,20 +37,6 @@ export class SidebarComponent {
     });
   }
 
-  references = [
-    {
-      id: '1',
-      referenceName: 'O/L Subjects',
-    },
-    {
-      id: '2',
-      referenceName: 'A/L Subjects',
-    },
-    {
-      id: '3',
-      referenceName: 'Districts',
-    },
-  ];
 
   onReference() {
     this.isReferenceClicked = !this.isReferenceClicked;

@@ -13,8 +13,8 @@ export interface IAddPage {
 }
 
 @Component({
-  selector: 'add-category.popup',
-  templateUrl: 'add-category.popup.html',
+  selector: 'reference.popup',
+  templateUrl: 'reference.popup.html',
   standalone: true,
   imports: [
     MatButtonModule,
@@ -23,8 +23,8 @@ export interface IAddPage {
     ReactiveFormsModule,
   ],
 })
-export class AddCategoryPopup {
-  constructor(private dialogRef: MatDialogRef<AddCategoryPopup>) {}
+export class ReferencePopup {
+  constructor(private dialogRef: MatDialogRef<ReferencePopup>) {}
 
   title = new FormControl('', [Validators.required]);
 

@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ReferenceRoutingModule } from './reference-routing.module';
 import { ReferencesComponent } from './references/references.component';
 import { CustomMaterialModule } from 'src/app/material.module';
-import { NotFoundModule } from 'src/app/pages/not-found-page/not-found.module';
+import { NotFoundDataModule } from 'src/app/shared/not-found-data/not-found-data.module';
 
 @NgModule({
   declarations: [ReferencesComponent],
@@ -12,7 +12,7 @@ import { NotFoundModule } from 'src/app/pages/not-found-page/not-found.module';
     CommonModule,
     ReferenceRoutingModule,
     CustomMaterialModule,
-    NotFoundModule,
+    NotFoundDataModule,
   ],
 })
 export class ReferenceModule {}

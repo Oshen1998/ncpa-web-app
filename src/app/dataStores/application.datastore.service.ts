@@ -1,31 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, from, take } from 'rxjs';
+import { IInitPage, IPageDetail } from '../interfaces/application.interfaces';
 
-// constant
-export const CONTROLLER_TYPES = {
-  TEXT: 'TEXT',
-  RADIO: 'RADIO',
-  FILE: 'FILE',
-  DROPDOWNS: 'DROPDOWNS',
-  CHECKBOX: 'CHECKBOX',
-};
-
-// ---------------------- Constant End ---------------------------
-
-// interfaces
-
-export interface IInitPage {
-  title: string;
-  subTitle?: string;
-  extraInfo?: string;
-}
-
-export interface IPageDetail {
-  viewValue: string;
-  value: string;
-}
-
-// ------------------------- Interfaces End ------------------------
 @Injectable({
   providedIn: 'root',
 })
