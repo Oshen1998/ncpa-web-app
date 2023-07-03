@@ -8,6 +8,6 @@ import { AnimationOptions } from 'ngx-lottie';
 })
 export class NotFoundPageComponent {
   options: AnimationOptions = {
-    path: '../../../assets/animations/not-found.json',
+    path: '../../../assets/animations/page-not-found.json',
   };
 }

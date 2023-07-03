@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,16 @@ const routes: Routes = [
           ),
       },
     ],
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
+    component: NotFoundPageComponent,
+  },
+  {
+    path: '****',
+    pathMatch: 'full',
+    component: NotFoundPageComponent,
   },
 ];
 

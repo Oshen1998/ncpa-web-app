@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ReferencePopup } from '../../pop-ups/reference/reference.popup';
+import { ReferencePopup } from '../../../popups/reference/reference.popup';
 import { ActivatedRoute } from '@angular/router';
 import { ReferenceDataService } from 'src/app/dataStores/reference.datastore.service';
-import { AddCategoryPopup } from '../../pop-ups/add-reference-category/add-category.popup';
+import { AddCategoryPopup } from '../../../popups/add-reference-category/add-category.popup';
 
 @Component({
   selector: 'app-references',
@@ -27,7 +27,13 @@ export class ReferencesComponent implements OnInit {
         if (res.isNewCategory) {
           // call to pop up here
           const dialogRef = this.dialog.open(AddCategoryPopup, {
-            width: '500px',
+            width: '600px',
+            disableClose: true,
+          });
+          dialogRef.afterClosed().subscribe((res) => {
+            if (res) {
+              this.referenceDataService.addReferenceCategoryData([res]);
+            }
           });
         }
       });
@@ -40,6 +46,6 @@ export class ReferencesComponent implements OnInit {
   }
 
   addReferences() {
-    const dialogRef = this.dialog.open(ReferencePopup, { width: '500px' });
+    const dialogRef = this.dialog.open(ReferencePopup, { width: '600px', });
   }
 }

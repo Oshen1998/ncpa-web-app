@@ -1,0 +1,7 @@
+export const CONTROLLER_TYPES = {
+  TEXT: 'TEXT',
+  RADIO: 'RADIO',
+  FILE: 'FILE',
+  DROPDOWNS: 'DROPDOWNS',
+  CHECKBOX: 'CHECKBOX',
+};

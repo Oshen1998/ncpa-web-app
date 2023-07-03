@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApplicationPreliminaryPopup } from '../../pop-ups/application-preliminary/application-preliminary.pop-up';
+import { ApplicationPreliminaryPopup } from '../../../popups/application-preliminary/application-preliminary.pop-up';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ApplicationDataStore } from 'src/app/dataStores/application.datastore.service';
@@ -21,7 +21,7 @@ export class ApplicationComponent implements OnInit {
   addNewApplication() {
     const dialogRef = this.dialog.open(ApplicationPreliminaryPopup, {
       disableClose: true,
-      width: '50%',
+      width: '600px',
       maxHeight: '75%',
     });
 
