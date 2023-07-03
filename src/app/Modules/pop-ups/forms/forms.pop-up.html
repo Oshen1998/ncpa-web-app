@@ -1,0 +1,202 @@
+<h1 mat-dialog-title>ADD A NEW FIELD</h1>
+<mat-dialog-content>
+  <div>
+    <!-- Question -->
+    <mat-form-field style="width: 100%; margin-top: 10px">
+      <mat-label>Question</mat-label>
+      <input
+        matInput
+        placeholder="Question"
+        [formControl]="question"
+        required
+      />
+      <mat-error>Question is required!</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <!-- Placeholder -->
+    <mat-form-field style="width: 100%">
+      <mat-label>Placeholder</mat-label>
+      <input matInput placeholder="Question" [formControl]="placeholder" />
+    </mat-form-field>
+  </div>
+  <div>
+    <!-- Select Question :- Answer Type -->
+    <div class="row">
+      <div class="col">
+        <mat-form-field style="width: 100%">
+          <mat-label>Answer Category</mat-label>
+          <mat-select [(ngModel)]="controlName" name="answerCategory" required>
+            <mat-option
+              *ngFor="let answer of answerType"
+              [value]="answer.value"
+            >
+              {{answer.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Answer category is required!</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <!-- Select Question :- Page -->
+        <mat-form-field style="width: 100%">
+          <mat-label>Page</mat-label>
+          <mat-select required [(ngModel)]="selectedPage" name="food">
+            <mat-option *ngFor="let page of pageDetails" [value]="page.value">
+              {{page.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Page is required!</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <!-- If Selected Type Radio -->
+  <div *ngIf="controlName === 'RADIO'">
+    <div class="row">
+      <div class="col">
+        <mat-form-field style="width: 100%">
+          <mat-label>Set option one</mat-label>
+          <input
+            matInput
+            placeholder="Option one"
+            [formControl]="radioOptionOne"
+          />
+          <mat-error>Option one is required!</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field style="width: 100%">
+          <mat-label>Set option two</mat-label>
+          <input
+            matInput
+            placeholder="Option two"
+            [formControl]="radioOptionTwo"
+          />
+          <mat-error>Option two is required!</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div>
+    <!-- If TEXT -->
+    <div *ngIf="controlName === 'TEXT'">
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field style="width: 100%">
+            <mat-label>Text Type</mat-label>
+            <mat-select
+              [(ngModel)]="selectTextType"
+              name="selectTextType"
+              required
+            >
+              <mat-option *ngFor="let type of textTypes" [value]="type.value">
+                {{type.viewValue}}
+              </mat-option>
+            </mat-select>
+            <mat-error>Answer Type is required!</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div>
+      <!-- If Selected Type DROPDOWNS -->
+      <div *ngIf="controlName === 'DROPDOWNS' || controlName === 'CHECKBOX' ">
+        <div class="row">
+          <div class="col">
+            <mat-form-field style="width: 100%">
+              <mat-label>Reference Category</mat-label>
+              <mat-select
+                [(ngModel)]="referenceCategory"
+                name="referenceCategory"
+                required
+              >
+                <mat-option
+                  *ngFor="let category of tempReferenceCategory"
+                  [value]="category.value"
+                >
+                  {{category.viewValue}}
+                </mat-option>
+              </mat-select>
+              <mat-error>Answer category is required!</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field *ngIf="parallelAnswer" style="width: 100%">
+              <mat-label>Parallel Category </mat-label>
+              <mat-select
+                [(ngModel)]="referenceCategoryInfo"
+                name="referenceCategory"
+                required
+                [disabled]="referenceCategory.value === null"
+              >
+                <mat-option
+                  *ngFor="let type of tempReferenceCategoryInfo"
+                  [value]="type.value"
+                >
+                  {{type.viewValue}}
+                </mat-option>
+              </mat-select>
+              <mat-error>Answer category is required!</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row" *ngIf="controlName !== 'CHECKBOX'">
+          <div
+            class="col-1"
+            style="display: flex; align-items: center; justify-content: start"
+          >
+            <mat-checkbox
+              [(ngModel)]="parallelAnswer"
+              [indeterminate]="false"
+              labelPosition="after"
+              color="primary"
+            >
+            </mat-checkbox>
+          </div>
+          <div
+            class="col-11"
+            style="display: flex; align-items: center; justify-content: start"
+          >
+            With parallel answer
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- FIELDS Mandatory or Not -->
+    <div>
+      <div class="row">
+        <div
+          class="col-1"
+          style="display: flex; align-items: center; justify-content: start"
+        >
+          <mat-checkbox
+            [(ngModel)]="required"
+            [indeterminate]="false"
+            labelPosition="after"
+            color="primary"
+          >
+          </mat-checkbox>
+        </div>
+        <div
+          class="col-11"
+          style="display: flex; align-items: center; justify-content: start"
+        >
+          Required
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close color="primary">Cancel</button>
+  <button
+    mat-raised-button
+    [mat-dialog-close]="true"
+    (click)="sendData()"
+    cdkFocusInitial
+    color="primary"
+  >
+    Add
+  </button>
+</mat-dialog-actions>

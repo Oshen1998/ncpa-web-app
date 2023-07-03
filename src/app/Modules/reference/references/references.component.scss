@@ -1,0 +1,19 @@
+.content {
+  height: calc(100vh - 98px);
+  border-radius: 10px;
+  margin: 16px;
+  margin-left: 32px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 2rem;
+  color: lightgray;
+}
+
+.btn-style {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}

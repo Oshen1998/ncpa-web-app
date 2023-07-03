@@ -5,12 +5,12 @@ import { LaunchpadComponent } from './pages/launchpad/launchpad.component';
 const routes: Routes = [
   {
     path: '',
-    component: LaunchpadComponent
-  }
+    component: LaunchpadComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class LaunchpadRoutingModule { }
+export class LaunchpadRoutingModule {}

@@ -3,14 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { RecruitmentsRoutingModule } from './recruitments-routing.module';
 import { CustomMaterialModule } from 'src/app/material.module';
-
+import { RecruitmentComponent } from './recruitment/recruitment.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
-  declarations: [],
+  declarations: [RecruitmentComponent],
   imports: [
     CommonModule,
     RecruitmentsRoutingModule,
-    CustomMaterialModule
-  ]
+    CustomMaterialModule,
+    NgxChartsModule,
+  ],
 })
-export class RecruitmentsModule { }
+export class RecruitmentsModule {}

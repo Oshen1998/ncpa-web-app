@@ -5,28 +5,47 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'app/auth/login',
+    pathMatch: 'full',
+  },
+  {
+    path: 'app/auth',
+    loadChildren: () =>
+      import('./modules/auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: '',
     component: DashboardComponent,
     children: [
       {
         path: 'app/launchpad',
         loadChildren: () =>
-          import('./Modules/launchpad/launchpad.module').then(
+          import('./modules/launchpad/launchpad.module').then(
             (m) => m.LaunchpadModule
           ),
       },
       {
-        path: 'notice',
+        path: 'app/application',
         loadChildren: () =>
-          import('./Modules/notices/notices.module').then(
-            (m) => m.NoticesModule
+          import('./modules/application/application.module').then(
+            (m) => m.ApplicationModule
+          ),
+      },
+      {
+        path: 'app/recruitment',
+        loadChildren: () =>
+          import('./modules/recruitments/recruitments.module').then(
+            (m) => m.RecruitmentsModule
+          ),
+      },
+      {
+        path: 'app/reference',
+        loadChildren: () =>
+          import('./modules/reference/reference.module').then(
+            (m) => m.ReferenceModule
           ),
       },
     ],
-  },
-  {
-    path: 'app/auth',
-    loadChildren: () =>
-      import('./Modules/auth/auth.module').then((m) => m.AuthModule),
   },
 ];
 

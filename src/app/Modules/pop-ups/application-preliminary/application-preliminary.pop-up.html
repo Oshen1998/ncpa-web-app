@@ -1,0 +1,43 @@
+<h1 mat-dialog-title>ADD NEW APPLICATION</h1>
+<mat-dialog-content>
+  <div>
+    <mat-form-field style="width: 100%; margin-top: 10px">
+      <mat-label>Title</mat-label>
+      <input
+        matInput
+        placeholder="Application Of Manager"
+        [formControl]="title"
+        required
+      />
+      <mat-error>required</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field style="width: 100%; margin-top: 10px">
+      <mat-label>Sub-Title</mat-label>
+      <input matInput placeholder="Manager Level II" [formControl]="subTitle" />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field style="width: 100%; margin-top: 10px">
+      <mat-label>Extra Information</mat-label>
+      <input
+        matInput
+        placeholder="Something here...."
+        [formControl]="extraInfo"
+      />
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    mat-button
+    [mat-dialog-close]="true"
+    (click)="sendData()"
+    cdkFocusInitial
+    [disabled]="!title.value"
+  >
+    Add
+  </button>
+</mat-dialog-actions>

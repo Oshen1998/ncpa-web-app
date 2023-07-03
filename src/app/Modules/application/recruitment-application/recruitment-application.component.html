@@ -1,0 +1,61 @@
+<div class="content mat-elevation-z8" style="position: relative">
+  <div class="container-fluid">
+    <div class="container">
+      <mat-stepper style="background-color: transparent" labelPosition="bottom">
+        <mat-step
+          #step
+          *ngFor="let group of formArray; let i = index"
+          [stepControl]="FormGroup"
+        >
+          <form [formGroup]="FormGroup">
+            <ng-template matStepLabel>{{ group.actualPageName }}</ng-template>
+            <!-- Header Section -->
+            <div *ngIf="group.pageNo === 1" class="container">
+              <div *ngIf="pageTitle !== ''" class="row">
+                <h2 class="header">{{ pageTitle }}</h2>
+              </div>
+              <div *ngIf="pageSubTitle !== ''" class="row">
+                <h4 class="header">{{ pageSubTitle }}</h4>
+              </div>
+              <div *ngIf="pageExtraInfo !== ''" class="row">
+                <h5 class="header">{{ pageExtraInfo }}</h5>
+              </div>
+              <mat-divider *ngIf="pageTitle !== ''"></mat-divider>
+            </div>
+            <!-- Render Fields Here -->
+            <ng-container>
+              <app-application-form ></app-application-form>
+            </ng-container>
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+            <div>
+              <button mat-button (click)="removePage(i, group)">
+                Remove Page
+              </button>
+            </div>
+          </form>
+        </mat-step>
+      </mat-stepper>
+    </div>
+    <div style="position: absolute; bottom: 10px; right: 10px">
+      <button
+        (click)="addPage()"
+        style="right: 10px"
+        mat-raised-button
+        color="primary"
+        matTooltip="Add New Page"
+      >
+        Add Page
+      </button>
+      <button
+        (click)="AddFields()"
+        mat-fab
+        color="primary"
+        matTooltip="Add Fields"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

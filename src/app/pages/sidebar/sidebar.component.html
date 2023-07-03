@@ -1,18 +1,81 @@
-<mat-nav-list>
-    <div class="profile-card">
-        <div class="header">
-            <h2>NCPA by SCS</h2>
-            <h4>example@email.com</h4>
-        </div>
-        <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="a dog img">
+<mat-toolbar class="tool-bar">
+  <div class="row" style="width: 100%">
+    <div class="col">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+        <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+      </button>
+    </div>
+    <div class="col account-circle">
+      <p class="account-text">Hello, NCPA</p>
+    </div>
+    <button class="" mat-icon-button>
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <img
+      class="avatar mat-elevation-z8"
+      src="../../../assets/images/NCPA_logo.png"
+      alt="test"
+    />
+
+    <h4 class="name">NCPA</h4>
+    <mat-divider></mat-divider>
+    <button routerLink="app/launchpad" mat-button class="menu-button">
+      <mat-icon style="color: white">dashboard</mat-icon>
+      <span style="color: white">Launchpad</span>
+    </button>
+    <button routerLink="app/recruitment" mat-button class="menu-button">
+      <mat-icon style="color: white">people</mat-icon>
+      <span style="color: white">Recruitment</span>
+    </button>
+    <button routerLink="app/application" mat-button class="menu-button">
+      <mat-icon style="color: white">newspaper</mat-icon>
+      <span style="color: white">Application</span>
+    </button>
+    <div>
+      <button
+        (click)="onReference()"
+        routerLink="app/reference"
+        mat-button
+        class="menu-button"
+      >
+        <mat-icon style="color: white">speaker_notes</mat-icon>
+        <span style="color: white">Reference</span>
+      </button>
+      <ul *ngIf="isReferenceClicked">
+        <button
+          (click)="onTriggerAddCategory()"
+          mat-raised-button
+          class="menu-button"
+        >
+          <span style="color: black">Add Category</span>
+        </button>
+        <a style="text-decoration: none" *ngFor="let item of references">
+          <button
+            (click)="onChangeRef(item.referenceName)"
+            mat-button
+            class="menu-button"
+          >
+            <mat-icon style="color: white">dns</mat-icon>
+            <span style="color: white">{{ item.referenceName }}</span>
+          </button>
+        </a>
+      </ul>
     </div>
 
     <mat-divider></mat-divider>
 
-    <h2 matSubheader>Pages</h2>
-
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/launchpad">LaunchPad</a>
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/notice/create">Create Notice</a>
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/notice/view">View Notice</a>
-
-</mat-nav-list>
+    <button mat-button class="menu-button">
+      <mat-icon style="color: white">help</mat-icon>
+      <span style="color: white">Help</span>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
