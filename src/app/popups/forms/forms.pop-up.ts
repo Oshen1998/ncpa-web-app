@@ -19,6 +19,8 @@ export interface IFieldDetails {
   placeholder?: string;
   controlName: string;
   selectedPage: string;
+  radioOptionOne? :string;
+  radioOptionTwo? :string;
 }
 
 @Component({
@@ -96,10 +98,13 @@ export class FormsPopUp implements OnInit {
   sendData() {
     const _data: IFieldDetails = {
       question: this.question.value || '',
-      placeholder: this.question.value ? this.question.value : '',
+      placeholder: this.placeholder.value ? this.placeholder.value : '',
       selectedPage: this.selectedPage,
       controlName: this.controlName,
+      radioOptionOne : this.radioOptionOne.value ? this.radioOptionOne.value : '',
+      radioOptionTwo : this.radioOptionTwo.value ? this.radioOptionTwo.value : '',
     };
     this.dialogRef.close(_data);
+     console.log(_data)
   }
 }

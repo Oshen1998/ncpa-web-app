@@ -14,6 +14,8 @@ export interface IFields {
   controlType: string;
   valueType: string;
   placeholder?: string;
+  radioOptionOne?: string;
+  radioOptionTwo?: string;
   validators?: {
     required?: boolean;
     minLength?: number;
@@ -115,19 +117,27 @@ export class RecruitmentApplicationComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: IFieldDetails) => {
       if (result) {
+        console.log(result)
         const index = this.formArray.findIndex(
           (item) => item.pageName.toString() === result.selectedPage.toString()
         );
         if (index >= 0) {
           const length = this.formArray[index].fields?.length;
           const fieldData: IFields = {
-            controlName: `question_${length ? length + 1 : 1}`,
+            controlName: `${length ? length + 1 : 1}`,
             question: result.question,
             controlType: result.controlName,
-            valueType: result.controlName,
+            valueType: result?.controlName,
+            placeholder: result?.placeholder,
+            radioOptionOne: result?.radioOptionOne,
+            radioOptionTwo: result?.radioOptionTwo,
+
+
             validators: {},
           };
-          this.formArray[index].fields?.push(fieldData);
+
+          const arr = this.formArray[index].fields || [];
+          this.formArray[index].fields = [...arr, fieldData];
           console.log(this.formArray);
         }
       }
