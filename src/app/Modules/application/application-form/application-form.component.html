@@ -1,31 +1,62 @@
-<form>
-  <ng-template ngFor let-input>
+<form class="mt-5">
+  <ng-container *ngFor="let input of fieldArray; let i = index">
     <ng-container [ngSwitch]="input.controlType">
       <ng-template [ngSwitchCase]="FIELD_TYPES.TEXT">
         <div class="form-group">
           <!-- Text Here -->
+          <p style="font-size:1rem">{{input.controlName}}.{{input.question}}</p>
+          <mat-form-field style="width: 100%;">
+            <!-- <mat-label>{{input.question}}</mat-label> -->
+            <input type="text"  matInput placeholder={{input.placeholder}}>
+          </mat-form-field>
         </div>
       </ng-template>
+
       <ng-template [ngSwitchCase]="FIELD_TYPES.DROPDOWNS">
         <div class="form-group">
           <!-- DropDowns Here -->
+          <p style="font-size:1.25rem">{{input.controlName}}.{{input.question}}</p>
+          <mat-form-field style="width: 100%;">
+            <mat-label>{{input.question}}</mat-label>
+            <mat-select value="select">
+              <mat-option value="option1">Option 1</mat-option>
+              <mat-option value="option2">Option 2</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
       </ng-template>
+
       <ng-template [ngSwitchCase]="FIELD_TYPES.RADIO">
         <div class="form-group">
           <!-- Radio Actions Here -->
+          <p style="font-size:1.25rem">{{input.controlName}}.{{input.question}}</p>
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1">{{input.radioOptionOne}}</mat-radio-button>
+            <mat-radio-button value="2">{{input.radioOptionTwo}}</mat-radio-button>
+          </mat-radio-group>
         </div>
       </ng-template>
-      <ng-template [ngSwitchCase]="FIELD_TYPES.RADIO">
+
+      <ng-template [ngSwitchCase]="FIELD_TYPES.CHECKBOX">
         <div class="form-group">
           <!-- Checkbox Actions Here -->
+          <p style="font-size:1.25rem">{{input.controlName}}.{{input.question}}</p>
+          <section>
+            <h4>Title</h4>
+            <p><mat-checkbox>option 1</mat-checkbox></p>
+            <p><mat-checkbox>option 2</mat-checkbox></p>
+            <p><mat-checkbox>option 3</mat-checkbox></p>
+          </section>
         </div>
       </ng-template>
+
       <ng-template [ngSwitchCase]="FIELD_TYPES.FILE">
+        <p style="font-size:1.25rem">{{input.controlName}}.{{input.question}}</p>
         <div class="form-group">
           <!-- Files here -->
         </div>
       </ng-template>
     </ng-container>
-  </ng-template>
+  </ng-container>
+
 </form>
