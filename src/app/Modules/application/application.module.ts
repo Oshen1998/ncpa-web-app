@@ -8,6 +8,7 @@ import { RecruitmentApplicationComponent } from './recruitment-application/recru
 import { FormsModule } from '@angular/forms';
 import { ApplicationDataStore } from 'src/app/dataStores/application.datastore.service';
 import { ApplicationFormComponent } from './application-form/application-form.component';
+import { NotFoundDataModule } from 'src/app/shared/not-found-data/not-found-data.module';
 
 @NgModule({
   declarations: [ApplicationComponent, RecruitmentApplicationComponent, ApplicationFormComponent],
@@ -16,6 +17,7 @@ import { ApplicationFormComponent } from './application-form/application-form.co
     ApplicationRoutingModule,
     CustomMaterialModule,
     FormsModule,
+    NotFoundDataModule
   ],
 })
 export class ApplicationModule {}
