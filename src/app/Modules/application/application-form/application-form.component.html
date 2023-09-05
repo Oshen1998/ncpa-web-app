@@ -4,9 +4,9 @@
       <ng-template [ngSwitchCase]="FIELD_TYPES.TEXT">
         <div class="form-group">
           <!-- Text Here -->
-          <p style="font-size:1.25rem">{{input.controlName}}.{{input.question}}</p>
+          <p style="font-size:1rem">{{input.controlName}}.{{input.question}}</p>
           <mat-form-field style="width: 100%;">
-            <mat-label>{{input.question}}</mat-label>
+            <!-- <mat-label>{{input.question}}</mat-label> -->
             <input type="text"  matInput placeholder={{input.placeholder}}>
           </mat-form-field>
         </div>
