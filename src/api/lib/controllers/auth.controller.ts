@@ -7,17 +7,17 @@ import {
   mongoError,
   notfoundDocument,
   successResponse,
-} from '../../Common/responses/common-response-service';
-import { ILogin, IUser } from '../Models/user.interface';
-import UserService from '../Services/auth.service';
-import UserCredentialService from '../Services/credential.service';
-import { ValidateSchema } from '../../Common/validation';
+} from '../constants/common-response-service';
+import { ILogin, IUser } from '../models/user.interface';
+import UserService from '../services/auth.service';
+import UserCredentialService from '../services/credential.service';
+import { ValidateSchema } from '../middleware/validation';
 import {
   userLoginSchema,
   userRegisterValidationSchema,
-} from '../Validations/auth.validation';
-import { decrypt, encrypt } from '../../../Modules/Common/encryption';
-import { generateAccessToken } from '../../../Modules/Common/services/jwt.service';
+} from '../schema/auth.validation';
+import { decrypt, encrypt } from '../middleware/encryption';
+import { generateAccessToken } from '../middleware/services/jwt.service';
 export class UserController {
   private user_service: UserService = new UserService();
   private user_credential: UserCredentialService = new UserCredentialService();

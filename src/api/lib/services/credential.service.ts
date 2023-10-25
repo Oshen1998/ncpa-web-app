@@ -1,5 +1,5 @@
-import { ILogin, IUser } from 'Modules/Auth/Models/user.interface';
-import credential from '../Schemas/users-credential.schema';
+import { ILogin, IUser } from '../models/user.interface';
+import credential from '../schema/users-credential.schema';
 
 export default class UserCredentialService {
   public createUserCredentials(user_params: ILogin) {

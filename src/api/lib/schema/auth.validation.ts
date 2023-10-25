@@ -1,4 +1,4 @@
-import { GENDER, USER_TYPES } from 'Modules/Common/constants';
+import { GENDER, USER_TYPES } from '../constants/index';
 
 export const userRegisterValidationSchema = {
   type: 'object',

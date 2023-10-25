@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-import { ILogin } from '../Models/user.interface';
+import { ILogin } from '../models/user.interface';
 
 const Schema = mongoose.Schema;
 export type ILoginModel = Document & ILogin;
