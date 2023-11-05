@@ -4,10 +4,13 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { ReferenceDataService } from 'src/app/dataStores/reference.datastore.service';
 import { IReferenceCategory } from 'src/app/interfaces/reference.interface';
 
+
+
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
+  
 })
 export class SidebarComponent {
   @ViewChild(MatSidenav)
@@ -18,7 +21,7 @@ export class SidebarComponent {
 
   constructor(
     private observer: BreakpointObserver,
-    private referenceDataService: ReferenceDataService
+    private referenceDataService: ReferenceDataService,
   ) {
     this.referenceDataService.getReferenceCategoryData().subscribe((res) => {
       res.forEach((item) => this.references.push(item));
@@ -49,4 +52,11 @@ export class SidebarComponent {
   onChangeRef(ref: string) {
     this.referenceDataService.referenceChange(ref);
   }
+
+  onSignoutClick() {
+    //Should add signout method call here
+    //Make sure to remove RouterLink in Signout button
+  }
+
+
 }

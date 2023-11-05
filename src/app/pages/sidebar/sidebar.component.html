@@ -9,13 +9,34 @@
     <div class="col account-circle">
       <p class="account-text">Hello, NCPA</p>
     </div>
-    <button class="" mat-icon-button>
+    
+    <button class="" mat-icon-button [matMenuTriggerFor]="belowMenu">
       <mat-icon>account_circle</mat-icon>
     </button>
+
+    <mat-menu #belowMenu="matMenu" yPosition="below">
+
+      <!--Profile Settings will implement later-->
+      <button mat-menu-item [disabled]="true">
+        <mat-icon>settings</mat-icon> <span>Profile Settings</span>
+      </button>
+
+
+      <!--Remove router link after implement onSignoutClick() -->
+      <button
+        mat-menu-item
+        routerLink="app/auth/login"
+        (click)="onSignoutClick()" 
+      >
+
+        <mat-icon>exit_to_app </mat-icon>
+        <span>Signout</span>
+      </button>
+    </mat-menu>
   </div>
 </mat-toolbar>
 
-<mat-sidenav-container >
+<mat-sidenav-container>
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
     <img
       class="avatar mat-elevation-z8"
