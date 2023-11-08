@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { ApplyFormComponent } from './Pages/apply-form/apply-form.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
     path: 'app/auth',
     loadChildren: () =>
       import('./modules/auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: 'apply-form',
+    component: ApplyFormComponent,
   },
   {
     path: '',
@@ -64,4 +69,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

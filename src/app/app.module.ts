@@ -21,6 +21,8 @@ import { SidebarComponent } from './pages/sidebar/sidebar.component';
 import { ReferenceModule } from './modules/reference/reference.module';
 import { TemplateComponent } from './pages/template/template.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { ApplyFormComponent } from './Pages/apply-form/apply-form.component';
+import { QuestionComponent } from './Pages/apply-form/question-component/question-component.component';
 
 export function playerFactory() {
   return import('lottie-web');
@@ -35,6 +37,8 @@ export function playerFactory() {
     VacanciesComponent,
     TemplateComponent,
     NotFoundPageComponent,
+    ApplyFormComponent,
+    QuestionComponent
   ],
   imports: [
     BrowserModule,
@@ -50,4 +54,4 @@ export function playerFactory() {
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
