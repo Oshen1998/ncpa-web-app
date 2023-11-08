@@ -1,4 +1,4 @@
-import { USER_TYPES } from 'Modules/Common/constants';
+import { USER_TYPES } from '../constants/index';
 import mongoose, { Types } from 'mongoose';
 
 export interface IUser {
