@@ -1,6 +1,6 @@
-import { USER_TYPES } from 'Modules/Common/constants';
+import { USER_TYPES } from '../constants/index';
 import * as mongoose from 'mongoose';
-import { IUser } from '../Models/user.interface';
+import { IUser } from '../models/user.interface';
 
 const Schema = mongoose.Schema;
 export type IUserModel = Document & IUser;
