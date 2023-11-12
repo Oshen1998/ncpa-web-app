@@ -49,13 +49,15 @@ export class ApplyFormControlServiceService {
           }
         ],
         order: 1,
-        required: true
+        required: true,
+        className: "col-4"
       }),
 
       new TextboxQuestion({
         key: 'fullName',
         label: 'Name in Full',
-        order: 2
+        order: 2,
+        className: "col-8"
       }),
 
       new TextboxQuestion({

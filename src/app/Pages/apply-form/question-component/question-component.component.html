@@ -1,11 +1,10 @@
-<div [formGroup]="form" class="col-12">
-    <label [attr.for]="question.key">{{question.label}}</label>
+<div [formGroup]="form" class="col-lg-12">
+    <label [attr.for]="question.key" class="form-label">{{question.label}}</label>
 
     <div [ngSwitch]="question.controlType" class="">
 
 
         <div *ngSwitchCase="'textbox'">
-            <label [for]="question.key" class="form-label">{{question.key}}</label>
             <input class="form-control" [formControlName]="question.key" [id]="question.key" [type]="question.type">
         </div>
 

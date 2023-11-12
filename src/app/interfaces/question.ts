@@ -7,6 +7,7 @@ export class QuestionBase<T> {
     controlType: string;
     type: string;
     options: { key: string, value: string }[];
+    className: string;
 
     constructor(options: {
         value?: T;
@@ -17,6 +18,7 @@ export class QuestionBase<T> {
         controlType?: string;
         type?: string;
         options?: { key: string, value: string }[];
+        className?: string;
     } = {}) {
         this.value = options.value;
         this.key = options.key || '';
@@ -26,8 +28,10 @@ export class QuestionBase<T> {
         this.controlType = options.controlType || '';
         this.type = options.type || '';
         this.options = options.options || [];
+        this.className = options.className || "col-12";
     }
 }
+
 
 export class TextboxQuestion extends QuestionBase<string> {
     override controlType = 'textbox';
