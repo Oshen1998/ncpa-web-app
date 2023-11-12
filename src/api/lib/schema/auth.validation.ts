@@ -7,13 +7,14 @@ export const userRegisterValidationSchema = {
     first_name: { type: 'string' },
     last_name: { type: 'string' },
     nic: { type: 'string' },
+    password: {type:'string'},
     email: { type: 'string' },
     account_type: { enum: [USER_TYPES.USER, USER_TYPES.ADMIN] },
     phone_number: { type: 'string', nullable: false },
     gender: { enum: [GENDER.MALE, GENDER.FEMALE] },
     is_deleted: { type: 'boolean' },
   },
-  required: ['first_name', 'nic', 'email', 'account_type'],
+  required: ['first_name', 'nic', 'password' , 'email', 'account_type'],
   additionalProperties: false,
 };
 

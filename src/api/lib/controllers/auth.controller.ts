@@ -47,7 +47,7 @@ export class UserController {
       const { nic, _id } = createdUser;
 
       if (createdUser) {
-        const encryptedPassword = encrypt('123456');
+        const encryptedPassword = encrypt(req.body.password);
         const credentials: ILogin = {
           username: nic,
           password: encryptedPassword,
