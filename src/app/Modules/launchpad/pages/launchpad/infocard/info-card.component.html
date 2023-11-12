@@ -1,12 +1,14 @@
-<div class="col">
-  <mat-card class="mt-2">
-    <mat-card-header>
-      <mat-card-title-group>
-        <mat-card-title>{{ designation }}</mat-card-title>
-        <mat-card-subtitle>{{ salaryCategory }}</mat-card-subtitle>
+<div class=" flex-1 d-flex justify-content-center ">
+  <mat-card class="card w-100 shadow-sm border rounded-3 h-120 m-2">
+    <mat-card-header  class="d-flex p-1">
+      <mat-card-title-group class=" p-3">
+        <mat-card-title  class="fs-6 text-decoration-underline" >{{ designation }}</mat-card-title>
+        <mat-card-subtitle class=" fs-7">{{ salaryCategory }}</mat-card-subtitle>
         <mat-slide-toggle
+          class=" mt-4 m-2"
           [color]="color"
           [checked]="isAssigned"
+          (toggleChange)="onToggleSwitchClick()"
         >
         </mat-slide-toggle>
       </mat-card-title-group>

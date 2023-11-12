@@ -8,9 +8,10 @@ import { CustomMaterialModule } from 'src/app/material.module';
 import { DataTableModule } from 'src/app/shared/data-table/data-table.module';
 import { InfocardModule } from './pages/launchpad/infocard/info-card.module';
 import { SummaryCardModule } from './pages/launchpad/summarycard/summary-card.module';
+import { ConfirmationDialogComponent } from './pages/launchpad/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
-  declarations: [LaunchpadComponent],
+  declarations: [LaunchpadComponent, ConfirmationDialogComponent],
   imports: [
     CommonModule,
     LaunchpadRoutingModule,
