@@ -2,9 +2,13 @@
     <form class="container" (ngSubmit)="onSubmit()" [formGroup]="form">
         <div class="row mt-4">
 
-            <app-question-component class="{{question.className}}" *ngFor="let question of questions"
+            <!-- <app-question-component class="{{question.className}}" *ngFor="let question of questions"
                 [question]="question" [form]="form">
-            </app-question-component>
+            </app-question-component> -->
+
+            <app-form-page *ngFor="let page of pages">
+
+            </app-form-page>
 
 
 

@@ -2,7 +2,7 @@ export class QuestionBase<T> {
     value: T | undefined;
     key: string;
     label: string;
-    required: boolean;
+    required: boolean = true; // make required field mandatory
     order: number;
     controlType: string;
     type: string;
@@ -39,4 +39,20 @@ export class TextboxQuestion extends QuestionBase<string> {
 
 export class DropdownQuestion extends QuestionBase<string> {
     override controlType = 'dropdown';
+}
+
+export class FormPage {
+    key: string;
+    title: string;
+    questions: QuestionBase<any>[];
+
+    constructor(options: {
+        key: string;
+        title: string;
+        questions: QuestionBase<any>[];
+    }) {
+        this.key = options.key;
+        this.title = options.title;
+        this.questions = options.questions;
+    }
 }

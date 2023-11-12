@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { DropdownQuestion, QuestionBase, TextboxQuestion } from '../interfaces/question';
+import { DropdownQuestion, FormPage, QuestionBase, TextboxQuestion } from '../interfaces/question';
 import { of } from 'rxjs';
 
 
@@ -70,6 +70,24 @@ export class ApplyFormControlServiceService {
 
     ];
 
-    return of(questions.sort((a, b) => a.order - b.order));
+    const pages = [
+      new FormPage(
+        {
+          key: 'personalDetails',
+          title: 'Personal Details',
+          questions: questions
+        }
+      ),
+
+      new FormPage(
+        {
+          key: 'personalDetails2',
+          title: 'Personal Details 2',
+          questions: questions
+        }
+      ),
+    ]
+
+    return of(pages);
   }
 }

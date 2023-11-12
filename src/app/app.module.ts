@@ -23,6 +23,7 @@ import { TemplateComponent } from './pages/template/template.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { ApplyFormComponent } from './Pages/apply-form/apply-form.component';
 import { QuestionComponent } from './Pages/apply-form/question-component/question-component.component';
+import { FormPageComponent } from './Pages/apply-form/components/form-page/form-page.component';
 
 export function playerFactory() {
   return import('lottie-web');
@@ -38,7 +39,8 @@ export function playerFactory() {
     TemplateComponent,
     NotFoundPageComponent,
     ApplyFormComponent,
-    QuestionComponent
+    QuestionComponent,
+    FormPageComponent
   ],
   imports: [
     BrowserModule,

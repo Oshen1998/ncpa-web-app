@@ -1,7 +1,7 @@
 import { Component, Input } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { ApplyFormControlServiceService } from "src/app/Services/apply-form-control-service.service";
-import { QuestionBase } from "src/app/interfaces/question";
+import { FormPage, QuestionBase } from "src/app/interfaces/question";
 
 
 @Component({
@@ -10,16 +10,19 @@ import { QuestionBase } from "src/app/interfaces/question";
   styleUrls: ['./apply-form.component.scss']
 })
 export class ApplyFormComponent {
-  @Input() questions: QuestionBase<string>[] | null = [];
+  @Input() pages: FormPage[] | null = [];
   form!: FormGroup;
   payLoad = '';
 
   constructor(private qcs: ApplyFormControlServiceService) { }
 
   ngOnInit() {
-    this.qcs.getQuestions().subscribe((questions: QuestionBase<string>[]) => {
-      this.questions = questions;
-      this.form = this.qcs.toFormGroup(questions);
+    this.qcs.getQuestions().subscribe((pages) => {
+      this.pages = pages;
+
+      const allQuestions = pages.flatMap((page) => page.questions);
+
+      this.form = this.qcs.toFormGroup(allQuestions);
     });
 
   }
