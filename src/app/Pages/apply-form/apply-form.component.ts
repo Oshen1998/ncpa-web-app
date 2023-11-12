@@ -14,6 +14,8 @@ export class ApplyFormComponent {
   form!: FormGroup;
   payLoad = '';
 
+  selectedIndex = 0;
+
   constructor(private qcs: ApplyFormControlServiceService) { }
 
   ngOnInit() {
