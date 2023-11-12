@@ -24,7 +24,7 @@ export class ApplyFormControlServiceService {
 
   getQuestions() {
 
-    const questions: QuestionBase<string>[] = [
+    const personalQuestions: QuestionBase<string>[] = [
 
       new DropdownQuestion({
         key: 'title',
@@ -70,20 +70,45 @@ export class ApplyFormControlServiceService {
 
     ];
 
+    // user school and university name
+    const educationalQuestions: QuestionBase<string>[] = [
+
+      new TextboxQuestion({
+        key: 'schoolName',
+        label: 'School Name',
+        order: 1,
+        className: "col-6"
+      }),
+
+      new TextboxQuestion({
+        key: 'universityName',
+        label: 'University Name',
+        order: 2,
+        className: "col-6"
+      }),
+
+    ];
+
+
+
+
+
+
+
     const pages = [
       new FormPage(
         {
           key: 'personalDetails',
           title: 'Personal Details',
-          questions: questions
+          questions: personalQuestions
         }
       ),
 
       new FormPage(
         {
-          key: 'personalDetails2',
-          title: 'Personal Details 2',
-          questions: questions
+          key: 'educationDetails',
+          title: 'Education Details',
+          questions: educationalQuestions
         }
       ),
     ]

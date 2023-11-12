@@ -6,15 +6,14 @@
                 [question]="question" [form]="form">
             </app-question-component> -->
 
-            <app-form-page *ngFor="let page of pages">
+            <app-form-page *ngFor="let page of pages" [page]="page" [form]="form">
 
             </app-form-page>
 
 
 
             <div class=" row d-flex justify-content-center">
-                <button mat-raised-button color="primary" class="btn btn-primary col-4 mt-4" type="submit"
-                    [disabled]="!form.valid">
+                <button mat-raised-button color="primary" class="col-4 mt-4" type="submit" [disabled]="!form.valid">
                     Save
                 </button>
             </div>

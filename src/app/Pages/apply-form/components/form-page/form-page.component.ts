@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { FormPage } from 'src/app/interfaces/question';
 
 @Component({
   selector: 'app-form-page',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./form-page.component.scss']
 })
 export class FormPageComponent {
+
+  @Input() page!: FormPage;
+  @Input() form!: FormGroup;
+
+
 
 }
