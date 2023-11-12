@@ -50,14 +50,14 @@ export class ApplyFormControlServiceService {
         ],
         order: 1,
         required: true,
-        className: "col-4"
+        className: "col-12 col-sm-4"
       }),
 
       new TextboxQuestion({
         key: 'fullName',
         label: 'Name in Full',
         order: 2,
-        className: "col-8"
+        className: "col-12 col-sm-8"
       }),
 
       new TextboxQuestion({
@@ -77,14 +77,14 @@ export class ApplyFormControlServiceService {
         key: 'schoolName',
         label: 'School Name',
         order: 1,
-        className: "col-6"
+        className: "col-12 col-sm-6"
       }),
 
       new TextboxQuestion({
         key: 'universityName',
         label: 'University Name',
         order: 2,
-        className: "col-6"
+        className: "col-12 col-sm-6"
       }),
 
     ];

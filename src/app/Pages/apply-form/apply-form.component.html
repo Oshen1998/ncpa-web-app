@@ -1,11 +1,14 @@
 <div>
 
-    <form class="container" (ngSubmit)="onSubmit()" [formGroup]="form">
+    <form class="container" style="display:  flex; flex-direction: column; min-height: 100vh;" (ngSubmit)="onSubmit()"
+        [formGroup]="form">
 
 
-        <div class="row mt-4">
+        <div class="row mt-4" style="flex: 1;">
 
-            <h1>NCPA Application </h1>
+            <div class="">
+                <h1>NCPA Application </h1>
+            </div>
 
             <!-- <app-question-component class="{{question.className}}" *ngFor="let question of questions"
                 [question]="question" [form]="form">
