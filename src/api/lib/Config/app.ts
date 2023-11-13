@@ -3,6 +3,8 @@ import * as bodyParser from 'body-parser';
 import * as mongoose from 'mongoose';
 import { MissMatchRoutes } from '../Routes/missmatch.routes';
 import { AuthRoutes } from '../Routes/auth.routes';
+import { UserRoutes} from '../Routes/user.routes';
+
 require('dotenv').config();
 
 class App {
@@ -11,12 +13,14 @@ class App {
 
   private mismatch_route: MissMatchRoutes = new MissMatchRoutes();
   private auth_routes: AuthRoutes = new AuthRoutes();
+  private user_routes: UserRoutes = new UserRoutes();
 
   constructor() {
     this.app = express();
     this.config();
     this.mongoSetup();
     this.auth_routes.route(this.app);
+    this.user_routes.route(this.app);
     this.mismatch_route.route(this.app);
   }
 
