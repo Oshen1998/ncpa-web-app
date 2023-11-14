@@ -11,7 +11,7 @@ import { FormPage, QuestionBase } from "src/app/interfaces/question";
 })
 export class ApplyFormComponent {
   @Input() pages: FormPage[] | null = [];
-  form!: FormGroup;
+  forms!: FormGroup[];
   payLoad = '';
 
   selectedIndex = 0;
@@ -22,14 +22,16 @@ export class ApplyFormComponent {
     this.qcs.getQuestions().subscribe((pages) => {
       this.pages = pages;
 
-      const allQuestions = pages.flatMap((page) => page.questions);
 
-      this.form = this.qcs.toFormGroup(allQuestions);
+      // this.form = this.qcs.toFormGroup(allQuestions);
+      this.forms = this.pages.map((page) => this.qcs.toFormGroup(page.questions))
     });
 
   }
 
   onSubmit() {
-    this.payLoad = JSON.stringify(this.form.getRawValue());
+
+
+    this.payLoad = JSON.stringify(this.forms[this.selectedIndex].getRawValue());
   }
 }

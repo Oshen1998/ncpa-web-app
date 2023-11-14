@@ -66,8 +66,6 @@ export class ApplyFormControlServiceService {
         type: 'email',
         order: 3,
       }),
-
-
     ];
 
     // user school and university name
@@ -88,12 +86,6 @@ export class ApplyFormControlServiceService {
       }),
 
     ];
-
-
-
-
-
-
 
     const pages = [
       new FormPage(
