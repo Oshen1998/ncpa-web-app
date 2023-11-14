@@ -38,10 +38,25 @@ export class ApplyFormComponent {
   }
 
   onSubmit() {
+    let newPayload = {};
 
+    for (let form in this.forms) {
+      newPayload = {
+        ...newPayload,
+        ...this.forms[form].getRawValue()
+      }
+    }
 
-    this.payLoad = JSON.stringify(this.forms[this.selectedIndex].getRawValue());
+    this.payLoad = JSON.stringify(newPayload);
+
+    alert(`Saved the following values ${this.payLoad}`)
   }
+
+  isReadyForSubmit() {
+    return this.forms.every((form) => form.valid)
+  }
+
+
 
   arrayRange(start: number, stop: number, step: number) {
     return Array.from(

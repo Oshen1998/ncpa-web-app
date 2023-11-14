@@ -1,5 +1,5 @@
 <div style="display:  flex; flex-direction: column; min-height: 100vh;">
-    <div class="">
+    <div class="mt-4 ml-4">
         <h1>NCPA Application </h1>
     </div>
     <form class="container" style="flex: 1;">
@@ -50,7 +50,12 @@
                         </app-question-component>
                         <div>
                             <button mat-button matStepperPrevious [disabled]="index == 0">Previous</button>
-                            <button mat-button matStepperNext [disabled]="!forms[index].valid">Next</button>
+                            <button *ngIf="index != forms!.length - 1" mat-button matStepperNext
+                                [disabled]="!forms[index].valid">Next</button>
+                            <button *ngIf="index == forms!.length - 1" mat-button [disabled]="!isReadyForSubmit()"
+                                (click)="onSubmit()">Submit</button>
+
+
 
                         </div>
                     </form>
@@ -81,7 +86,7 @@
 
 
 
-    <div *ngIf="payLoad" class="">
+    <!-- <div *ngIf="payLoad" class="">
         <strong>Saved the following values</strong><br>{{payLoad}}
-    </div>
+    </div> -->
 </div>
