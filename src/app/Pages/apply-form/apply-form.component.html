@@ -17,7 +17,7 @@
 
             </app-form-page> -->
 
-            <mat-stepper #stepper>
+            <mat-stepper #stepper [orientation]="(stepperOrientation | async)!">
                 <mat-step [stepControl]="forms[0]" [label]="pages![0].title">
                     <form [formGroup]="forms[0]">
                         <app-question-component class="{{question.className}}"
