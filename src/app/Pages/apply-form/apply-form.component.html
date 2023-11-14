@@ -18,7 +18,7 @@
             </app-form-page> -->
 
             <mat-stepper #stepper [orientation]="(stepperOrientation | async)!">
-                <mat-step [stepControl]="forms[0]" [label]="pages![0].title">
+                <!-- <mat-step [stepControl]="forms[0]" [label]="pages![0].title">
                     <form [formGroup]="forms[0]">
                         <app-question-component class="{{question.className}}"
                             *ngFor="let question of pages![0].questions" [question]="question" [form]="forms[0]">
@@ -39,7 +39,23 @@
                             <button mat-button matStepperNext>Next</button>
                         </div>
                     </form>
+                </mat-step> -->
+
+                <mat-step *ngFor="let index of arrayRange(0,forms.length - 1, 1) " [stepControl]="forms[index]"
+                    [label]="pages![index].title">
+                    <form [formGroup]="forms[index]">
+                        <app-question-component class="{{question.className}}"
+                            *ngFor="let question of pages![index].questions" [question]="question"
+                            [form]="forms[index]">
+                        </app-question-component>
+                        <div>
+                            <button mat-button matStepperPrevious [disabled]="index == 0">Previous</button>
+                            <button mat-button matStepperNext [disabled]="!forms[index].valid">Next</button>
+
+                        </div>
+                    </form>
                 </mat-step>
+
             </mat-stepper>
 
 
