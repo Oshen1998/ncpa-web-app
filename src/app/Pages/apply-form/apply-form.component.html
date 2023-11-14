@@ -43,7 +43,7 @@
 
                 <mat-step *ngFor="let index of arrayRange(0,forms.length - 1, 1) " [stepControl]="forms[index]"
                     [label]="pages![index].title">
-                    <form [formGroup]="forms[index]">
+                    <form [formGroup]="forms[index]" style="padding-top: 1rem;">
                         <app-question-component class="{{question.className}}"
                             *ngFor="let question of pages![index].questions" [question]="question"
                             [form]="forms[index]">
