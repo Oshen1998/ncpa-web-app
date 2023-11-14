@@ -9,13 +9,13 @@ export class LaunchpadComponent {
 
   //API calling here
   cardData = [
-    { designation: 'Director General', salaryCategory: 'HM 2-1', isAssigned: true },
-    { designation: 'Deputy Director General', salaryCategory: 'HM 1-3', isAssigned: true },
-    { designation: 'Director (Admin & HR)', salaryCategory: 'HM 1-1', isAssigned: true },
-    { designation: 'Director (Finance)', salaryCategory: 'HM 1-1', isAssigned: true },
-    { designation: 'Manager (Programme)', salaryCategory: 'HM 1-1', isAssigned: true },
-    { designation: 'Clinical Psychologist', salaryCategory: 'HM 1-1', isAssigned: true },
-    { designation: 'Director (Law and Enforcement)', salaryCategory: 'HM 1-1', isAssigned: true },
+    { designation: 'Director General', salaryCategory: 'HM 2-1' },
+    { designation: 'Deputy Director General', salaryCategory: 'HM 1-3' },
+    { designation: 'Director (Admin & HR)', salaryCategory: 'HM 1-1' },
+    { designation: 'Director (Finance)', salaryCategory: 'HM 1-1' },
+    { designation: 'Manager (Programme)', salaryCategory: 'HM 1-1' },
+    { designation: 'Clinical Psychologist', salaryCategory: 'HM 1-1' },
+    { designation: 'Director (Law and Enforcement)', salaryCategory: 'HM 1-1' },
   ];
 
   summaryCardData = [
