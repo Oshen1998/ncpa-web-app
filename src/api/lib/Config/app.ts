@@ -26,6 +26,7 @@ class App {
     this.config();
     this.mongoSetup();
     this.auth_routes.route(this.app);
+    this.user_routes.route(this.app);
     this.mismatch_route.route(this.app);
   }
 
