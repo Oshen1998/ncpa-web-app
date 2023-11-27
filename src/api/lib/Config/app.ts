@@ -3,6 +3,11 @@ import * as bodyParser from 'body-parser';
 import * as mongoose from 'mongoose';
 import { MissMatchRoutes } from '../Routes/missmatch.routes';
 import { AuthRoutes } from '../Routes/auth.routes';
+<<<<<<< Updated upstream
+=======
+import { ApplicationRoutes} from '../Routes/application.routes';
+
+>>>>>>> Stashed changes
 require('dotenv').config();
 
 class App {
@@ -11,6 +16,10 @@ class App {
 
   private mismatch_route: MissMatchRoutes = new MissMatchRoutes();
   private auth_routes: AuthRoutes = new AuthRoutes();
+<<<<<<< Updated upstream
+=======
+  private user_routes: ApplicationRoutes = new ApplicationRoutes();
+>>>>>>> Stashed changes
 
   constructor() {
     this.app = express();

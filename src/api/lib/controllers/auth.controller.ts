@@ -8,7 +8,7 @@ import {
   notfoundDocument,
   successResponse,
 } from '../constants/common-response-service';
-import { ILogin, IUser } from '../models/user.interface';
+import { ILogin, IUser } from '../models/interface/user.interface';
 import UserService from '../services/auth.service';
 import UserCredentialService from '../services/credential.service';
 import { ValidateSchema } from '../middleware/validation';
