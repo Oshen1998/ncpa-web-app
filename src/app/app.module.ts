@@ -9,18 +9,18 @@ import { LottieModule } from 'ngx-lottie';
 import { CustomMaterialModule } from './material.module';
 
 // Modules
-import { AuthModule } from './modules/auth/auth.module';
-import { LaunchpadModule } from './modules/launchpad/launchpad.module';
-import { ApplicationModule } from './modules/application/application.module';
+import { AuthModule } from './Modules/auth/auth.module';
+import { LaunchpadModule } from './Modules/launchpad/launchpad.module';
+import { ApplicationModule } from './Modules/application/application.module';
 
 // Components
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { VacanciesComponent } from './pages/Vacancies/Vacancies.component';
-import { FooterComponent } from './pages/footer/footer.component';
-import { SidebarComponent } from './pages/sidebar/sidebar.component';
-import { ReferenceModule } from './modules/reference/reference.module';
-import { TemplateComponent } from './pages/template/template.component';
-import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { DashboardComponent } from './Pages/dashboard/dashboard.component';
+import { VacanciesComponent } from './Pages/Vacancies/Vacancies.component';
+import { FooterComponent } from './Pages/footer/footer.component';
+import { SidebarComponent } from './Pages/sidebar/sidebar.component';
+import { ReferenceModule } from './Modules/reference/reference.module';
+import { TemplateComponent } from './Pages/template/template.component';
+import { NotFoundPageComponent } from './Pages/not-found-page/not-found-page.component';
 
 export function playerFactory() {
   return import('lottie-web');

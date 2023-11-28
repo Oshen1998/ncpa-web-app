@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { DashboardComponent } from './Pages/dashboard/dashboard.component';
+import { NotFoundPageComponent } from './Pages/not-found-page/not-found-page.component';
 
 const routes: Routes = [
   {
@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: 'app/auth',
     loadChildren: () =>
-      import('./modules/auth/auth.module').then((m) => m.AuthModule),
+      import('./Modules/auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: '',
@@ -21,28 +21,28 @@ const routes: Routes = [
       {
         path: 'app/launchpad',
         loadChildren: () =>
-          import('./modules/launchpad/launchpad.module').then(
+          import('./Modules/launchpad/launchpad.module').then(
             (m) => m.LaunchpadModule
           ),
       },
       {
         path: 'app/application',
         loadChildren: () =>
-          import('./modules/application/application.module').then(
+          import('./Modules/application/application.module').then(
             (m) => m.ApplicationModule
           ),
       },
       {
         path: 'app/recruitment',
         loadChildren: () =>
-          import('./modules/recruitments/recruitments.module').then(
+          import('./Modules/recruitments/recruitments.module').then(
             (m) => m.RecruitmentsModule
           ),
       },
       {
         path: 'app/reference',
         loadChildren: () =>
-          import('./modules/reference/reference.module').then(
+          import('./Modules/reference/reference.module').then(
             (m) => m.ReferenceModule
           ),
       },

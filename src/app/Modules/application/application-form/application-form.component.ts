@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { CONTROLLER_TYPES } from 'src/app/constants';
-import { IFields, IFormArray } from '../recruitment-application/recruitment-application.component';
+import { IFields } from '../recruitment-application/recruitment-application.component';
 
 @Component({
   selector: 'app-application-form',
