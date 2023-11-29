@@ -10,6 +10,12 @@ export class ApplicationRoutes{
             .AddPersonalData(req, res)
             .catch(() => console.log('error on auth/AddData'));
         });
+
+        app.post('/api/Applicant/AddOLResult', (req: Request, res: Response) => {
+            this.userdata_controller
+            .AddOLExaminationData(req, res)
+            .catch(() => console.log('error on auth/AddData'));
+        });
     }
 
 }

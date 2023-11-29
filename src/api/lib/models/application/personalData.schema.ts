@@ -55,4 +55,4 @@ const schema = new Schema<IApplicatinpersonalDataModel>({
     },
 });
 
-export default mongoose.model("ApplicantpersonalData",schema);
+export default mongoose.model("Applicant_personal_Data",schema);

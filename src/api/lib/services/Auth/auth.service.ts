@@ -1,5 +1,5 @@
-import { IUser } from '../models/interface/user.interface';
-import users, { IUserModel } from '../models/auth/users.schema';
+import { IUser } from '../../models/interface/user.interface';
+import users, { IUserModel } from '../../models/auth/users.schema';
 import { Types } from 'mongoose';
 
 export default class UserService {
