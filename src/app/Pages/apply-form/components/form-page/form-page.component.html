@@ -1,0 +1,8 @@
+<div class="row">
+    <h3>
+        {{page.title}}
+    </h3>
+    <app-question-component class="{{question.className}}" *ngFor="let question of page.questions" [question]="question"
+        [form]="form">
+    </app-question-component>
+</div>
