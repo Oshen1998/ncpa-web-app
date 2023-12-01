@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
-import { ApplyFormComponent } from './Pages/apply-form/apply-form.component';
+import { ApplyFormComponent } from './pages/apply-form/apply-form.component';
 
 const routes: Routes = [
   {

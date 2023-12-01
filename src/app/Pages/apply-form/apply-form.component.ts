@@ -3,7 +3,7 @@ import { StepperOrientation } from "@angular/cdk/stepper";
 import { Component, Input } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { Observable, map } from "rxjs";
-import { ApplyFormControlServiceService } from "src/app/Services/apply-form-control-service.service";
+import { ApplyFormControlServiceService } from "src/app/services/apply-form-control-service.service";
 import { FormPage, QuestionBase } from "src/app/interfaces/question";
 
 
