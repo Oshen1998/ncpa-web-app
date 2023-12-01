@@ -6,15 +6,20 @@ import { LaunchpadComponent } from './pages/launchpad/launchpad.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { CustomMaterialModule } from 'src/app/material.module';
 import { DataTableModule } from 'src/app/shared/data-table/data-table.module';
+import { InfocardModule } from './pages/launchpad/infocard/info-card.module';
+import { SummaryCardModule } from './pages/launchpad/summarycard/summary-card.module';
+import { ConfirmationDialogComponent } from './pages/launchpad/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
-  declarations: [LaunchpadComponent],
+  declarations: [LaunchpadComponent, ConfirmationDialogComponent],
   imports: [
     CommonModule,
     LaunchpadRoutingModule,
     NgxChartsModule,
     CustomMaterialModule,
-    DataTableModule
+    DataTableModule,
+    InfocardModule,
+    SummaryCardModule
   ],
 })
 export class LaunchpadModule {}
