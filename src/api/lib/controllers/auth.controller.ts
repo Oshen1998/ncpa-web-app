@@ -8,7 +8,7 @@ import {
   notfoundDocument,
   successResponse,
 } from '../constants/common-response-service';
-import { ILogin, IUser } from '../models/user.interface';
+import { ILogin, IUser } from '../models/interface/user.interface';
 import UserService from '../services/auth.service';
 import UserCredentialService from '../services/credential.service';
 import { ValidateSchema } from '../middleware/validation';
@@ -47,7 +47,7 @@ export class UserController {
       const { nic, _id } = createdUser;
 
       if (createdUser) {
-        const encryptedPassword = encrypt('123456');
+        const encryptedPassword = encrypt(req.body.password);
         const credentials: ILogin = {
           username: nic,
           password: encryptedPassword,

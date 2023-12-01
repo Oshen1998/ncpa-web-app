@@ -7,3 +7,14 @@ export const enum GENDER {
   MALE = 'M',
   FEMALE = 'F',
 }
+
+export const enum SALUTATION{
+  MR = 'Mr',
+  MRS = 'Mrs',
+  MISS = 'Miss',
+}
+
+export const enum CIVILL_STATUS{
+  Married = "MR",
+  SINGLE = "S",
+}
