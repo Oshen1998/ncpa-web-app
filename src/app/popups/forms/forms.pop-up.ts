@@ -105,6 +105,5 @@ export class FormsPopUp implements OnInit {
       radioOptionTwo : this.radioOptionTwo.value ? this.radioOptionTwo.value : '',
     };
     this.dialogRef.close(_data);
-     console.log(_data)
   }
 }

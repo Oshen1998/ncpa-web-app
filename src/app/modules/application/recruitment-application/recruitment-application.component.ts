@@ -101,8 +101,6 @@ export class RecruitmentApplicationComponent implements OnInit {
   }
 
   removePage(index: number, data: any) {
-    console.log(this.formArray);
-
     // if (index > -1) {
     //   this.formArray.splice(index, 1);
     // }
@@ -117,7 +115,6 @@ export class RecruitmentApplicationComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: IFieldDetails) => {
       if (result) {
-        console.log(result)
         const index = this.formArray.findIndex(
           (item) => item.pageName.toString() === result.selectedPage.toString()
         );
@@ -131,14 +128,11 @@ export class RecruitmentApplicationComponent implements OnInit {
             placeholder: result?.placeholder,
             radioOptionOne: result?.radioOptionOne,
             radioOptionTwo: result?.radioOptionTwo,
-
-
             validators: {},
           };
 
           const arr = this.formArray[index].fields || [];
           this.formArray[index].fields = [...arr, fieldData];
-          console.log(this.formArray);
         }
       }
     });

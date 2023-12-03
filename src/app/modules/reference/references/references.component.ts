@@ -17,7 +17,6 @@ export class ReferencesComponent implements OnInit {
     private referenceDataService: ReferenceDataService
   ) {
     this.referenceDataService.getChangeRefValue().subscribe((res) => {
-      console.log(res);
       this.changeReferenceCategory();
     });
 
@@ -42,7 +41,7 @@ export class ReferencesComponent implements OnInit {
   ngOnInit(): void {}
 
   changeReferenceCategory() {
-    console.log('fire');
+    //
   }
 
   addReferences() {
