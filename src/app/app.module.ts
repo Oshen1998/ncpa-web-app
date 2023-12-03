@@ -15,15 +15,15 @@ import { ApplicationModule } from './modules/application/application.module';
 
 // Components
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { VacanciesComponent } from './pages/vacancies/Vacancies.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { SidebarComponent } from './pages/sidebar/sidebar.component';
 import { ReferenceModule } from './modules/reference/reference.module';
 import { TemplateComponent } from './pages/template/template.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
-import { ApplyFormComponent } from './pages/apply-form/apply-form.component';
 import { QuestionComponent } from './pages/apply-form/question-component/question-component.component';
 import { FormPageComponent } from './pages/apply-form/components/form-page/form-page.component';
+import { VacanciesComponent } from './pages/Vacancies/Vacancies.component';
+import { ApplyFormComponent } from './pages/apply-form/apply-component/apply-form.component';
 
 export function playerFactory() {
   return import('lottie-web');
@@ -40,7 +40,7 @@ export function playerFactory() {
     NotFoundPageComponent,
     ApplyFormComponent,
     QuestionComponent,
-    FormPageComponent
+    FormPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,4 +56,4 @@ export function playerFactory() {
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

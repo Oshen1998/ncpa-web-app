@@ -14,10 +14,9 @@ export class ApplicationFormComponent implements  OnInit , OnChanges {
 
 
   ngOnInit(): void{
-    // console.log(this.fieldArray)
+//
   }
   ngOnChanges(){
-    // console.log(this.formArray)
-  console.log(this.fieldArray)
+//
   }
 }
