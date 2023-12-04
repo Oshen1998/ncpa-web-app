@@ -9,17 +9,23 @@ import {
     successResponse,
   } from '../constants/common-response-service';
 import { ValidateSchema } from '../middleware/validation';
-import {userbasicdataValidationSchema,OLExaminationValidationSchema,ALExaminationValidationSchema} from '../schema/ApplicationData.validation'
-import {IApplicationData,IOLExamination,IALExamination} from '../models/interface/ApplicationData.interface'
+import {userbasicdataValidationSchema,OLExaminationValidationSchema,ALExaminationValidationSchema,DegreeValidationSchema,MasterDegreeValidationSchema,ProfessionalDataValidationSchema} from '../schema/ApplicationData.validation'
+import {IApplicationData,IOLExamination,IALExamination,IDegree, IMasterDegree,IProfessional} from '../models/interface/ApplicationData.interface'
 import ApplicatinpersonalDataServis from '../services/Application/ApplicationPersonalDataData.servis'
 import OLExaminationServis from '../services/Application/OLExamition.servis'
 import ALExaminationServis from '../services/Application/ALExamition.servid'
+import DegreeServis from '../services/Application/Degree.servis';
+import MasterDegreeServis from '../services/Application/MasterDegree.servis';
+import ProfessionalServis from '../services/Application/ProfessionaData.servies'
 
 export class ApplicationController{
     private userdata_servis: ApplicatinpersonalDataServis = new ApplicatinpersonalDataServis();
     private olExamination_servis: OLExaminationServis = new OLExaminationServis(); 
     private alExamination_servis: ALExaminationServis = new ALExaminationServis();
-    
+    private degree_servis: DegreeServis = new DegreeServis();
+    private masterdegree_servis: MasterDegreeServis = new MasterDegreeServis();
+    private professional_servis: ProfessionalServis= new ProfessionalServis();
+
     //Add Applicant Personal Data
     public async AddPersonalData(req: Request,res:Response){
         const isValid = ValidateSchema(userbasicdataValidationSchema,req.body);
@@ -36,7 +42,8 @@ export class ApplicationController{
                 nationality: req.body.nationality,
                 permanent_address: req.body.permanent_address,
                 number: req.body.number,
-                email: req.body.email,             
+                email: req.body.email,
+                states:req.body.states             
             };
             const isExist = await this.userdata_servis.findByNic(user_params.nic);
             
@@ -156,4 +163,115 @@ export class ApplicationController{
             insufficientParameters(res);
         }
     }
+    
+    //add when arraycome cheack ther frist pram and chenk the array for data only this is forme 
+    //Add Applicant Degree
+    public async AddDegreeData(req: Request,res:Response){
+        const isValid = ValidateSchema(DegreeValidationSchema,req.body);
+
+        if(isValid){
+            const user_params:IDegree = {
+                ApplicantId:req.body.ApplicantId,
+                degree:req.body.degree,
+                university:req.body.university,
+                grade:req.body.grade,
+                AwardDate:req.body.AwardDate,
+                EffectiveDate:req.body.EffectiveDate,           
+            };
+
+            const isExist = await this.userdata_servis.recordExistsById(user_params.ApplicantId);
+            
+            if(isExist){
+                return forbiddenError(res,"Applicant Parsanal Data not Found");
+            }
+            const createduser = await this.degree_servis.AddData(user_params);
+            const { ApplicantId } = createduser;
+
+            if(createduser){
+                successResponse('Successfully Created!', ApplicantId, res)
+            }else {
+                failureResponse(
+                  'Something went wrong! (When user adding)',
+                  res
+                );
+            }
+        }else {
+            // error response if some fields are missing in request body
+            insufficientParameters(res);
+        }
+    }
+
+    //Add Applicant MasterDegree
+    public async AddMasterDegreeData(req: Request,res:Response){
+        const isValid = ValidateSchema(MasterDegreeValidationSchema,req.body);
+
+        if(isValid){
+            const user_params:IMasterDegree = {
+                ApplicantId:req.body.ApplicantId,
+                degree:req.body.degree,
+                university:req.body.university,
+                AwardDate:req.body.AwardDate,
+                EffectiveDate:req.body.EffectiveDate,           
+            };
+
+            const isExist = await this.userdata_servis.recordExistsById(user_params.ApplicantId);
+            
+            if(isExist){
+                return forbiddenError(res,"Applicant Parsanal Data not Found");
+            }
+
+            const createduser = await this.masterdegree_servis.AddData(user_params);
+            const { ApplicantId } = createduser;
+
+            if(createduser){
+                successResponse('Successfully Created!', ApplicantId, res)
+            }else {
+                failureResponse(
+                  'Something went wrong! (When user adding)',
+                  res
+                );
+            }
+        }else {
+            // error response if some fields are missing in request body
+            insufficientParameters(res);
+        }
+    }
+    
+    //Add Applicant Professional Data
+    public async AddProfessionalData(req: Request,res:Response){
+        const isValid = ValidateSchema(ProfessionalDataValidationSchema,req.body);
+
+        if(isValid){
+            const user_params:IProfessional = {
+                ApplicantId:req.body.ApplicantId,
+                dtype:req.body.dtype,
+                Field:req.body.Field,
+                Institution:req.body.Institution,
+                AwardDate:req.body.AwardDate,
+                Duration:req.body.Duration,           
+            };
+
+            const isExist = await this.userdata_servis.recordExistsById(user_params.ApplicantId);
+            
+            if(isExist){
+                return forbiddenError(res,"Applicant Parsanal Data not Found");
+            }
+
+            const createduser = await this.professional_servis.AddData(user_params);
+            const { ApplicantId } = createduser;
+
+            if(createduser){
+                successResponse('Successfully Created!', ApplicantId, res)
+            }else {
+                failureResponse(
+                  'Something went wrong! (When user adding)',
+                  res
+                );
+            }
+        }else {
+            // error response if some fields are missing in request body
+            insufficientParameters(res);
+        }
+    }
+    
 }

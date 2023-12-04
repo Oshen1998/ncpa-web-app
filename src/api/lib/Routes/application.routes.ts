@@ -16,6 +16,30 @@ export class ApplicationRoutes{
             .AddOLExaminationData(req, res)
             .catch(() => console.log('error on auth/AddData'));
         });
+
+        app.post('/api/Applicant/AddALResult', (req: Request, res: Response) => {
+            this.userdata_controller
+            .AddALExaminationData(req, res)
+            .catch(() => console.log('error on auth/AddData'));
+        });
+
+        app.post('/api/Applicant/AddDegree', (req: Request, res: Response) => {
+            this.userdata_controller
+            .AddDegreeData(req, res)
+            .catch(() => console.log('error on auth/AddData'));
+        });
+
+        app.post('/api/Applicant/AddMasterDegree', (req: Request, res: Response) => {
+            this.userdata_controller
+            .AddMasterDegreeData(req, res)
+            .catch(() => console.log('error on auth/AddData'));
+        });
+
+        app.post('/api/Applicant/AddProfessionalData', (req: Request, res: Response) => {
+            this.userdata_controller
+            .AddProfessionalData(req, res)
+            .catch(() => console.log('error on auth/AddData'));
+        });
     }
 
 }

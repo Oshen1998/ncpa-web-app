@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 import {IApplicationData} from '../interface/ApplicationData.interface';
-import{SALUTATION,GENDER,CIVILL_STATUS} from '../../constants/index';
+import{SALUTATION,GENDER,CIVILL_STATUS,STETAS} from '../../constants/index';
 
 const Schema = mongoose.Schema;
 export type IApplicatinpersonalDataModel = Document & IApplicationData;
@@ -53,6 +53,11 @@ const schema = new Schema<IApplicatinpersonalDataModel>({
         type:String,
         required: true,
     },
+    states:{
+        type:String,
+        enum:[STETAS.External,STETAS.Internal],
+        required:true,
+    }
 });
 
 export default mongoose.model("Applicant_personal_Data",schema);

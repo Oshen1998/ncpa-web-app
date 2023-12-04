@@ -1,4 +1,4 @@
-import {GENDER,SALUTATION,CIVILL_STATUS,GRADE,STREAM} from '../constants/index'
+import {DEGREETYPES,GENDER,SALUTATION,CIVILL_STATUS,GRADE,STREAM,STETAS,GRADEOFDEGREE} from '../constants/index'
 
 export const userbasicdataValidationSchema ={
     type: 'object',
@@ -14,7 +14,8 @@ export const userbasicdataValidationSchema ={
         nationality: { type: 'string' },
         permanent_address: { type: 'string' },
         number: { type: 'number', nullable: false },
-        email: { type: 'string' },        
+        email: { type: 'string' },
+        states:{enum:[STETAS.External,STETAS.Internal]},        
     },
     required: ['name','name_in','dob','sex','nic','nationality','permanent_address','number','email'],
     additionalProperties: false, 
@@ -55,5 +56,48 @@ export const ALExaminationValidationSchema = {
         sub4Grade:{enum:[GRADE.A,GRADE.B,GRADE.C,GRADE.F,GRADE.S]},        
     },
     required:['ApplicantId','year','index_no','stream','sub1Name','sub1Grade','sub2Name','sub2Grade','sub3Name','sub3Grade'],
+    additionalProperties: false,
+};
+export const DegreeValidationSchema = {
+    type:'object',
+    properties:{
+        _id:{type:'string'},
+        ApplicantId:{type:'string'},
+        degree:{type:'string'},
+        university:{type:'string'},
+        grade:{enum:[GRADEOFDEGREE.First_Class_Honours,GRADEOFDEGREE.Lower_Second_Class_Honours,GRADEOFDEGREE.Third_Class_Honours,GRADEOFDEGREE.Upper_Second_Class_Honours]},
+        AwardDate:{type:'date'},
+        EffectiveDate:{type:'date'},
+    },
+    required:['ApplicantId','degree','university','AwardDate','EffectiveDate'],
+    additionalProperties: false,
+};
+
+export const MasterDegreeValidationSchema = {
+    type:'object',
+    properties:{
+        _id:{type:'string'},
+        ApplicantId:{type:'string'},
+        degree:{type:'string'},
+        university:{type:'string'},
+        AwardDate:{type:'date'},
+        EffectiveDate:{type:'date'},
+    },
+    required:['ApplicantId','degree','university','AwardDate','EffectiveDate'],
+    additionalProperties: false,
+};
+
+export const ProfessionalDataValidationSchema = {
+    type:'object',
+    properties:{
+        _id:{type:'string'},
+        ApplicantId:{type:'string'},
+        dtype:{enum:[DEGREETYPES.Advance_Diploma,DEGREETYPES.Certificate,DEGREETYPES.Diploma,DEGREETYPES.NVQ_Level]},
+        Field:{type:'string'},
+        Institution:{type:'string'},
+        AwardDate:{type:'date'},
+        Duration:{type:'date'},
+    },
+    required:['ApplicantId','dtype','university','Field','Institution','AwardDate','Duration'],
     additionalProperties: false,
 };

@@ -1,7 +1,6 @@
 import * as mongoose from 'mongoose';
 import {IOLExamination} from '../interface/ApplicationData.interface'
 import {GRADE} from '../../constants/index'
-import { type } from 'os';
 
 const Schema = mongoose.Schema;
 export type IOLExaminationDataModel = Document & IOLExamination;
