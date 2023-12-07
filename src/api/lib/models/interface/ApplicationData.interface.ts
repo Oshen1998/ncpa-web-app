@@ -75,3 +75,12 @@ export interface IProfessional{
     AwardDate:Date;
     Duration:Date;
 }
+
+export interface IWorkingExperience{
+    _id?:Types.ObjectId;
+    ApplicantId: Types.ObjectId;
+    Employer: string,
+    Designation : String;
+    StartDate : Date;
+    EndDate:Date;
+}

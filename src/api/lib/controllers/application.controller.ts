@@ -9,14 +9,15 @@ import {
     successResponse,
   } from '../constants/common-response-service';
 import { ValidateSchema } from '../middleware/validation';
-import {userbasicdataValidationSchema,OLExaminationValidationSchema,ALExaminationValidationSchema,DegreeValidationSchema,MasterDegreeValidationSchema,ProfessionalDataValidationSchema} from '../schema/ApplicationData.validation'
-import {IApplicationData,IOLExamination,IALExamination,IDegree, IMasterDegree,IProfessional} from '../models/interface/ApplicationData.interface'
+import {userbasicdataValidationSchema,OLExaminationValidationSchema,ALExaminationValidationSchema,DegreeValidationSchema,MasterDegreeValidationSchema,ProfessionalDataValidationSchema,WorkingExperienceDataValidationSchema} from '../schema/ApplicationData.validation'
+import {IApplicationData,IOLExamination,IALExamination,IDegree, IMasterDegree,IProfessional,IWorkingExperience} from '../models/interface/ApplicationData.interface'
 import ApplicatinpersonalDataServis from '../services/Application/ApplicationPersonalDataData.servis'
 import OLExaminationServis from '../services/Application/OLExamition.servis'
 import ALExaminationServis from '../services/Application/ALExamition.servid'
 import DegreeServis from '../services/Application/Degree.servis';
 import MasterDegreeServis from '../services/Application/MasterDegree.servis';
 import ProfessionalServis from '../services/Application/ProfessionaData.servies'
+import WorkingExperienceServis from '../services/Application/WorkingExperience'
 
 export class ApplicationController{
     private userdata_servis: ApplicatinpersonalDataServis = new ApplicatinpersonalDataServis();
@@ -25,6 +26,7 @@ export class ApplicationController{
     private degree_servis: DegreeServis = new DegreeServis();
     private masterdegree_servis: MasterDegreeServis = new MasterDegreeServis();
     private professional_servis: ProfessionalServis= new ProfessionalServis();
+    private WorkingExperience_Servis: WorkingExperienceServis = new WorkingExperienceServis();
 
     //Add Applicant Personal Data
     public async AddPersonalData(req: Request,res:Response){
@@ -164,7 +166,6 @@ export class ApplicationController{
         }
     }
     
-    //add when arraycome cheack ther frist pram and chenk the array for data only this is forme 
     //Add Applicant Degree
     public async AddDegreeData(req: Request,res:Response){
         const isValid = ValidateSchema(DegreeValidationSchema,req.body);
@@ -258,6 +259,42 @@ export class ApplicationController{
             }
 
             const createduser = await this.professional_servis.AddData(user_params);
+            const { ApplicantId } = createduser;
+
+            if(createduser){
+                successResponse('Successfully Created!', ApplicantId, res)
+            }else {
+                failureResponse(
+                  'Something went wrong! (When user adding)',
+                  res
+                );
+            }
+        }else {
+            // error response if some fields are missing in request body
+            insufficientParameters(res);
+        }
+    }
+
+    //Add Applicant Working Experience Data
+    public async addWorkingExperienceData(req: Request,res:Response){
+        const isValid = ValidateSchema(WorkingExperienceDataValidationSchema,req.body);
+
+        if(isValid){
+            const user_params:IWorkingExperience = {
+                ApplicantId:req.body.ApplicantId,
+                Employer:req.body.Employer,
+                Designation:req.body.Designation,
+                StartDate:req.body.StartDate,
+                EndDate:req.body.EndDate,           
+            };
+
+            const isExist = await this.userdata_servis.recordExistsById(user_params.ApplicantId);
+            
+            if(isExist){
+                return forbiddenError(res,"Applicant Parsanal Data not Found");
+            }
+
+            const createduser = await this.WorkingExperience_Servis.AddData(user_params);
             const { ApplicantId } = createduser;
 
             if(createduser){

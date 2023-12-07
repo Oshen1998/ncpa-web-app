@@ -98,6 +98,20 @@ export const ProfessionalDataValidationSchema = {
         AwardDate:{type:'date'},
         Duration:{type:'date'},
     },
-    required:['ApplicantId','dtype','university','Field','Institution','AwardDate','Duration'],
+    required:['ApplicantId','dtype','Field','Institution','AwardDate','Duration'],
+    additionalProperties: false,
+};
+
+export const WorkingExperienceDataValidationSchema = {
+    type:'object',
+    properties:{
+        _id:{type:'string'},
+        ApplicantId:{type:'string'},
+        Employer:{type:'string'},
+        Designation:{type:'string'},
+        StartDate:{type:'date'},
+        EndDate:{type:'date'},
+    },
+    required:['ApplicantId','Employer','Designation','StartDate','EndDate'],
     additionalProperties: false,
 };
