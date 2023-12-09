@@ -16,13 +16,7 @@ export class QuestionComponent {
     return this.form.controls[this.question.key].valid;
   }
 
-  grades = [
-    'A',
-    'B',
-    'C',
-    'D',
-    'E',
-  ]
+
 
   addEntry() {
     if (this.question.answers) {
