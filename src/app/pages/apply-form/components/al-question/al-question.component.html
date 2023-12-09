@@ -38,10 +38,9 @@
 
     <mat-form-field class="col-12" appearance="outline">
         <mat-label>Stream</mat-label>
-        <mat-select [(ngModel)]="stream">
+        <mat-select [(ngModel)]="selectedStream">
 
-            <mat-option value="biology">Biology </mat-option>
-            <mat-option value="maths"> Mathematics </mat-option>
+            <mat-option *ngFor="let stream of streams" [value]="stream.key">{{stream.value}} </mat-option>
 
         </mat-select>
 
@@ -52,113 +51,55 @@
 
 </div>
 
+<div *ngIf="selectedStream !== ''">
+    <div class="row col-12" style="margin-bottom: 16px;   align-items: center;">
 
+        <mat-form-field class="col-lg-6" appearance="outline">
+            <mat-label>Subject 1</mat-label>
+            <mat-select>
 
-<div [ngSwitch]="stream">
-    <div *ngSwitchCase="'maths'">
-        <div class="row col-12" style="margin-bottom: 16px;   align-items: center;">
+                <mat-option *ngFor="let stream of getSubjects()" [value]="stream.key">{{stream.value}} </mat-option>
 
-            <mat-form-field class="col-lg-6" appearance="outline">
-                <mat-label>Subject 1</mat-label>
-                <mat-select>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="col-lg-6" appearance="outline">
+            <mat-label>Grade</mat-label>
 
-                    <mat-option value="buddhism">Mathematics </mat-option>
+            <select matNativeControl>
+                <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
+            </select>
+        </mat-form-field>
 
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field class="col-lg-6" appearance="outline">
-                <mat-label>Grade</mat-label>
+        <mat-form-field class="col-lg-6" appearance="outline">
+            <mat-label>Subject 2</mat-label>
+            <mat-select>
 
-                <select matNativeControl>
-                    <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
-                </select>
-            </mat-form-field>
+                <mat-option *ngFor="let stream of getSubjects()" [value]="stream.key">{{stream.value}} </mat-option>
 
-            <mat-form-field class="col-lg-6" appearance="outline">
-                <mat-label>Subject 2</mat-label>
-                <mat-select>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="col-lg-6" appearance="outline">
+            <mat-label>Grade</mat-label>
 
-                    <mat-option value="buddhism">Physics </mat-option>
+            <select matNativeControl>
+                <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
+            </select>
+        </mat-form-field>
 
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field class="col-lg-6" appearance="outline">
-                <mat-label>Grade</mat-label>
+        <mat-form-field class="col-lg-6" appearance="outline">
+            <mat-label>Subject 3</mat-label>
+            <mat-select>
 
-                <select matNativeControl>
-                    <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
-                </select>
-            </mat-form-field>
+                <mat-option *ngFor="let stream of getSubjects()" [value]="stream.key">{{stream.value}} </mat-option>
 
-            <mat-form-field class="col-lg-6" appearance="outline">
-                <mat-label>Subject 3</mat-label>
-                <mat-select>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="col-lg-6" appearance="outline">
+            <mat-label>Grade</mat-label>
 
-                    <mat-option value="buddhism">Information and Communication Technology </mat-option>
-                    <mat-option value="buddhism">Chemsitry </mat-option>
-
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field class="col-lg-6" appearance="outline">
-                <mat-label>Grade</mat-label>
-
-                <select matNativeControl>
-                    <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
-                </select>
-            </mat-form-field>
-        </div>
-    </div>
-    <div *ngSwitchCase="'biology'">
-        <div class="row col-12" style="margin-bottom: 16px;   align-items: center;">
-
-            <mat-form-field class="col-lg-6" appearance="outline">
-                <mat-label>Subject 1</mat-label>
-                <mat-select>
-
-                    <mat-option value="buddhism">Biology </mat-option>
-
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field class="col-lg-6" appearance="outline">
-                <mat-label>Grade</mat-label>
-
-                <select matNativeControl>
-                    <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
-                </select>
-            </mat-form-field>
-
-            <mat-form-field class="col-lg-6" appearance="outline">
-                <mat-label>Subject 2</mat-label>
-                <mat-select>
-
-                    <mat-option value="buddhism">Physics </mat-option>
-
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field class="col-lg-6" appearance="outline">
-                <mat-label>Grade</mat-label>
-
-                <select matNativeControl>
-                    <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
-                </select>
-            </mat-form-field>
-
-            <mat-form-field class="col-lg-6" appearance="outline">
-                <mat-label>Subject 3</mat-label>
-                <mat-select>
-
-
-                    <mat-option value="buddhism">Chemsitry </mat-option>
-
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field class="col-lg-6" appearance="outline">
-                <mat-label>Grade</mat-label>
-
-                <select matNativeControl>
-                    <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
-                </select>
-            </mat-form-field>
-        </div>
+            <select matNativeControl>
+                <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
+            </select>
+        </mat-form-field>
     </div>
 </div>
