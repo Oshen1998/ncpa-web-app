@@ -51,7 +51,7 @@
                         <div>
                             <button mat-button matStepperPrevious [disabled]="index == 0">Previous</button>
                             <button *ngIf="index != forms!.length - 1" mat-button matStepperNext
-                                [disabled]="!forms[index].valid">Next</button>
+                                [disabled]="forms[index].valid">Next</button>
                             <button *ngIf="index == forms!.length - 1" mat-button [disabled]="!isReadyForSubmit()"
                                 (click)="onSubmit()">Submit</button>
 

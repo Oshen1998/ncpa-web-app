@@ -8,6 +8,12 @@ export class QuestionBase<T> {
     type: string;
     options: { key: string, value: string }[];
     className: string;
+    isSpecial: boolean;
+
+    // used for multiple entry
+    questions: QuestionBase<any>[] | undefined;
+
+    answers: QuestionBase<any>[][] | undefined;
 
     constructor(options: {
         value?: T;
@@ -19,6 +25,9 @@ export class QuestionBase<T> {
         type?: string;
         options?: { key: string, value: string }[];
         className?: string;
+        questions?: QuestionBase<any>[];
+        answers?: QuestionBase<any>[][];
+        isSpecial?: boolean;
     } = {}) {
         this.value = options.value;
         this.key = options.key || '';
@@ -29,6 +38,9 @@ export class QuestionBase<T> {
         this.type = options.type || '';
         this.options = options.options || [];
         this.className = options.className || "col-12";
+        this.questions = options.questions;
+        this.answers = options.answers || [];
+        this.isSpecial = options.isSpecial ?? false;
     }
 }
 
@@ -39,6 +51,18 @@ export class TextboxQuestion extends QuestionBase<string> {
 
 export class DropdownQuestion extends QuestionBase<string> {
     override controlType = 'dropdown';
+}
+
+export class OLResultQuestion extends QuestionBase<string> {
+    override controlType = 'olResult';
+}
+
+export class AlResultQuestion extends QuestionBase<string> {
+    override controlType = 'alResult';
+}
+
+export class MultipleEntryQuestion extends QuestionBase<string> {
+    override controlType = 'multiple-entry';
 }
 
 export class FormPage {

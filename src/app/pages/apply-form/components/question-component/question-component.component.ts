@@ -10,5 +10,29 @@ import { QuestionBase } from 'src/app/interfaces/question';
 export class QuestionComponent {
   @Input() question!: QuestionBase<string>;
   @Input() form!: FormGroup;
-  get isValid() { return this.form.controls[this.question.key].valid; }
+  get isValid() {
+
+    if (this.question.controlType === 'olResult') return true;
+    return this.form.controls[this.question.key].valid;
+  }
+
+  grades = [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+  ]
+
+  addEntry() {
+    if (this.question.answers) {
+
+      this.question.answers = ([
+        ...this.question.answers!,
+        this.question.questions!
+      ]);
+
+
+    }
+  }
 }
