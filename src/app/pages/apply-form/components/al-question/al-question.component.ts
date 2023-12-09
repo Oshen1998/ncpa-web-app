@@ -23,14 +23,12 @@ export class AlQuestionComponent {
 
 
   getFormGroup(key: string): FormGroup {
-    console.log((this.form.controls['alResult'] as FormGroup).controls['stream'])
     return this.form.controls['alResult'] as FormGroup;
   }
 
 
 
   getSubjects() {
-    console.log(this.form?.controls);
     if (this.selectedStream === "") return [];
 
     const stream = this.streams.find(stream => stream.key === this.selectedStream);
