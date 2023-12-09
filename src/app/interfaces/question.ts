@@ -8,7 +8,6 @@ export class QuestionBase<T> {
     type: string;
     options: { key: string, value: string }[];
     className: string;
-    isSpecial: boolean;
 
     // used for multiple entry
     questions: QuestionBase<any>[] | undefined;
@@ -27,7 +26,6 @@ export class QuestionBase<T> {
         className?: string;
         questions?: QuestionBase<any>[];
         answers?: QuestionBase<any>[][];
-        isSpecial?: boolean;
     } = {}) {
         this.value = options.value;
         this.key = options.key || '';
@@ -40,7 +38,6 @@ export class QuestionBase<T> {
         this.className = options.className || "col-12";
         this.questions = options.questions;
         this.answers = options.answers || [];
-        this.isSpecial = options.isSpecial ?? false;
     }
 }
 

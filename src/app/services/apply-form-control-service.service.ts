@@ -292,7 +292,6 @@ export class ApplyFormControlServiceService {
             controlType: 'alResult',
             key: 'alResult',
             label: 'A\\L Results',
-            isSpecial: true,
             order: 1,
             questions: [
 
@@ -309,7 +308,6 @@ export class ApplyFormControlServiceService {
             key: 'olResult',
             label: 'O\\L Results',
             order: 1,
-            isSpecial: true,
             questions: [
 
             ]
