@@ -329,3 +329,240 @@ export const ALSubjects = [
 
     },
 ];
+
+
+
+const OLSubjects = [
+
+    {
+        value: "Religion",
+        key: "religion",
+        subjects: [
+            {
+                value: "Buddhism",
+                key: "buddhism",
+            },
+            {
+                value: "Saivanery",
+                key: "saivanery",
+            },
+            {
+                value: "Catholicism",
+                key: "catholicism",
+            },
+            {
+                value: "Christianity",
+                key: "christianity",
+            },
+            {
+                value: "Islam",
+                key: "islam",
+            },
+        ],
+    },
+
+    {
+        value: "Language and Literature",
+        key: "language_and_literature",
+        subjects: [
+            {
+                value: "Sinahala Language and Literature",
+                key: "sinahala_language_and_literature",
+            },
+            {
+                value: "Tamil Language and Literature",
+                key: "Tamil_language_and_literature",
+            },
+        ]
+    },
+
+    {
+        "value": "Category I",
+        "key": "category_i",
+        "subjects": [
+            {
+                "value": "Business and Accounting Studies",
+                "key": "business_and_accounting_studies"
+            },
+            {
+                "value": "Geography",
+                "key": "geography"
+            },
+            {
+                "value": "Civic Education",
+                "key": "civic_education"
+            },
+            {
+                "value": "Entrepreneurship Studies",
+                "key": "entrepreneurship_studies"
+            },
+            {
+                "value": "Second Language (Sinhala)",
+                "key": "second_language_sinhala"
+            },
+            {
+                "value": "Second Language (Tamil)",
+                "key": "second_language_tamil"
+            },
+            {
+                "value": "Pali",
+                "key": "pali"
+            },
+            {
+                "value": "Sanskrit",
+                "key": "sanskrit"
+            },
+            {
+                "value": "French",
+                "key": "french"
+            },
+            {
+                "value": "German",
+                "key": "german"
+            },
+            {
+                "value": "Hindi",
+                "key": "hindi"
+            },
+            {
+                "value": "Japanese",
+                "key": "japanese"
+            },
+            {
+                "value": "Arabic",
+                "key": "arabic"
+            },
+            {
+                "value": "Korean",
+                "key": "korean"
+            },
+            {
+                "value": "Chinese",
+                "key": "chinese"
+            },
+            {
+                "value": "Russian",
+                "key": "russian"
+            }
+        ]
+    },
+
+    {
+        value: "Category II",
+        key: "category_ii",
+        subjects: [
+            {
+                "value": "Music (Oriental)",
+                "key": "music_oriental"
+            },
+            {
+                "value": "Music (Western)",
+                "key": "music_western"
+            },
+            {
+                "value": "Music (Carnatic)",
+                "key": "music_carnatic"
+            },
+            {
+                "value": "Art",
+                "key": "art"
+            },
+            {
+                "value": "Dancing (Oriental)",
+                "key": "dancing_oriental"
+            },
+            {
+                "value": "Dancing (Bharata)",
+                "key": "dancing_bharata"
+            },
+            {
+                "value": "Appreciation of English Literary Texts",
+                "key": "appreciation_english_literary_texts"
+            },
+            {
+                "value": "Appreciation of Sinhala Literary Texts",
+                "key": "appreciation_sinhala_literary_texts"
+            },
+            {
+                "value": "Appreciation of Tamil Literary Texts",
+                "key": "appreciation_tamil_literary_texts"
+            },
+            {
+                "value": "Appreciation of Arabic Literary Texts",
+                "key": "appreciation_arabic_literary_texts"
+            },
+            {
+                "value": "Drama and Theatre (Sinhala)",
+                "key": "drama_and_theatre_sinhala"
+            },
+            {
+                "value": "Drama and Theatre (Tamil)",
+                "key": "drama_and_theatre_tamil"
+            },
+            {
+                "value": "Drama and Theatre (English)",
+                "key": "drama_and_theatre_english"
+            }
+        ]
+    },
+
+    {
+        value: "Category III",
+        key: "category_iii",
+        subjects: [
+            {
+                "value": "Information and Communication Technology",
+                "key": "information_and_communication_technology"
+            },
+            {
+                "value": "Agriculture & Food Technology",
+                "key": "agriculture_and_food_technology"
+            },
+            {
+                "value": "Aquatic Bioresources Technology",
+                "key": "aquatic_bioresources_technology"
+            },
+            {
+                "value": "Art & Crafts",
+                "key": "art_and_crafts"
+            },
+            {
+                "value": "Home Economics",
+                "key": "home_economics"
+            },
+            {
+                "value": "Health & Physical Education",
+                "key": "health_and_physical_education"
+            },
+            {
+                "value": "Communication and Media Studies",
+                "key": "communication_and_media_studies"
+            },
+            {
+                "value": "Design and Construction Technology",
+                "key": "design_and_construction_technology"
+            },
+            {
+                "value": "Design and Mechanical Technology",
+                "key": "design_and_mechanical_technology"
+            },
+            {
+                "value": "Design, Electrical & Electronic Technology",
+                "key": "design_electrical_electronic_technology"
+            },
+            {
+                "value": "Electronic Writing and Shorthand (Sinhala)",
+                "key": "electronic_writing_and_shorthand_sinhala"
+            },
+            {
+                "value": "Electronic Writing and Shorthand (Tamil)",
+                "key": "electronic_writing_and_shorthand_tamil"
+            },
+            {
+                "value": "Electronic Writing and Shorthand (English)",
+                "key": "electronic_writing_and_shorthand_english"
+            }
+        ]
+    },
+
+];

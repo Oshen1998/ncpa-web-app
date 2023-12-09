@@ -17,94 +17,34 @@ export class ApplyFormControlServiceService {
     const group: any = {};
 
     questions.forEach(question => {
-      group[question.key] = question.required ? new FormControl(question.value || '', Validators.required)
-        : new FormControl(question.value || '');
+
+      if (question.controlType === 'alResult') {
+        group[question.key] = new FormGroup({
+          stream: new FormControl(question.value || '', Validators.required),
+          generalKnowledgeGrade: new FormControl(question.value || '', Validators.required),
+          englishGrade: new FormControl(question.value || '', Validators.required),
+          subject1: new FormControl(question.value || '', Validators.required),
+          subject2: new FormControl(question.value || '', Validators.required),
+          subject3: new FormControl(question.value || '', Validators.required),
+          subject1Grade: new FormControl(question.value || '', Validators.required),
+          subject2Grade: new FormControl(question.value || '', Validators.required),
+          subject3Grade: new FormControl(question.value || '', Validators.required),
+        });
+      } else if (question.required) {
+        group[question.key] = new FormControl(question.value || '', Validators.required);
+      } else {
+        group[question.key] = new FormControl(question.value || '');
+      }
+
+      // group[question.key] = question.required ? new FormControl(question.value || '', Validators.required)
+      //   : new FormControl(question.value || '');
+
+
     });
     return new FormGroup(group);
   }
 
   getQuestions() {
-
-    // const personalQuestions: QuestionBase<string>[] = [
-
-    //   new DropdownQuestion({
-    //     key: 'title',
-    //     label: 'Title',
-    //     options: [
-    //       {
-    //         'key': 'mr',
-    //         'value': 'Mr.'
-    //       },
-    //       {
-    //         'key': 'mrs',
-    //         'value': 'Mrs.'
-    //       },
-    //       {
-    //         'key': 'ms',
-    //         'value': 'Ms.'
-    //       },
-
-    //       {
-    //         'key': 'rev',
-    //         'value': 'Rev.'
-    //       }
-    //     ],
-    //     order: 1,
-    //     required: true,
-    //     className: "col-12 col-sm-4"
-    //   }),
-
-    //   new TextboxQuestion({
-    //     key: 'fullName',
-    //     label: 'Name in Full',
-    //     order: 2,
-    //     className: "col-12 col-sm-8"
-    //   }),
-
-    //   new TextboxQuestion({
-    //     key: 'fullNameInitials',
-    //     label: 'Name with Initials',
-    //     type: 'email',
-    //     order: 3,
-    //   }),
-    // ];
-
-    // // user school and university name
-    // const educationalQuestions: QuestionBase<string>[] = [
-
-    //   new TextboxQuestion({
-    //     key: 'schoolName',
-    //     label: 'School Name',
-    //     order: 1,
-    //     className: "col-12 col-sm-6"
-    //   }),
-
-    //   new TextboxQuestion({
-    //     key: 'universityName',
-    //     label: 'University Name',
-    //     order: 2,
-    //     className: "col-12 col-sm-6"
-    //   }),
-
-    // ];
-
-    // const pages = [
-    //   new FormPage(
-    //     {
-    //       key: 'personalDetails',
-    //       title: 'Personal Details',
-    //       questions: personalQuestions
-    //     }
-    //   ),
-
-    //   new FormPage(
-    //     {
-    //       key: 'educationDetails',
-    //       title: 'Education Details',
-    //       questions: educationalQuestions
-    //     }
-    //   ),
-    // ]
 
     const pages = this.getJsonQuestions();
 
@@ -284,21 +224,7 @@ export class ApplyFormControlServiceService {
         ]
       },
 
-      {
-        key: 'educationDetailsAL',
-        title: 'Education Details A\\L Result',
-        questions: [
-          {
-            controlType: 'alResult',
-            key: 'alResult',
-            label: 'A\\L Results',
-            order: 1,
-            questions: [
 
-            ]
-          },
-        ]
-      },
       {
         key: 'educationDetailsOL',
         title: 'Education Details O\\L Result',
@@ -307,6 +233,22 @@ export class ApplyFormControlServiceService {
             controlType: 'olResult',
             key: 'olResult',
             label: 'O\\L Results',
+            order: 1,
+            questions: [
+
+            ]
+          },
+        ]
+      },
+
+      {
+        key: 'educationDetailsAL',
+        title: 'Education Details A\\L Result',
+        questions: [
+          {
+            controlType: 'alResult',
+            key: 'alResult',
+            label: 'A\\L Results',
             order: 1,
             questions: [
 

@@ -25,37 +25,9 @@
         <app-ol-question [form]="form" />
     </div>
 
-
-
     <div *ngSwitchCase="'alResult'" class="col-lg-12">
-        <app-al-question />
+        <app-al-question [form]="form" />
 
     </div>
-
-
 
 </div>
-
-
-
-
-
-
-
-
-
-
-<!-- <div *ngIf="question.controlType === 'multiple-entry'" appearance="outline" class="col-lg-12">
-    <div class="row col-12" style="margin-bottom: 16px;">
-        <mat-label [attr.for]="question.key" class="form-label col-8">{{question.label}}</mat-label>
-        <button class="col-lg-4" mat-button (click)="addEntry()">
-            Add Result
-        </button>
-    </div>
-
-
-    <div *ngFor="let questionGroup of question.answers" class="row col-lg-12">
-        <app-question-component class="{{q.className}}" *ngFor="let q of questionGroup" [question]="q" [form]="form">
-        </app-question-component>
-    </div>
-</div> -->

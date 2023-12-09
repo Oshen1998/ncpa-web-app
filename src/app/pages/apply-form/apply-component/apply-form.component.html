@@ -8,38 +8,8 @@
         <div class="row mt-4">
 
 
-
-            <!-- <app-question-component class="{{question.className}}" *ngFor="let question of questions"
-                [question]="question" [form]="form">
-            </app-question-component> -->
-
-            <!-- <app-form-page [page]="pages![selectedIndex]" [form]="form">
-
-            </app-form-page> -->
-
             <mat-stepper #stepper [orientation]="(stepperOrientation | async)!">
-                <!-- <mat-step [stepControl]="forms[0]" [label]="pages![0].title">
-                    <form [formGroup]="forms[0]">
-                        <app-question-component class="{{question.className}}"
-                            *ngFor="let question of pages![0].questions" [question]="question" [form]="forms[0]">
-                        </app-question-component>
-                        <div>
 
-                            <button mat-button matStepperNext>Next</button>
-                        </div>
-                    </form>
-                </mat-step>
-                <mat-step [stepControl]="forms[1]" [label]="pages![1].title">
-                    <form [formGroup]="forms[1]">
-                        <app-question-component class="{{question.className}}"
-                            *ngFor="let question of pages![1].questions" [question]="question" [form]="forms[1]">
-                        </app-question-component>
-                        <div>
-                            <button mat-button matStepperPrevious>Previous</button>
-                            <button mat-button matStepperNext>Next</button>
-                        </div>
-                    </form>
-                </mat-step> -->
 
                 <mat-step *ngFor="let index of arrayRange(0,forms.length - 1, 1) " [stepControl]="forms[index]"
                     [label]="pages![index].title">
@@ -52,8 +22,7 @@
                             <button mat-button matStepperPrevious [disabled]="index == 0">Previous</button>
                             <button *ngIf="index != forms!.length - 1" mat-button matStepperNext
                                 [disabled]="forms[index].valid">Next</button>
-                            <button *ngIf="index == forms!.length - 1" mat-button [disabled]="!isReadyForSubmit()"
-                                (click)="onSubmit()">Submit</button>
+                            <button *ngIf="index == forms!.length - 1" mat-button (click)="onSubmit()">Submit</button>
 
 
 
@@ -67,26 +36,7 @@
 
 
         </div>
-
-        <!-- <div class=" row d-flex justify-content-center col-lg-12">
-            <button (click)="selectedIndex = selectedIndex - 1;" mat-raised-button color="primary" class="col-4 mt-4"
-                type="submit" [disabled]="selectedIndex == 0">
-                Previous
-            </button>
-            <button *ngIf="selectedIndex < (pages?.length ?? 1) - 1" mat-raised-button color="primary"
-                class="col-4 mt-4" (click)="selectedIndex = selectedIndex + 1;">
-                Next
-            </button>
-            <button *ngIf="selectedIndex == (pages?.length ?? 1) - 1" mat-raised-button color="primary"
-                class="col-4 mt-4" type="submit" [disabled]="!form.valid">
-                Save
-            </button>
-        </div> -->
     </form>
 
 
-
-    <!-- <div *ngIf="payLoad" class="">
-        <strong>Saved the following values</strong><br>{{payLoad}}
-    </div> -->
 </div>

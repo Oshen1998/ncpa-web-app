@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { AbstractControl, FormGroup } from '@angular/forms';
 import { ALSubjects } from 'src/app/interfaces/question';
 @Component({
   selector: 'app-al-question',
@@ -6,6 +7,7 @@ import { ALSubjects } from 'src/app/interfaces/question';
   styleUrls: ['./al-question.component.scss']
 })
 export class AlQuestionComponent {
+  @Input() form!: FormGroup;
   selectedStream: string = "";
 
   grades = [
@@ -19,7 +21,16 @@ export class AlQuestionComponent {
   streams = ALSubjects;
 
 
+
+  getFormGroup(key: string): FormGroup {
+    console.log((this.form.controls['alResult'] as FormGroup).controls['stream'])
+    return this.form.controls['alResult'] as FormGroup;
+  }
+
+
+
   getSubjects() {
+    console.log(this.form?.controls);
     if (this.selectedStream === "") return [];
 
     const stream = this.streams.find(stream => stream.key === this.selectedStream);
@@ -28,5 +39,9 @@ export class AlQuestionComponent {
     return [];
   }
 
+
+  onStreamChanged(event: any) {
+    this.selectedStream = event.value;
+  }
 
 }
