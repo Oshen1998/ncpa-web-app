@@ -106,23 +106,6 @@ export class ApplyFormControlServiceService {
   }
 
   getJsonQuestions(): any {
-    return [
-      {
-        key: 'educationDetailsOL',
-        title: 'Education Details O\\L Result',
-        questions: [
-          {
-            controlType: 'olResult',
-            key: 'olResult',
-            label: 'O\\L Results',
-            order: 1,
-            questions: [
-
-            ]
-          },
-        ]
-      },
-    ];
 
     const pages = [
 

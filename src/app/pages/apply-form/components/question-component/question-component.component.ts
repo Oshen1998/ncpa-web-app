@@ -12,7 +12,6 @@ export class QuestionComponent {
   @Input() form!: FormGroup;
   get isValid() {
 
-    // if (this.question.controlType === 'olResult') return true;
     return this.form.controls[this.question.key].valid;
   }
 }
