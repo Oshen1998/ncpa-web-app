@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { OLSubjects } from 'src/app/interfaces/question';
 
 @Component({
   selector: 'app-ol-question',
@@ -17,4 +18,14 @@ export class OlQuestionComponent {
     'D',
     'E',
   ]
+
+  olSubjects = OLSubjects
+
+  getFormGroup(key: string): FormGroup {
+    return this.form.controls['olResult'] as FormGroup;
+  }
+
+  getSubjects(key: string) {
+    return this.olSubjects.find(subject => subject.key === key)!
+  }
 }

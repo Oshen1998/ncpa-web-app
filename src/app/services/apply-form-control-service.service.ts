@@ -30,7 +30,36 @@ export class ApplyFormControlServiceService {
           subject2Grade: new FormControl(question.value || '', Validators.required),
           subject3Grade: new FormControl(question.value || '', Validators.required),
         });
-      } else if (question.required) {
+      } else if (question.controlType == 'olResult') {
+        group[question.key] = new FormGroup({
+          religion: new FormControl(question.value || '', Validators.required),
+          'language': new FormControl('', Validators.required),
+          'category_i': new FormControl('', Validators.required),
+          'category_ii': new FormControl('', Validators.required),
+          'category_iii': new FormControl('', Validators.required),
+          // 'grade_religion': new FormControl('', Validators.required),
+          // 'grade_language': new FormControl('', Validators.required),
+          // 'grade_english': new FormControl('', Validators.required),
+          // 'grade_mathematics': new FormControl('', Validators.required),
+          // 'grade_science': new FormControl('', Validators.required),
+          // 'grade_history': new FormControl('', Validators.required),
+          // 'grade_category_i': new FormControl('', Validators.required),
+          // 'grade_category_ii': new FormControl('', Validators.required),
+          // 'grade_category_iii': new FormControl('', Validators.required),
+          'religionGrade': new FormControl('', Validators.required),
+          'languageGrade': new FormControl('', Validators.required),
+          'englishGrade': new FormControl('', Validators.required),
+          'mathematicsGrade': new FormControl('', Validators.required),
+          'scienceGrade': new FormControl('', Validators.required),
+          'historyGrade': new FormControl('', Validators.required),
+          'category_iGrade': new FormControl('', Validators.required),
+          'category_iiGrade': new FormControl('', Validators.required),
+          'category_iiiGrade': new FormControl('', Validators.required),
+        })
+      }
+
+
+      else if (question.required) {
         group[question.key] = new FormControl(question.value || '', Validators.required);
       } else {
         group[question.key] = new FormControl(question.value || '');
@@ -77,6 +106,24 @@ export class ApplyFormControlServiceService {
   }
 
   getJsonQuestions(): any {
+    return [
+      {
+        key: 'educationDetailsOL',
+        title: 'Education Details O\\L Result',
+        questions: [
+          {
+            controlType: 'olResult',
+            key: 'olResult',
+            label: 'O\\L Results',
+            order: 1,
+            questions: [
+
+            ]
+          },
+        ]
+      },
+    ];
+
     const pages = [
 
 

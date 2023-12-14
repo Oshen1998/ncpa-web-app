@@ -332,7 +332,7 @@ export const ALSubjects = [
 
 
 
-const OLSubjects = [
+export const OLSubjects = [
 
     {
         value: "Religion",
