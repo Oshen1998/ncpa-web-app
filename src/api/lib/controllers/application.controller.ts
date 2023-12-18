@@ -13,7 +13,7 @@ import {userbasicdataValidationSchema,OLExaminationValidationSchema,ALExaminatio
 import {IApplicationData,IOLExamination,IALExamination,IDegree, IMasterDegree,IProfessional,IWorkingExperience} from '../models/interface/ApplicationData.interface'
 import ApplicatinpersonalDataServis from '../services/Application/ApplicationPersonalDataData.servis'
 import OLExaminationServis from '../services/Application/OLExamition.servis'
-import ALExaminationServis from '../services/Application/ALExamition.servid'
+import ALExaminationServis from '../services/Application/ALExamition.servis'
 import DegreeServis from '../services/Application/Degree.servis';
 import MasterDegreeServis from '../services/Application/MasterDegree.servis';
 import ProfessionalServis from '../services/Application/ProfessionaData.servies'
@@ -53,14 +53,14 @@ export class ApplicationController{
                 return duplicateDocuments(res);
             }
 
-            const createduser = await this.userdata_servis.AddData(user_params);
-            const { nic, _id } = createduser;
+            const ApplicantPersonalData = await this.userdata_servis.AddData(user_params);
+            const { nic, _id } = ApplicantPersonalData;
 
-            if(createduser){
-                successResponse('Successfully Created!', _id, res)
+            if(ApplicantPersonalData){
+                successResponse('Applicant Personal Data Successfully Add!', _id, res)
             }else {
                 failureResponse(
-                  'Something went wrong! (When user adding)',
+                  'Something went wrong! (When Applicant Personal Data adding)',
                   res
                 );
             }
@@ -90,26 +90,26 @@ export class ApplicationController{
                 Basket3 :req.body.Basket3,           
             };
 
-            const isExist1 = await this.userdata_servis.recordExistsById(user_params.ApplicantId);
+            const isApplicantExist = await this.userdata_servis.recordExistsById(user_params.ApplicantId);
             
-            if(isExist1){
+            if(isApplicantExist){
                 return forbiddenError(res,"Applicant Parsanal Data not Found");
             }
 
-            const isExist2 = await this.olExamination_servis.findByIndex(user_params.index_no);
+            const isExist = await this.olExamination_servis.findByIndex(user_params.index_no);
             
-            if(isExist2){
+            if(isExist){
                 return duplicateDocuments(res);
             }
 
-            const createduser = await this.olExamination_servis.AddData(user_params);
-            const { ApplicantId } = createduser;
+            const addedOLdata = await this.olExamination_servis.AddData(user_params);
+            const { ApplicantId } = addedOLdata;
 
-            if(createduser){
-                successResponse('Successfully Created!', ApplicantId, res)
+            if(addedOLdata){
+                successResponse('Applicant OL Examination Result Successfully Add!', ApplicantId, res)
             }else {
                 failureResponse(
-                  'Something went wrong! (When user adding)',
+                  'Something went wrong! (When Applicant OL Examination Result adding)',
                   res
                 );
             }
@@ -137,26 +137,26 @@ export class ApplicationController{
                 sub3Grade :req.body.sub3Grade,           
             };
 
-            const isExist1 = await this.userdata_servis.recordExistsById(user_params.ApplicantId);
+            const isApplicantExist = await this.userdata_servis.recordExistsById(user_params.ApplicantId);
             
-            if(isExist1){
+            if(isApplicantExist){
                 return forbiddenError(res,"Applicant Parsanal Data not Found");
             }
 
-            const isExist2 = await this.alExamination_servis.findByIndex(user_params.index_no);
+            const isExist = await this.alExamination_servis.findByIndex(user_params.index_no);
             
-            if(isExist2){
+            if(isExist){
                 return duplicateDocuments(res);
             }
 
-            const createduser = await this.alExamination_servis.AddData(user_params);
-            const { ApplicantId } = createduser;
+            const addedALdata = await this.alExamination_servis.AddData(user_params);
+            const { ApplicantId } = addedALdata;
 
-            if(createduser){
-                successResponse('Successfully Created!', ApplicantId, res)
+            if(addedALdata){
+                successResponse('Applicant AL Examination Result Successfully Add!', ApplicantId, res)
             }else {
                 failureResponse(
-                  'Something went wrong! (When user adding)',
+                  'Something went wrong! (When Applicant AL Examination Result adding)',
                   res
                 );
             }
@@ -180,19 +180,19 @@ export class ApplicationController{
                 EffectiveDate:req.body.EffectiveDate,           
             };
 
-            const isExist = await this.userdata_servis.recordExistsById(user_params.ApplicantId);
+            const isApplicantExist = await this.userdata_servis.recordExistsById(user_params.ApplicantId);
             
-            if(isExist){
+            if(isApplicantExist){
                 return forbiddenError(res,"Applicant Parsanal Data not Found");
             }
-            const createduser = await this.degree_servis.AddData(user_params);
-            const { ApplicantId } = createduser;
+            const addedDegreedata = await this.degree_servis.AddData(user_params);
+            const { ApplicantId } = addedDegreedata;
 
-            if(createduser){
-                successResponse('Successfully Created!', ApplicantId, res)
+            if(addedDegreedata){
+                successResponse('Applicant Degree Data Successfully Add!', ApplicantId, res)
             }else {
                 failureResponse(
-                  'Something went wrong! (When user adding)',
+                  'Something went wrong! (When Applicant Degree Data adding)',
                   res
                 );
             }
@@ -215,20 +215,20 @@ export class ApplicationController{
                 EffectiveDate:req.body.EffectiveDate,           
             };
 
-            const isExist = await this.userdata_servis.recordExistsById(user_params.ApplicantId);
+            const isApplicantExist = await this.userdata_servis.recordExistsById(user_params.ApplicantId);
             
-            if(isExist){
+            if(isApplicantExist){
                 return forbiddenError(res,"Applicant Parsanal Data not Found");
             }
 
-            const createduser = await this.masterdegree_servis.AddData(user_params);
-            const { ApplicantId } = createduser;
+            const addedMasterDegreedata = await this.masterdegree_servis.AddData(user_params);
+            const { ApplicantId } = addedMasterDegreedata;
 
-            if(createduser){
-                successResponse('Successfully Created!', ApplicantId, res)
+            if(addedMasterDegreedata){
+                successResponse('Applicant Master Degree Data Successfully Add!', ApplicantId, res)
             }else {
                 failureResponse(
-                  'Something went wrong! (When user adding)',
+                  'Something went wrong! (When Applicant Master Degree Data adding)',
                   res
                 );
             }
@@ -245,27 +245,27 @@ export class ApplicationController{
         if(isValid){
             const user_params:IProfessional = {
                 ApplicantId:req.body.ApplicantId,
-                dtype:req.body.dtype,
+                Diplomatype:req.body.Diplomatype,
                 Field:req.body.Field,
                 Institution:req.body.Institution,
                 AwardDate:req.body.AwardDate,
                 Duration:req.body.Duration,           
             };
 
-            const isExist = await this.userdata_servis.recordExistsById(user_params.ApplicantId);
+            const isApplicantExist = await this.userdata_servis.recordExistsById(user_params.ApplicantId);
             
-            if(isExist){
+            if(isApplicantExist){
                 return forbiddenError(res,"Applicant Parsanal Data not Found");
             }
 
-            const createduser = await this.professional_servis.AddData(user_params);
-            const { ApplicantId } = createduser;
+            const addedProfessionaldata = await this.professional_servis.AddData(user_params);
+            const { ApplicantId } = addedProfessionaldata;
 
-            if(createduser){
-                successResponse('Successfully Created!', ApplicantId, res)
+            if(addedProfessionaldata){
+                successResponse('Applicant Professional Data Successfully Add!', ApplicantId, res)
             }else {
                 failureResponse(
-                  'Something went wrong! (When user adding)',
+                  'Something went wrong! (When Applicant Professional Data adding)',
                   res
                 );
             }
@@ -288,20 +288,20 @@ export class ApplicationController{
                 EndDate:req.body.EndDate,           
             };
 
-            const isExist = await this.userdata_servis.recordExistsById(user_params.ApplicantId);
+            const isApplicantExist = await this.userdata_servis.recordExistsById(user_params.ApplicantId);
             
-            if(isExist){
+            if(isApplicantExist){
                 return forbiddenError(res,"Applicant Parsanal Data not Found");
             }
 
-            const createduser = await this.WorkingExperience_Servis.AddData(user_params);
-            const { ApplicantId } = createduser;
+            const addedWorkingExperienceData = await this.WorkingExperience_Servis.AddData(user_params);
+            const { ApplicantId } = addedWorkingExperienceData;
 
-            if(createduser){
-                successResponse('Successfully Created!', ApplicantId, res)
+            if(addedWorkingExperienceData){
+                successResponse('Applicant Working Experience Data Successfully Add!', ApplicantId, res)
             }else {
                 failureResponse(
-                  'Something went wrong! (When user adding)',
+                  'Something went wrong! (When Applicant Working Experience Data adding)',
                   res
                 );
             }

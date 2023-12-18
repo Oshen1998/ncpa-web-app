@@ -1,5 +1,5 @@
 import mongoose, { Types } from 'mongoose';
-import { DEGREETYPES,GENDER,SALUTATION,CIVILL_STATUS,GRADE,STREAM,STETAS,GRADEOFDEGREE } from '../../constants/index';
+import { DEGREETYPES,GENDER,SALUTATION,CIVILL_STATUS,GRADE,STREAM,STATUS,GRADEOFDEGREE } from '../../constants/index';
 
 export interface IApplicationData{
     _id?: Types.ObjectId;
@@ -14,7 +14,7 @@ export interface IApplicationData{
     permanent_address : string;
     number : number;
     email:string;
-    states:STETAS;  
+    states:STATUS;  
 }
 
 export interface IOLExamination{
@@ -69,7 +69,7 @@ export interface IMasterDegree{
 export interface IProfessional{
     _id?:Types.ObjectId;
     ApplicantId: Types.ObjectId;
-    dtype: DEGREETYPES,
+    Diplomatype: DEGREETYPES,
     Field : String;
     Institution : String;
     AwardDate:Date;

@@ -20,7 +20,7 @@ const schema = new Schema<IDegreeDataModel>({
     },
     grade:{
         type:String,
-        enum:[GRADEOFDEGREE.First_Class_Honours,GRADEOFDEGREE.Lower_Second_Class_Honours,GRADEOFDEGREE.Third_Class_Honours,GRADEOFDEGREE.Upper_Second_Class_Honours],
+        enum:[GRADEOFDEGREE.First_Class_Honours,GRADEOFDEGREE.Lower_Second_Class_Honours,GRADEOFDEGREE.Genaral_Honours,GRADEOFDEGREE.Upper_Second_Class_Honours],
         required: true,
     },
     AwardDate:{

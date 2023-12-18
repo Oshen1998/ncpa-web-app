@@ -10,7 +10,7 @@ const schema = new Schema<IProfessionalDataModel>({
         type:'ObjectID',
         required: true,
     },
-    dtype:{
+    Diplomatype:{
         type:String,
         enum:[DEGREETYPES.Advance_Diploma,DEGREETYPES.Certificate,DEGREETYPES.Diploma,DEGREETYPES.NVQ_Level],
         required: true,

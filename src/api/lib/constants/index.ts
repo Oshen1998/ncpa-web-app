@@ -15,13 +15,13 @@ export const enum SALUTATION{
 }
 
 export const enum CIVILL_STATUS{
-  Married = "MR",
+  MARRIED = "MR",
   SINGLE = "S",
 }
 
-export const enum STETAS{
+export const enum STATUS{
   External = "Ex",
-  Internal = "Ïn",
+  Internal = "In",
 }
 
 export const enum GRADE{
@@ -43,12 +43,12 @@ export const enum GRADEOFDEGREE{
   First_Class_Honours = 'Frist',
   Upper_Second_Class_Honours = 'UpperSecond',
   Lower_Second_Class_Honours = 'LowerSecond',
-  Third_Class_Honours = 'Third'
+  Genaral_Honours = 'Genaral'
 }
 
 export const enum DEGREETYPES{
-  Advance_Diploma = 'Ad',
-  Diploma = 'D',
+  Advance_Diploma = 'Ad.Dip',
+  Diploma = 'Dip',
   NVQ_Level = 'Nvq',
   Certificate = 'Certificate'
 }
