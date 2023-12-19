@@ -137,6 +137,71 @@ export const ALSubjects = [
     },
 
     {
+        value: "Commerce",
+        key: "commerce",
+        subjects: [
+            {
+                value: "Accounting",
+                key: "accounting",
+            },
+            {
+                value: "Business Studies",
+                key: "business_studies",
+            },
+            {
+                value: "Economics",
+                key: "economics",
+            },
+
+            {
+                value: "Busienss Statistics",
+                key: "busienss_statistics",
+            },
+            {
+                value: "Geography",
+                key: "geography",
+            },
+            {
+                value: "Political Science",
+                key: "political_science",
+            },
+            {
+                value: "History",
+                key: "history",
+            },
+            {
+                value: "Logic and Scientific Method",
+                key: "logic_and_scientific_method",
+            },
+            {
+                value: "English",
+                key: "english",
+            },
+            {
+                value: "German",
+                key: "german",
+            },
+            {
+                value: "French",
+                key: "french",
+            },
+            {
+                value: "Agricultural Science",
+                key: "agricultural_science",
+            },
+            {
+                value: "Combined Mathematics",
+                key: "combined_mathematics",
+            },
+            {
+                value: "Information and Communication Technology",
+                key: "information_and_communication_technology",
+            },
+        ],
+
+    },
+
+    {
         value: "Technology",
         key: "technology",
         subjects: [
@@ -162,8 +227,8 @@ export const ALSubjects = [
     },
 
     {
-        value: "Commerce",
-        key: "commerce",
+        value: "Arts",
+        key: "arts",
         subjects: [
             {
                 "value": "Arabic",
