@@ -3,33 +3,29 @@
     <div class="row col-12" style="margin-bottom: 16px;   align-items: center;">
 
         <mat-form-field class="col-lg-6" appearance="outline">
+            <mat-select value="generalKnowladge">
+                <mat-option value="generalKnowladge">General Knowledge </mat-option>
+            </mat-select>
 
-            <mat-select value="buddhism">
+        </mat-form-field>
+        <mat-form-field class="col-lg-6" appearance="outline">
+            <mat-label>Marks</mat-label>
 
-                <mat-option value="buddhism">General Knowledge </mat-option>
+                <input matInput type="number" min="0" max="100" formControlName="generalKnowledgeGrade">
+        </mat-form-field>
+
+        <mat-form-field class="col-lg-6" appearance="outline">
+
+            <mat-select value="generalEnglish">
+
+                <mat-option value="generalEnglish">General English </mat-option>
 
             </mat-select>
         </mat-form-field>
         <mat-form-field class="col-lg-6" appearance="outline">
             <mat-label>Grade</mat-label>
 
-            <select matNativeControl formControlName="generalKnowledgeGrade">
-                <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
-            </select>
-        </mat-form-field>
-
-        <mat-form-field class="col-lg-6" appearance="outline">
-
-            <mat-select value="buddhism">
-
-                <mat-option value="buddhism">English </mat-option>
-
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field class="col-lg-6" appearance="outline">
-            <mat-label>Grade</mat-label>
-
-            <select matNativeControl formControlName="englishGrade">
+            <select matNativeControl formControlName="generalEnglishGrade">
                 <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
             </select>
         </mat-form-field>
