@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AlResultQuestion, DropdownQuestion, FormPage, MultipleEntryQuestion, OLResultQuestion, QuestionBase, TextboxQuestion, DegreeQuestion, MastersQuestion, ProfessionalQuestion, WorkQuestion } from '../interfaces/question';
+import { AlResultQuestion, DropdownQuestion, FormPage, MultipleEntryQuestion, OLResultQuestion, QuestionBase, TextboxQuestion, DegreeQuestion, MastersQuestion, ProfessionalQuestion, WorkQuestion, OtherQuestion } from '../interfaces/question';
 import { of } from 'rxjs';
 
 
@@ -96,6 +96,14 @@ export class ApplyFormControlServiceService {
         })
       }
 
+      else if (question.controlType == 'other') {
+        group[question.key] = new FormGroup({
+          'extraCurricular': new FormControl(''),
+          'otherAchievements': new FormControl('' ),
+          'otherParticulars': new FormControl(''),
+        })
+      }
+
       else if (question.required) {
         group[question.key] = new FormControl(question.value || '', Validators.required);
       } else {
@@ -138,6 +146,9 @@ export class ApplyFormControlServiceService {
         }
         else if (question.controlType === 'work') {
           return new WorkQuestion(question);
+        }
+        else if (question.controlType === 'other') {
+          return new OtherQuestion(question);
         }
 
         else {
@@ -400,6 +411,21 @@ export class ApplyFormControlServiceService {
         ]
       },
 
+      {
+        key: 'other',
+        title: 'Other Details',
+        questions: [
+          {
+            controlType: 'other',
+            key: 'other',
+            label: 'Other Details',
+            order: 1,
+            questions: [
+
+            ]
+          },
+        ]
+      },
 
     ];
 

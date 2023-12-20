@@ -1,0 +1,17 @@
+<form [formGroup]="getFormGroup('other')">
+  <div class="row col-12" style="margin-bottom: 16px; align-items: center">
+    <mat-form-field class="col-lg-12" appearance="outline">
+      <mat-label> Extra Curricular Activities </mat-label>
+      <textarea matInput formControlName="extraCurricular"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-12" appearance="outline">
+      <mat-label> Other Achievements </mat-label>
+      <textarea matInput formControlName="otherAchievements"></textarea>
+    </mat-form-field>
+    <mat-form-field class="col-lg-12" appearance="outline">
+      <mat-label> Other Particulars </mat-label>
+      <textarea matInput formControlName="otherParticulars"></textarea>
+    </mat-form-field>
+  </div>
+</form>
