@@ -68,6 +68,10 @@ export class ProfessionalQuestion extends QuestionBase<string> {
     override controlType = 'professional';
 }
 
+export class WorkQuestion extends QuestionBase<string> {
+    override controlType = 'work';
+}
+
 export class MultipleEntryQuestion extends QuestionBase<string> {
     override controlType = 'multiple-entry';
 }
