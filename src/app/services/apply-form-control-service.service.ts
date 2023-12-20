@@ -20,6 +20,8 @@ export class ApplyFormControlServiceService {
 
       if (question.controlType === 'alResult') {
         group[question.key] = new FormGroup({
+          'alIndexNo': new FormControl('', Validators.required),
+          'alExamYear': new FormControl('', Validators.required),
           stream: new FormControl(question.value || '', Validators.required),
           generalKnowledgeGrade: new FormControl(question.value || '', Validators.required),
           generalEnglishGrade: new FormControl(question.value || '', Validators.required),
@@ -32,6 +34,8 @@ export class ApplyFormControlServiceService {
         });
       } else if (question.controlType == 'olResult') {
         group[question.key] = new FormGroup({
+          'olIndexNo': new FormControl('', Validators.required),
+          'olExamYear': new FormControl('', Validators.required),
           religion: new FormControl(question.value || '', Validators.required),
           'language': new FormControl('', Validators.required),
           'category_i': new FormControl('', Validators.required),

@@ -3,6 +3,16 @@
     <div class="row col-12" style="margin-bottom: 16px;   align-items: center;">
 
         <mat-form-field class="col-lg-6" appearance="outline">
+            <mat-label>Index Number</mat-label>
+            <input matInput type="text" formControlName="alIndexNo" />
+          </mat-form-field>
+      
+          <mat-form-field class="col-lg-6" appearance="outline">
+            <mat-label>GCE AL Exam Year </mat-label>
+            <input matInput type="number" min="1900" formControlName="alExamYear" />
+          </mat-form-field>
+
+        <mat-form-field class="col-lg-6" appearance="outline">
             <mat-select value="generalKnowladge">
                 <mat-option value="generalKnowladge">General Knowledge </mat-option>
             </mat-select>
@@ -10,7 +20,6 @@
         </mat-form-field>
         <mat-form-field class="col-lg-6" appearance="outline">
             <mat-label>Marks</mat-label>
-
                 <input matInput type="number" min="0" max="100" formControlName="generalKnowledgeGrade">
         </mat-form-field>
 
@@ -26,6 +35,7 @@
             <mat-label>Grade</mat-label>
 
             <select matNativeControl formControlName="generalEnglishGrade">
+                <option value="" disabled selected> </option>
                 <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
             </select>
         </mat-form-field>
@@ -37,7 +47,6 @@
         <mat-form-field class="col-12" appearance="outline">
             <mat-label>Stream</mat-label>
             <mat-select formControlName="stream" (selectionChange)="onStreamChanged($event)">
-
                 <mat-option *ngFor="let stream of streams" [value]="stream.key">{{stream.value}} </mat-option>
 
             </mat-select>
@@ -55,7 +64,7 @@
             <mat-form-field class="col-lg-6" appearance="outline">
                 <mat-label>Subject 1</mat-label>
                 <mat-select formControlName="subject1">
-
+                    <option value="" disabled selected> </option>
                     <mat-option *ngFor="let stream of getSubjects()" [value]="stream.key">{{stream.value}} </mat-option>
 
                 </mat-select>
@@ -64,6 +73,7 @@
                 <mat-label>Grade</mat-label>
 
                 <select matNativeControl formControlName="subject1Grade">
+                    <option value="" disabled selected> </option>
                     <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
                 </select>
             </mat-form-field>
@@ -71,7 +81,7 @@
             <mat-form-field class="col-lg-6" appearance="outline">
                 <mat-label>Subject 2</mat-label>
                 <mat-select formControlName="subject2">
-
+                    <option value="" disabled selected> </option>
                     <mat-option *ngFor="let stream of getSubjects()" [value]="stream.key">{{stream.value}} </mat-option>
 
                 </mat-select>
@@ -80,6 +90,7 @@
                 <mat-label>Grade</mat-label>
 
                 <select matNativeControl formControlName="subject2Grade">
+                    <option value="" disabled selected> </option>
                     <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
                 </select>
             </mat-form-field>
@@ -87,7 +98,7 @@
             <mat-form-field class="col-lg-6" appearance="outline">
                 <mat-label>Subject 3</mat-label>
                 <mat-select formControlName="subject3">
-
+                    <option value="" disabled selected> </option>
                     <mat-option *ngFor="let stream of getSubjects()" [value]="stream.key">{{stream.value}} </mat-option>
 
                 </mat-select>
@@ -96,6 +107,7 @@
                 <mat-label>Grade</mat-label>
 
                 <select matNativeControl formControlName="subject3Grade">
+                    <option value="" disabled selected> </option>
                     <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
                 </select>
             </mat-form-field>

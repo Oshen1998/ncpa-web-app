@@ -1,175 +1,208 @@
 <form [formGroup]="getFormGroup('olResult')">
-    <div class="row col-12" style="margin-bottom: 16px; align-items: center;">
+  <div class="row col-12" style="margin-bottom: 16px; align-items: center">
+    <mat-form-field class="col-lg-6" appearance="outline">
+      <mat-label>Index Number</mat-label>
+      <input matInput type="text" formControlName="olIndexNo" />
+    </mat-form-field>
 
-        <mat-form-field class="col-lg-6" appearance="outline">
-            <mat-label>Religion</mat-label>
-            <mat-select matNativeControl formControlName="religion">
+    <mat-form-field class="col-lg-6" appearance="outline">
+      <mat-label>GCE OL Exam Year </mat-label>
+      <input matInput type="number" min="1900" formControlName="olExamYear" />
+    </mat-form-field>
 
-                <mat-option *ngFor=" let subject of getSubjects('religion').subjects" [value]="subject.key">
-                    {{subject.value}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field class="col-lg-6" appearance="outline">
-            <mat-label>Grade</mat-label>
+    <mat-form-field class="col-lg-6" appearance="outline">
+      <mat-label>Religion</mat-label>
+      <mat-select matNativeControl formControlName="religion">
+        <mat-option
+          *ngFor="let subject of getSubjects('religion').subjects"
+          [value]="subject.key"
+        >
+          {{ subject.value }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="col-lg-6" appearance="outline">
+      <mat-label>Grade</mat-label>
 
-            <select matNativeControl formControlName="religionGrade">
-                <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
-            </select>
-        </mat-form-field>
-    </div>
-    <div class="row col-12" style="margin-bottom: 16px; align-items: center;">
+      <select matNativeControl formControlName="religionGrade">
+        <option value="" disabled selected></option>
+        <option *ngFor="let grade of grades" [value]="grade">
+          {{ grade }}
+        </option>
+      </select>
+    </mat-form-field>
+  </div>
+  <div class="row col-12" style="margin-bottom: 16px; align-items: center">
+    <mat-form-field class="col-lg-6" appearance="outline">
+      <mat-label>Language</mat-label>
+      <mat-select matNativeControl formControlName="religion">
+        <option value="" disabled selected></option>
+        <mat-option
+          *ngFor="
+            let subject of getSubjects('language_and_literature').subjects
+          "
+          [value]="subject.key"
+        >
+          {{ subject.value }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="col-lg-6" appearance="outline">
+      <mat-label>Grade</mat-label>
 
-        <mat-form-field class="col-lg-6" appearance="outline">
-            <mat-label>Language</mat-label>
-            <mat-select matNativeControl formControlName="religion">
+      <select matNativeControl formControlName="languageGrade">
+        <option value="" disabled selected></option>
+        <option *ngFor="let grade of grades" [value]="grade">
+          {{ grade }}
+        </option>
+      </select>
+    </mat-form-field>
+  </div>
+  <div class="row col-12" style="margin-bottom: 16px; align-items: center">
+    <mat-form-field class="col-lg-6" appearance="outline">
+      <mat-select value="english">
+        <mat-option value="english">English </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="col-lg-6" appearance="outline">
+      <mat-label>Grade</mat-label>
 
-                <mat-option *ngFor="let subject of getSubjects('language_and_literature').subjects"
-                    [value]="subject.key">
-                    {{subject.value}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field class="col-lg-6" appearance="outline">
-            <mat-label>Grade</mat-label>
+      <select matNativeControl formControlName="englishGrade">
+        <option value="" disabled selected></option>
+        <option *ngFor="let grade of grades" [value]="grade">
+          {{ grade }}
+        </option>
+      </select>
+    </mat-form-field>
+  </div>
+  <div class="row col-12" style="margin-bottom: 16px; align-items: center">
+    <mat-form-field class="col-lg-6" appearance="outline">
+      <mat-select value="english">
+        <mat-option value="english">Mathematics </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="col-lg-6" appearance="outline">
+      <mat-label>Grade</mat-label>
 
-            <select matNativeControl formControlName="languageGrade">
-                <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
-            </select>
-        </mat-form-field>
-    </div>
-    <div class="row col-12" style="margin-bottom: 16px; align-items: center;">
+      <select matNativeControl formControlName="mathematicsGrade">
+        <option value="" disabled selected></option>
+        <option *ngFor="let grade of grades" [value]="grade">
+          {{ grade }}
+        </option>
+      </select>
+    </mat-form-field>
+  </div>
+  <div class="row col-12" style="margin-bottom: 16px; align-items: center">
+    <mat-form-field class="col-lg-6" appearance="outline">
+      <mat-select value="english">
+        <mat-option value="english">History </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="col-lg-6" appearance="outline">
+      <mat-label>Grade</mat-label>
+      <select matNativeControl formControlName="historyGrade">
+        <option value="" disabled selected></option>
+        <option *ngFor="let grade of grades" [value]="grade">
+          {{ grade }}
+        </option>
+      </select>
+    </mat-form-field>
+  </div>
+  <div class="row col-12" style="margin-bottom: 16px; align-items: center">
+    <mat-form-field class="col-lg-6" appearance="outline">
+      <mat-select value="english">
+        <mat-option value="english">Science </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="col-lg-6" appearance="outline">
+      <mat-label>Grade</mat-label>
 
-        <mat-form-field class="col-lg-6" appearance="outline">
+      <select matNativeControl formControlName="scienceGrade">
+        <option value="" disabled selected></option>
+        <option *ngFor="let grade of grades" [value]="grade">
+          {{ grade }}
+        </option>
+      </select>
+    </mat-form-field>
+  </div>
 
-            <mat-select value="english">
+  <div class="row col-12" style="margin-bottom: 16px; align-items: center">
+    <mat-form-field class="col-lg-6" appearance="outline">
+      <mat-label>Category I</mat-label>
+      <mat-select matNativeControl formControlName="category_i">
+        <option value="" disabled selected></option>
 
-                <mat-option value="english">English </mat-option>
+        <mat-option
+          *ngFor="let subject of getSubjects('category_i').subjects"
+          [value]="subject.key"
+        >
+          {{ subject.value }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="col-lg-6" appearance="outline">
+      <mat-label>Grade</mat-label>
 
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field class="col-lg-6" appearance="outline">
-            <mat-label>Grade</mat-label>
+      <select matNativeControl formControlName="category_iGrade">
+        <option value="" disabled selected></option>
 
-            <select matNativeControl formControlName="englishGrade">
-                <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
-            </select>
-        </mat-form-field>
-    </div>
-    <div class="row col-12" style="margin-bottom: 16px; align-items: center;">
+        <option *ngFor="let grade of grades" [value]="grade">
+          {{ grade }}
+        </option>
+      </select>
+    </mat-form-field>
+  </div>
 
-        <mat-form-field class="col-lg-6" appearance="outline">
+  <div class="row col-12" style="margin-bottom: 16px; align-items: center">
+    <mat-form-field class="col-lg-6" appearance="outline">
+      <mat-label>Category II</mat-label>
+      <mat-select matNativeControl formControlName="category_ii">
+        <option value="" disabled selected></option>
 
-            <mat-select value="english">
+        <mat-option
+          *ngFor="let subject of getSubjects('category_ii').subjects"
+          [value]="subject.key"
+        >
+          {{ subject.value }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="col-lg-6" appearance="outline">
+      <mat-label>Grade</mat-label>
 
-                <mat-option value="english">Mathematics </mat-option>
+      <select matNativeControl formControlName="category_iiGrade">
+        <option value="" disabled selected></option>
 
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field class="col-lg-6" appearance="outline">
-            <mat-label>Grade</mat-label>
+        <option *ngFor="let grade of grades" [value]="grade">
+          {{ grade }}
+        </option>
+      </select>
+    </mat-form-field>
+  </div>
 
-            <select matNativeControl formControlName="mathematicsGrade">
-                <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
-            </select>
-        </mat-form-field>
-    </div>
-    <div class="row col-12" style="margin-bottom: 16px; align-items: center;">
+  <div class="row col-12" style="margin-bottom: 16px; align-items: center">
+    <mat-form-field class="col-lg-6" appearance="outline">
+      <mat-label>Category III</mat-label>
+      <mat-select matNativeControl formControlName="category_iii">
+        <option value="" disabled selected></option>
 
-        <mat-form-field class="col-lg-6" appearance="outline">
+        <mat-option
+          *ngFor="let subject of getSubjects('category_iii').subjects"
+          [value]="subject.key"
+        >
+          {{ subject.value }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="col-lg-6" appearance="outline">
+      <mat-label>Grade</mat-label>
 
-            <mat-select value="english">
-
-                <mat-option value="english">History </mat-option>
-
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field class="col-lg-6" appearance="outline">
-            <mat-label>Grade</mat-label>
-
-            <select matNativeControl formControlName="historyGrade">
-                <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
-            </select>
-        </mat-form-field>
-    </div>
-    <div class="row col-12" style="margin-bottom: 16px; align-items: center;">
-
-        <mat-form-field class="col-lg-6" appearance="outline">
-
-            <mat-select value="english">
-
-                <mat-option value="english">Science </mat-option>
-
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field class="col-lg-6" appearance="outline">
-            <mat-label>Grade</mat-label>
-
-            <select matNativeControl formControlName="scienceGrade">
-                <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
-            </select>
-        </mat-form-field>
-    </div>
-
-    <div class="row col-12" style="margin-bottom: 16px; align-items: center;">
-
-        <mat-form-field class="col-lg-6" appearance="outline">
-            <mat-label>Category I</mat-label>
-            <mat-select matNativeControl formControlName="category_i">
-
-                <mat-option *ngFor="let subject of getSubjects('category_i').subjects" [value]="subject.key">
-                    {{subject.value}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field class="col-lg-6" appearance="outline">
-            <mat-label>Grade</mat-label>
-
-            <select matNativeControl formControlName="category_iGrade">
-                <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
-            </select>
-        </mat-form-field>
-    </div>
-
-
-    <div class="row col-12" style="margin-bottom: 16px; align-items: center;">
-
-        <mat-form-field class="col-lg-6" appearance="outline">
-            <mat-label>Category II</mat-label>
-            <mat-select matNativeControl formControlName="category_ii">
-
-                <mat-option *ngFor="let subject of getSubjects('category_ii').subjects" [value]="subject.key">
-                    {{subject.value}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field class="col-lg-6" appearance="outline">
-            <mat-label>Grade</mat-label>
-
-            <select matNativeControl formControlName="category_iiGrade">
-                <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
-            </select>
-        </mat-form-field>
-    </div>
-
-
-    <div class="row col-12" style="margin-bottom: 16px; align-items: center;">
-
-        <mat-form-field class="col-lg-6" appearance="outline">
-            <mat-label>Category III</mat-label>
-            <mat-select matNativeControl formControlName="category_iii">
-
-                <mat-option *ngFor="let subject of getSubjects('category_iii').subjects" [value]="subject.key">
-                    {{subject.value}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field class="col-lg-6" appearance="outline">
-            <mat-label>Grade</mat-label>
-
-            <select matNativeControl formControlName="category_iiiGrade">
-                <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
-            </select>
-        </mat-form-field>
-    </div>
+      <select matNativeControl formControlName="category_iiiGrade">
+        <option value="" disabled selected></option>
+        <option *ngFor="let grade of grades" [value]="grade">
+          {{ grade }}
+        </option>
+      </select>
+    </mat-form-field>
+  </div>
 </form>
