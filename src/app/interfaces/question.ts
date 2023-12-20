@@ -106,8 +106,8 @@ export const ALSubjects = [
         key: "mathematics",
         subjects: [
             {
-                value: "Mathematics",
-                key: "mathematics",
+                value: "Combined Mathematics",
+                key: "combined_mathematics",
             },
             {
                 value: "Physics",
