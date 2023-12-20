@@ -27,6 +27,7 @@ import { ApplyFormComponent } from './pages/apply-form/apply-component/apply-for
 import { AlQuestionComponent } from './pages/apply-form/components/al-question/al-question.component';
 import { OlQuestionComponent } from './pages/apply-form/components/ol-question/ol-question.component';
 import { DegreeQuestionComponent } from './pages/apply-form/components/degree-question/degree-question.component';
+import { MastersQuestionComponent } from './pages/apply-form/components/masters-question/masters-question.component';
 
 export function playerFactory() {
   return import('lottie-web');
@@ -47,6 +48,7 @@ export function playerFactory() {
     AlQuestionComponent,
     OlQuestionComponent,
     DegreeQuestionComponent,
+    MastersQuestionComponent,
   ],
   imports: [
     BrowserModule,
