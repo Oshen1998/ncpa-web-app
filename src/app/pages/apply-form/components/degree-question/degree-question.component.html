@@ -15,11 +15,23 @@
     <mat-form-field class="col-lg-4" appearance="outline">
       <mat-label>Degree Class </mat-label>
       <select matNativeControl required formControlName="degreeClass">
+        <option value="" disabled selected> </option>
         <option *ngFor="let grade of grades" [value]="grade">
           {{ grade }}
         </option>
       </select>
     </mat-form-field>
+
+    <mat-form-field class="col-lg-4" appearance="outline">
+        <mat-label> Degree Awarded Date </mat-label>
+        <input matInput required="" type="date" formControlName="degreeAwardedDate" />
+      </mat-form-field>
+
+      <mat-form-field class="col-lg-4" appearance="outline">
+        <mat-label> Effective Date of Degree </mat-label>
+        <input matInput required="" type="date" formControlName="effectiveDate" />
+      </mat-form-field>
+
   </div>
   
 </form>

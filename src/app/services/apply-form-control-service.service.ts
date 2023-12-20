@@ -58,6 +58,16 @@ export class ApplyFormControlServiceService {
         })
       }
 
+      else if (question.controlType == 'degree') {
+        group[question.key] = new FormGroup({
+          'degreeName': new FormControl('', Validators.required),
+          'universityName': new FormControl('', Validators.required),
+          'degreeAwardedDate': new FormControl('', Validators.required),
+          'effectiveDate': new FormControl('', Validators.required),
+          degreeClass: new FormControl(question.value || '' , Validators.required),
+        })
+      }
+
 
       else if (question.required) {
         group[question.key] = new FormControl(question.value || '', Validators.required);
@@ -72,6 +82,16 @@ export class ApplyFormControlServiceService {
     });
     return new FormGroup(group);
   }
+
+  private createDegreeFormGroup(): FormGroup {
+    return new FormGroup({
+      'degreeName': new FormControl('', Validators.required),
+      'universityName': new FormControl('', Validators.required),
+      'degreeAwardedDate': new FormControl('', Validators.required),
+      degreeClass: new FormControl('', Validators.required),
+    });
+  }
+  
 
   getQuestions() {
 

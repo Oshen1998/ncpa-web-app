@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
-
 @Component({
   selector: 'app-degree-question',
   templateUrl: './degree-question.component.html',
