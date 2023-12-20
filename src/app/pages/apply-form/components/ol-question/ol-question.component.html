@@ -1,5 +1,8 @@
 <form [formGroup]="getFormGroup('olResult')">
   <div class="row col-12" style="margin-bottom: 16px; align-items: center">
+
+    <h3> G.C.E. O\Level Exam Information</h3>
+
     <mat-form-field class="col-lg-6" appearance="outline">
       <mat-label>Index Number</mat-label>
       <input matInput type="text" formControlName="olIndexNo" />
@@ -9,6 +12,8 @@
       <mat-label>GCE OL Exam Year </mat-label>
       <input matInput type="number" min="1900" formControlName="olExamYear" />
     </mat-form-field>
+
+    <h3 class=" mt-3"> G.C.E. O\Level Exam Results</h3>
 
     <mat-form-field class="col-lg-6" appearance="outline">
       <mat-label>Religion</mat-label>

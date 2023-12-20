@@ -1,6 +1,7 @@
 <form [formGroup]="getFormGroup('alResult')">
 
     <div class="row col-12" style="margin-bottom: 16px;   align-items: center;">
+        <h3> G.C.E. A\Level Exam Information</h3>
 
         <mat-form-field class="col-lg-6" appearance="outline">
             <mat-label>Index Number</mat-label>
@@ -12,6 +13,7 @@
             <input matInput type="number" min="1900" formControlName="alExamYear" />
           </mat-form-field>
 
+          <h3 class=" mt-3"> G.C.E. A\Level Exam Results</h3>
         <mat-form-field class="col-lg-6" appearance="outline">
             <mat-select value="generalKnowladge">
                 <mat-option value="generalKnowladge">General Knowledge </mat-option>
