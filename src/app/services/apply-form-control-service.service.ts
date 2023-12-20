@@ -79,11 +79,11 @@ export class ApplyFormControlServiceService {
       }
       else if (question.controlType == 'professional') {
         group[question.key] = new FormGroup({
-          'certificationName': new FormControl('', Validators.required),
-          'fieldName': new FormControl('', Validators.required),
-          'institutionName': new FormControl('', Validators.required),
-          'certificationAwardedDate': new FormControl('', Validators.required),
-          'duration': new FormControl('', Validators.required),
+          'certificationName': new FormControl(''),
+          'fieldName': new FormControl('' ),
+          'institutionName': new FormControl(''),
+          'certificationAwardedDate': new FormControl(''),
+          'duration': new FormControl(''),
         })
       }
 
