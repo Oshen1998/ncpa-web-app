@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AlResultQuestion, DropdownQuestion, FormPage, MultipleEntryQuestion, OLResultQuestion, QuestionBase, TextboxQuestion } from '../interfaces/question';
+import { AlResultQuestion, DropdownQuestion, FormPage, MultipleEntryQuestion, OLResultQuestion, QuestionBase, TextboxQuestion, DegreeQuestion } from '../interfaces/question';
 import { of } from 'rxjs';
 
 
@@ -22,7 +22,7 @@ export class ApplyFormControlServiceService {
         group[question.key] = new FormGroup({
           stream: new FormControl(question.value || '', Validators.required),
           generalKnowledgeGrade: new FormControl(question.value || '', Validators.required),
-          englishGrade: new FormControl(question.value || '', Validators.required),
+          generalEnglishGrade: new FormControl(question.value || '', Validators.required),
           subject1: new FormControl(question.value || '', Validators.required),
           subject2: new FormControl(question.value || '', Validators.required),
           subject3: new FormControl(question.value || '', Validators.required),
@@ -89,6 +89,9 @@ export class ApplyFormControlServiceService {
           return new OLResultQuestion(question);
         } else if (question.controlType === 'alResult') {
           return new AlResultQuestion(question);
+        }
+        else if (question.controlType === 'degree') {
+          return new DegreeQuestion(question);
         }
 
         else {
@@ -270,6 +273,7 @@ export class ApplyFormControlServiceService {
           },
         ]
       },
+      
 
       {
         key: 'educationDetailsAL',
@@ -279,6 +283,22 @@ export class ApplyFormControlServiceService {
             controlType: 'alResult',
             key: 'alResult',
             label: 'A\\L Results',
+            order: 1,
+            questions: [
+
+            ]
+          },
+        ]
+      },
+
+      {
+        key: 'degree',
+        title: 'Degree Qualification',
+        questions: [
+          {
+            controlType: 'degree',
+            key: 'degree',
+            label: 'Degree Qualification',
             order: 1,
             questions: [
 
