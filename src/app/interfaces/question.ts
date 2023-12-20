@@ -60,6 +60,10 @@ export class AlResultQuestion extends QuestionBase<string> {
 export class DegreeQuestion extends QuestionBase<string> {
     override controlType = 'degree';
 }
+export class MastersQuestion extends QuestionBase<string> {
+    override controlType = 'masters';
+}
+
 
 export class MultipleEntryQuestion extends QuestionBase<string> {
     override controlType = 'multiple-entry';

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AlResultQuestion, DropdownQuestion, FormPage, MultipleEntryQuestion, OLResultQuestion, QuestionBase, TextboxQuestion, DegreeQuestion } from '../interfaces/question';
+import { AlResultQuestion, DropdownQuestion, FormPage, MultipleEntryQuestion, OLResultQuestion, QuestionBase, TextboxQuestion, DegreeQuestion, MastersQuestion } from '../interfaces/question';
 import { of } from 'rxjs';
 
 
@@ -69,6 +69,16 @@ export class ApplyFormControlServiceService {
       }
 
 
+      else if (question.controlType == 'masters') {
+        group[question.key] = new FormGroup({
+          'mastersName': new FormControl('', Validators.required),
+          'universityName': new FormControl('', Validators.required),
+          'degreeAwardedDate': new FormControl('', Validators.required),
+          'effectiveDate': new FormControl('', Validators.required),
+        })
+      }
+
+
       else if (question.required) {
         group[question.key] = new FormControl(question.value || '', Validators.required);
       } else {
@@ -82,16 +92,6 @@ export class ApplyFormControlServiceService {
     });
     return new FormGroup(group);
   }
-
-  private createDegreeFormGroup(): FormGroup {
-    return new FormGroup({
-      'degreeName': new FormControl('', Validators.required),
-      'universityName': new FormControl('', Validators.required),
-      'degreeAwardedDate': new FormControl('', Validators.required),
-      degreeClass: new FormControl('', Validators.required),
-    });
-  }
-  
 
   getQuestions() {
 
@@ -112,6 +112,9 @@ export class ApplyFormControlServiceService {
         }
         else if (question.controlType === 'degree') {
           return new DegreeQuestion(question);
+        }
+        else if (question.controlType === 'masters') {
+          return new MastersQuestion(question);
         }
 
         else {
@@ -319,6 +322,21 @@ export class ApplyFormControlServiceService {
             controlType: 'degree',
             key: 'degree',
             label: 'Degree Qualification',
+            order: 1,
+            questions: [
+
+            ]
+          },
+        ]
+      },
+      {
+        key: 'masters',
+        title: 'Masters Qualification',
+        questions: [
+          {
+            controlType: 'masters',
+            key: 'masters',
+            label: 'Masters Qualification',
             order: 1,
             questions: [
 
