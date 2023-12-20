@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AlResultQuestion, DropdownQuestion, FormPage, MultipleEntryQuestion, OLResultQuestion, QuestionBase, TextboxQuestion, DegreeQuestion, MastersQuestion } from '../interfaces/question';
+import { AlResultQuestion, DropdownQuestion, FormPage, MultipleEntryQuestion, OLResultQuestion, QuestionBase, TextboxQuestion, DegreeQuestion, MastersQuestion, ProfessionalQuestion } from '../interfaces/question';
 import { of } from 'rxjs';
 
 
@@ -77,7 +77,15 @@ export class ApplyFormControlServiceService {
           'effectiveDate': new FormControl('', Validators.required),
         })
       }
-
+      else if (question.controlType == 'professional') {
+        group[question.key] = new FormGroup({
+          'certificationName': new FormControl('', Validators.required),
+          'fieldName': new FormControl('', Validators.required),
+          'institutionName': new FormControl('', Validators.required),
+          'certificationAwardedDate': new FormControl('', Validators.required),
+          'duration': new FormControl('', Validators.required),
+        })
+      }
 
       else if (question.required) {
         group[question.key] = new FormControl(question.value || '', Validators.required);
@@ -115,6 +123,9 @@ export class ApplyFormControlServiceService {
         }
         else if (question.controlType === 'masters') {
           return new MastersQuestion(question);
+        }
+        else if (question.controlType === 'professional') {
+          return new ProfessionalQuestion(question);
         }
 
         else {
@@ -337,6 +348,22 @@ export class ApplyFormControlServiceService {
             controlType: 'masters',
             key: 'masters',
             label: 'Masters Qualification',
+            order: 1,
+            questions: [
+
+            ]
+          },
+        ]
+      },
+
+      {
+        key: 'professional',
+        title: 'Professional Qualification',
+        questions: [
+          {
+            controlType: 'professional',
+            key: 'professional',
+            label: 'Professional Qualification',
             order: 1,
             questions: [
 

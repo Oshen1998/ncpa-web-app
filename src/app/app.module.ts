@@ -28,6 +28,7 @@ import { AlQuestionComponent } from './pages/apply-form/components/al-question/a
 import { OlQuestionComponent } from './pages/apply-form/components/ol-question/ol-question.component';
 import { DegreeQuestionComponent } from './pages/apply-form/components/degree-question/degree-question.component';
 import { MastersQuestionComponent } from './pages/apply-form/components/masters-question/masters-question.component';
+import { ProfessionalQuestionComponent } from './pages/apply-form/components/professional-question/professional-question.component';
 
 export function playerFactory() {
   return import('lottie-web');
@@ -49,6 +50,7 @@ export function playerFactory() {
     OlQuestionComponent,
     DegreeQuestionComponent,
     MastersQuestionComponent,
+    ProfessionalQuestionComponent,
   ],
   imports: [
     BrowserModule,
