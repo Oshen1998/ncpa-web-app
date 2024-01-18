@@ -30,4 +30,24 @@
 
     </div>
 
+    <div *ngSwitchCase="'degree'" class="col-lg-12">
+        <app-degree-question [form]="form" />
+
+    </div>
+    <div *ngSwitchCase="'masters'" class="col-lg-12">
+        <app-masters-question [form]="form" />
+
+    </div>
+    <div *ngSwitchCase="'professional'" class="col-lg-12">
+        <app-professional-question [form]="form" />
+
+    </div>
+    <div *ngSwitchCase="'work'" class="col-lg-12">
+        <app-work-question [form]="form" />
+
+    </div>
+    <div *ngSwitchCase="'other'" class="col-lg-12">
+        <app-other-question [form]="form" />
+
+    </div>
 </div>

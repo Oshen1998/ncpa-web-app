@@ -26,6 +26,11 @@ import { VacanciesComponent } from './pages/Vacancies/Vacancies.component';
 import { ApplyFormComponent } from './pages/apply-form/apply-component/apply-form.component';
 import { AlQuestionComponent } from './pages/apply-form/components/al-question/al-question.component';
 import { OlQuestionComponent } from './pages/apply-form/components/ol-question/ol-question.component';
+import { DegreeQuestionComponent } from './pages/apply-form/components/degree-question/degree-question.component';
+import { MastersQuestionComponent } from './pages/apply-form/components/masters-question/masters-question.component';
+import { ProfessionalQuestionComponent } from './pages/apply-form/components/professional-question/professional-question.component';
+import { WorkQuestionComponent } from './pages/apply-form/components/work-question/work-question.component';
+import { OtherQuestionComponent } from './pages/apply-form/components/other-question/other-question.component';
 
 export function playerFactory() {
   return import('lottie-web');
@@ -44,7 +49,12 @@ export function playerFactory() {
     QuestionComponent,
     FormPageComponent,
     AlQuestionComponent,
-    OlQuestionComponent
+    OlQuestionComponent,
+    DegreeQuestionComponent,
+    MastersQuestionComponent,
+    ProfessionalQuestionComponent,
+    WorkQuestionComponent,
+    OtherQuestionComponent,
   ],
   imports: [
     BrowserModule,

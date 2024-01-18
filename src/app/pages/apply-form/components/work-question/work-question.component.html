@@ -1,0 +1,27 @@
+<form [formGroup]="getFormGroup('work')">
+
+    <div class="row col-12" style="margin-bottom: 16px; align-items: center">
+  
+      <mat-form-field class="col-lg-7" appearance="outline">
+        <mat-label> Employer At </mat-label>
+        <input matInput type="text" formControlName="employerAt" />
+      </mat-form-field>
+  
+      <mat-form-field class="col-lg-5" appearance="outline">
+        <mat-label>Designation</mat-label>
+        <input matInput formControlName="designation" />
+      </mat-form-field>
+  
+      <mat-form-field class="col-lg-4" appearance="outline">
+          <mat-label> From </mat-label>
+          <input matInput type="date" formControlName="from" />
+        </mat-form-field>
+  
+        <mat-form-field class="col-lg-4" appearance="outline">
+          <mat-label> To </mat-label>
+          <input matInput type="date" formControlName="to" />        
+        </mat-form-field>
+    </div>
+    
+  </form>
+  

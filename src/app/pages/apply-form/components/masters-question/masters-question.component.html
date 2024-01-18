@@ -1,0 +1,28 @@
+<form [formGroup]="getFormGroup('masters')">
+
+    <div class="row col-12" style="margin-bottom: 16px; align-items: center">
+  
+      <mat-form-field class="col-lg-7" appearance="outline">
+        <mat-label> Master&apos;s in </mat-label>
+        <input matInput type="text" formControlName="mastersName" />
+      </mat-form-field>
+  
+      <mat-form-field class="col-lg-5" appearance="outline">
+        <mat-label>University</mat-label>
+        <input matInput formControlName="universityName" />
+      </mat-form-field>
+  
+      <mat-form-field class="col-lg-4" appearance="outline">
+          <mat-label> Degree Awarded Date </mat-label>
+          <input matInput required="" type="date" formControlName="degreeAwardedDate" />
+        </mat-form-field>
+  
+        <mat-form-field class="col-lg-4" appearance="outline">
+          <mat-label> Effective Date of Degree </mat-label>
+          <input matInput required="" type="date" formControlName="effectiveDate" />
+        </mat-form-field>
+  
+    </div>
+    
+  </form>
+  

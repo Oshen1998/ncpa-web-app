@@ -57,6 +57,23 @@ export class OLResultQuestion extends QuestionBase<string> {
 export class AlResultQuestion extends QuestionBase<string> {
     override controlType = 'alResult';
 }
+export class DegreeQuestion extends QuestionBase<string> {
+    override controlType = 'degree';
+}
+export class MastersQuestion extends QuestionBase<string> {
+    override controlType = 'masters';
+}
+
+export class ProfessionalQuestion extends QuestionBase<string> {
+    override controlType = 'professional';
+}
+
+export class WorkQuestion extends QuestionBase<string> {
+    override controlType = 'work';
+}
+export class OtherQuestion extends QuestionBase<string> {
+    override controlType = 'other';
+}
 
 export class MultipleEntryQuestion extends QuestionBase<string> {
     override controlType = 'multiple-entry';
@@ -89,8 +106,8 @@ export const ALSubjects = [
         key: "mathematics",
         subjects: [
             {
-                value: "Mathematics",
-                key: "mathematics",
+                value: "Combined Mathematics",
+                key: "combined_mathematics",
             },
             {
                 value: "Physics",
@@ -137,6 +154,71 @@ export const ALSubjects = [
     },
 
     {
+        value: "Commerce",
+        key: "commerce",
+        subjects: [
+            {
+                value: "Accounting",
+                key: "accounting",
+            },
+            {
+                value: "Business Studies",
+                key: "business_studies",
+            },
+            {
+                value: "Economics",
+                key: "economics",
+            },
+
+            {
+                value: "Busienss Statistics",
+                key: "busienss_statistics",
+            },
+            {
+                value: "Geography",
+                key: "geography",
+            },
+            {
+                value: "Political Science",
+                key: "political_science",
+            },
+            {
+                value: "History",
+                key: "history",
+            },
+            {
+                value: "Logic and Scientific Method",
+                key: "logic_and_scientific_method",
+            },
+            {
+                value: "English",
+                key: "english",
+            },
+            {
+                value: "German",
+                key: "german",
+            },
+            {
+                value: "French",
+                key: "french",
+            },
+            {
+                value: "Agricultural Science",
+                key: "agricultural_science",
+            },
+            {
+                value: "Combined Mathematics",
+                key: "combined_mathematics",
+            },
+            {
+                value: "Information and Communication Technology",
+                key: "information_and_communication_technology",
+            },
+        ],
+
+    },
+
+    {
         value: "Technology",
         key: "technology",
         subjects: [
@@ -162,8 +244,8 @@ export const ALSubjects = [
     },
 
     {
-        value: "Commerce",
-        key: "commerce",
+        value: "Arts",
+        key: "arts",
         subjects: [
             {
                 "value": "Arabic",

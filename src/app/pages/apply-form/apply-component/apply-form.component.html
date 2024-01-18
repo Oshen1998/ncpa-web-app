@@ -8,8 +8,7 @@
         <div class="row mt-4">
 
 
-            <mat-stepper #stepper [orientation]="(stepperOrientation | async)!">
-
+            <mat-stepper #stepper [linear]="true" [orientation]="(stepperOrientation | async)!">
 
                 <mat-step *ngFor="let index of arrayRange(0,forms.length - 1, 1) " [stepControl]="forms[index]"
                     [label]="pages![index].title">
@@ -20,8 +19,7 @@
                         </app-question-component>
                         <div>
                             <button mat-button matStepperPrevious [disabled]="index == 0">Previous</button>
-                            <button *ngIf="index != forms!.length - 1" mat-button matStepperNext
-                                [disabled]="forms[index].valid">Next</button>
+                            <button *ngIf="index != forms!.length - 1" mat-button matStepperNext [disabled]="!forms[index].valid">Next</button>
                             <button *ngIf="index == forms!.length - 1" mat-button (click)="onSubmit()">Submit</button>
 
 

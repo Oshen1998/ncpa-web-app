@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AlResultQuestion, DropdownQuestion, FormPage, MultipleEntryQuestion, OLResultQuestion, QuestionBase, TextboxQuestion } from '../interfaces/question';
+import { AlResultQuestion, DropdownQuestion, FormPage, MultipleEntryQuestion, OLResultQuestion, QuestionBase, TextboxQuestion, DegreeQuestion, MastersQuestion, ProfessionalQuestion, WorkQuestion, OtherQuestion } from '../interfaces/question';
 import { of } from 'rxjs';
 
 
@@ -20,9 +20,11 @@ export class ApplyFormControlServiceService {
 
       if (question.controlType === 'alResult') {
         group[question.key] = new FormGroup({
+          'alIndexNo': new FormControl('', Validators.required),
+          'alExamYear': new FormControl('', Validators.required),
           stream: new FormControl(question.value || '', Validators.required),
           generalKnowledgeGrade: new FormControl(question.value || '', Validators.required),
-          englishGrade: new FormControl(question.value || '', Validators.required),
+          generalEnglishGrade: new FormControl(question.value || '', Validators.required),
           subject1: new FormControl(question.value || '', Validators.required),
           subject2: new FormControl(question.value || '', Validators.required),
           subject3: new FormControl(question.value || '', Validators.required),
@@ -32,6 +34,8 @@ export class ApplyFormControlServiceService {
         });
       } else if (question.controlType == 'olResult') {
         group[question.key] = new FormGroup({
+          'olIndexNo': new FormControl('', Validators.required),
+          'olExamYear': new FormControl('', Validators.required),
           religion: new FormControl(question.value || '', Validators.required),
           'language': new FormControl('', Validators.required),
           'category_i': new FormControl('', Validators.required),
@@ -58,6 +62,51 @@ export class ApplyFormControlServiceService {
         })
       }
 
+      else if (question.controlType == 'degree') {
+        group[question.key] = new FormGroup({
+          'degreeName': new FormControl('', Validators.required),
+          'universityName': new FormControl('', Validators.required),
+          'degreeAwardedDate': new FormControl('', Validators.required),
+          'effectiveDate': new FormControl('', Validators.required),
+          degreeClass: new FormControl(question.value || '' , Validators.required),
+        })
+      }
+
+
+      else if (question.controlType == 'masters') {
+        group[question.key] = new FormGroup({
+          'mastersName': new FormControl('', Validators.required),
+          'universityName': new FormControl('', Validators.required),
+          'degreeAwardedDate': new FormControl('', Validators.required),
+          'effectiveDate': new FormControl('', Validators.required),
+        })
+      }
+      else if (question.controlType == 'professional') {
+        group[question.key] = new FormGroup({
+          'certificationName': new FormControl(''),
+          'fieldName': new FormControl('' ),
+          'institutionName': new FormControl(''),
+          'certificationAwardedDate': new FormControl(''),
+          'duration': new FormControl(''),
+        })
+      }
+
+      else if (question.controlType == 'work') {
+        group[question.key] = new FormGroup({
+          'employerAt': new FormControl(''),
+          'designation': new FormControl('' ),
+          'from': new FormControl(''),
+          'to': new FormControl(''),
+        })
+      }
+
+      else if (question.controlType == 'other') {
+        group[question.key] = new FormGroup({
+          'extraCurricular': new FormControl(''),
+          'otherAchievements': new FormControl('' ),
+          'otherParticulars': new FormControl(''),
+        })
+      }
 
       else if (question.required) {
         group[question.key] = new FormControl(question.value || '', Validators.required);
@@ -89,6 +138,21 @@ export class ApplyFormControlServiceService {
           return new OLResultQuestion(question);
         } else if (question.controlType === 'alResult') {
           return new AlResultQuestion(question);
+        }
+        else if (question.controlType === 'degree') {
+          return new DegreeQuestion(question);
+        }
+        else if (question.controlType === 'masters') {
+          return new MastersQuestion(question);
+        }
+        else if (question.controlType === 'professional') {
+          return new ProfessionalQuestion(question);
+        }
+        else if (question.controlType === 'work') {
+          return new WorkQuestion(question);
+        }
+        else if (question.controlType === 'other') {
+          return new OtherQuestion(question);
         }
 
         else {
@@ -270,6 +334,7 @@ export class ApplyFormControlServiceService {
           },
         ]
       },
+      
 
       {
         key: 'educationDetailsAL',
@@ -279,6 +344,85 @@ export class ApplyFormControlServiceService {
             controlType: 'alResult',
             key: 'alResult',
             label: 'A\\L Results',
+            order: 1,
+            questions: [
+
+            ]
+          },
+        ]
+      },
+
+      {
+        key: 'degree',
+        title: 'Degree Qualification',
+        questions: [
+          {
+            controlType: 'degree',
+            key: 'degree',
+            label: 'Degree Qualification',
+            order: 1,
+            questions: [
+
+            ]
+          },
+        ]
+      },
+      {
+        key: 'masters',
+        title: 'Masters Qualification',
+        questions: [
+          {
+            controlType: 'masters',
+            key: 'masters',
+            label: 'Masters Qualification',
+            order: 1,
+            questions: [
+
+            ]
+          },
+        ]
+      },
+
+      {
+        key: 'professional',
+        title: 'Professional Qualification',
+        questions: [
+          {
+            controlType: 'professional',
+            key: 'professional',
+            label: 'Professional Qualification',
+            order: 1,
+            questions: [
+
+            ]
+          },
+        ]
+      },
+
+      {
+        key: 'work',
+        title: 'Working Experience',
+        questions: [
+          {
+            controlType: 'work',
+            key: 'work',
+            label: 'Working Experience',
+            order: 1,
+            questions: [
+
+            ]
+          },
+        ]
+      },
+
+      {
+        key: 'other',
+        title: 'Other Details',
+        questions: [
+          {
+            controlType: 'other',
+            key: 'other',
+            label: 'Other Details',
             order: 1,
             questions: [
 
