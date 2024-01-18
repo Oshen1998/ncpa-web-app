@@ -9,8 +9,8 @@ import {
   successResponse,
 } from '../constants/common-response-service';
 import { ILogin, IUser } from '../models/interface/user.interface';
-import UserService from '../services/auth.service';
-import UserCredentialService from '../services/credential.service';
+import UserService from '../services/Auth/auth.service';
+import UserCredentialService from '../services/Auth/credential.service';
 import { ValidateSchema } from '../middleware/validation';
 import {
   userLoginSchema,
