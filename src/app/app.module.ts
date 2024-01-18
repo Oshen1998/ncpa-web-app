@@ -20,10 +20,12 @@ import { SidebarComponent } from './pages/sidebar/sidebar.component';
 import { ReferenceModule } from './modules/reference/reference.module';
 import { TemplateComponent } from './pages/template/template.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
-import { QuestionComponent } from './pages/apply-form/question-component/question-component.component';
+import { QuestionComponent } from './pages/apply-form/components/question-component/question-component.component';
 import { FormPageComponent } from './pages/apply-form/components/form-page/form-page.component';
 import { VacanciesComponent } from './pages/Vacancies/Vacancies.component';
 import { ApplyFormComponent } from './pages/apply-form/apply-component/apply-form.component';
+import { AlQuestionComponent } from './pages/apply-form/components/al-question/al-question.component';
+import { OlQuestionComponent } from './pages/apply-form/components/ol-question/ol-question.component';
 
 export function playerFactory() {
   return import('lottie-web');
@@ -41,6 +43,8 @@ export function playerFactory() {
     ApplyFormComponent,
     QuestionComponent,
     FormPageComponent,
+    AlQuestionComponent,
+    OlQuestionComponent
   ],
   imports: [
     BrowserModule,
@@ -56,4 +60,4 @@ export function playerFactory() {
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

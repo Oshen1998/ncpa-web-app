@@ -1,0 +1,108 @@
+<form [formGroup]="getFormGroup('alResult')">
+
+    <div class="row col-12" style="margin-bottom: 16px;   align-items: center;">
+
+        <mat-form-field class="col-lg-6" appearance="outline">
+
+            <mat-select value="buddhism">
+
+                <mat-option value="buddhism">General Knowledge </mat-option>
+
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="col-lg-6" appearance="outline">
+            <mat-label>Grade</mat-label>
+
+            <select matNativeControl formControlName="generalKnowledgeGrade">
+                <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
+            </select>
+        </mat-form-field>
+
+        <mat-form-field class="col-lg-6" appearance="outline">
+
+            <mat-select value="buddhism">
+
+                <mat-option value="buddhism">English </mat-option>
+
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="col-lg-6" appearance="outline">
+            <mat-label>Grade</mat-label>
+
+            <select matNativeControl formControlName="englishGrade">
+                <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
+            </select>
+        </mat-form-field>
+
+    </div>
+
+    <div class="row col-12" style="margin-bottom: 16px; align-items: center;">
+
+        <mat-form-field class="col-12" appearance="outline">
+            <mat-label>Stream</mat-label>
+            <mat-select formControlName="stream" (selectionChange)="onStreamChanged($event)">
+
+                <mat-option *ngFor="let stream of streams" [value]="stream.key">{{stream.value}} </mat-option>
+
+            </mat-select>
+
+
+        </mat-form-field>
+
+
+
+    </div>
+
+    <div *ngIf="selectedStream !== ''">
+        <div class="row col-12" style="margin-bottom: 16px;   align-items: center;">
+
+            <mat-form-field class="col-lg-6" appearance="outline">
+                <mat-label>Subject 1</mat-label>
+                <mat-select formControlName="subject1">
+
+                    <mat-option *ngFor="let stream of getSubjects()" [value]="stream.key">{{stream.value}} </mat-option>
+
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="col-lg-6" appearance="outline">
+                <mat-label>Grade</mat-label>
+
+                <select matNativeControl formControlName="subject1Grade">
+                    <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
+                </select>
+            </mat-form-field>
+
+            <mat-form-field class="col-lg-6" appearance="outline">
+                <mat-label>Subject 2</mat-label>
+                <mat-select formControlName="subject2">
+
+                    <mat-option *ngFor="let stream of getSubjects()" [value]="stream.key">{{stream.value}} </mat-option>
+
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="col-lg-6" appearance="outline">
+                <mat-label>Grade</mat-label>
+
+                <select matNativeControl formControlName="subject2Grade">
+                    <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
+                </select>
+            </mat-form-field>
+
+            <mat-form-field class="col-lg-6" appearance="outline">
+                <mat-label>Subject 3</mat-label>
+                <mat-select formControlName="subject3">
+
+                    <mat-option *ngFor="let stream of getSubjects()" [value]="stream.key">{{stream.value}} </mat-option>
+
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="col-lg-6" appearance="outline">
+                <mat-label>Grade</mat-label>
+
+                <select matNativeControl formControlName="subject3Grade">
+                    <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
+                </select>
+            </mat-form-field>
+        </div>
+    </div>
+</form>
