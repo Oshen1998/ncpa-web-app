@@ -4,7 +4,7 @@ import { FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-professional-question',
   templateUrl: './professional-question.component.html',
-  styleUrls: ['./professional-question.component.scss']
+  styleUrls: ['./professional-question.component.scss'],
 })
 export class ProfessionalQuestionComponent {
   @Input() form!: FormGroup;

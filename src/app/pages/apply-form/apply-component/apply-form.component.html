@@ -1,40 +1,50 @@
-<div style="display:  flex; flex-direction: column; min-height: 100vh;">
-    <div class="mt-4 ml-4">
-        <h1>NCPA Application </h1>
+<div style="display: flex; flex-direction: column; min-height: 100vh">
+  <div class="mt-4 ml-4">
+    <h1>NCPA Application</h1>
+  </div>
+  <form class="container" style="flex: 1">
+    <div class="row mt-4">
+      <mat-stepper
+        #stepper
+        [linear]="true"
+        [orientation]="(stepperOrientation | async)!"
+      >
+        <mat-step
+          *ngFor="let index of arrayRange(0, forms.length - 1, 1)"
+          [stepControl]="forms[index]"
+          [label]="pages![index].title"
+        >
+          <form [formGroup]="forms[index]" style="padding-top: 1rem">
+            <app-question-component
+              class="{{ question.className }}"
+              *ngFor="let question of pages![index].questions"
+              [question]="question"
+              [form]="forms[index]"
+            >
+            </app-question-component>
+            <div>
+              <button mat-button matStepperPrevious [disabled]="index == 0">
+                Previous
+              </button>
+              <button
+                *ngIf="index != forms!.length - 1"
+                mat-button
+                matStepperNext
+                [disabled]="!forms[index].valid"
+              >
+                Next
+              </button>
+              <button
+                *ngIf="index == forms!.length - 1"
+                mat-button
+                (click)="onSubmit()"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </mat-step>
+      </mat-stepper>
     </div>
-    <form class="container" style="flex: 1;">
-
-
-        <div class="row mt-4">
-
-
-            <mat-stepper #stepper [linear]="true" [orientation]="(stepperOrientation | async)!">
-
-                <mat-step *ngFor="let index of arrayRange(0,forms.length - 1, 1) " [stepControl]="forms[index]"
-                    [label]="pages![index].title">
-                    <form [formGroup]="forms[index]" style="padding-top: 1rem;">
-                        <app-question-component class="{{question.className}}"
-                            *ngFor="let question of pages![index].questions" [question]="question"
-                            [form]="forms[index]">
-                        </app-question-component>
-                        <div>
-                            <button mat-button matStepperPrevious [disabled]="index == 0">Previous</button>
-                            <button *ngIf="index != forms!.length - 1" mat-button matStepperNext [disabled]="!forms[index].valid">Next</button>
-                            <button *ngIf="index == forms!.length - 1" mat-button (click)="onSubmit()">Submit</button>
-
-
-
-                        </div>
-                    </form>
-                </mat-step>
-
-            </mat-stepper>
-
-
-
-
-        </div>
-    </form>
-
-
+  </form>
 </div>

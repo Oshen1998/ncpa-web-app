@@ -1,10 +1,10 @@
-import { Component,Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-masters-question',
   templateUrl: './masters-question.component.html',
-  styleUrls: ['./masters-question.component.scss']
+  styleUrls: ['./masters-question.component.scss'],
 })
 export class MastersQuestionComponent {
   @Input() form!: FormGroup;
@@ -18,6 +18,4 @@ export class MastersQuestionComponent {
     'Second Lower Class',
     'Third Class',
   ];
-  
-
 }

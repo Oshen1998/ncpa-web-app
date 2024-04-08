@@ -1,31 +1,31 @@
 <form [formGroup]="getFormGroup('professional')">
+  <div class="row col-12" style="margin-bottom: 16px; align-items: center">
+    <mat-hint class="mb-2"
+      >Please Add Your Advanced Diploma/ Diploma/ NVQ / Certificate
+      Qualifications/ (Including Computer, Language etc.)</mat-hint
+    >
+    <mat-form-field class="col-lg-7" appearance="outline">
+      <mat-label> NVQ / Certification / Diploma in </mat-label>
+      <input matInput type="text" formControlName="certificationName" />
+    </mat-form-field>
 
-    <div class="row col-12" style="margin-bottom: 16px; align-items: center">
-      <mat-hint class="mb-2">Please Add Your Advanced Diploma/ Diploma/ NVQ / Certificate Qualifications/ (Including Computer, Language etc.)</mat-hint>
-      <mat-form-field class="col-lg-7" appearance="outline">
-        <mat-label> NVQ / Certification / Diploma in </mat-label>
-        <input matInput type="text" formControlName="certificationName" />
-      </mat-form-field>
-  
-      <mat-form-field class="col-lg-5" appearance="outline">
-        <mat-label>Institution</mat-label>
-        <input matInput formControlName="institutionName" />
-      </mat-form-field>
-      <mat-form-field class="col-lg-4" appearance="outline">
-        <mat-label>In Field of </mat-label>
-        <input matInput formControlName="fieldName" />
-      </mat-form-field>
-  
-      <mat-form-field class="col-lg-4" appearance="outline">
-          <mat-label> Degree Awarded Date </mat-label>
-          <input matInput type="date" formControlName="certificationAwardedDate" />
-        </mat-form-field>
-  
-        <mat-form-field class="col-lg-4" appearance="outline">
-          <mat-label> Duration in Months </mat-label>
-          <input matInput min="1" type="number" formControlName="duration" />
-        </mat-form-field>
-    </div>
-    
-  </form>
-  
+    <mat-form-field class="col-lg-5" appearance="outline">
+      <mat-label>Institution</mat-label>
+      <input matInput formControlName="institutionName" />
+    </mat-form-field>
+    <mat-form-field class="col-lg-4" appearance="outline">
+      <mat-label>In Field of </mat-label>
+      <input matInput formControlName="fieldName" />
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-4" appearance="outline">
+      <mat-label> Degree Awarded Date </mat-label>
+      <input matInput type="date" formControlName="certificationAwardedDate" />
+    </mat-form-field>
+
+    <mat-form-field class="col-lg-4" appearance="outline">
+      <mat-label> Duration in Months </mat-label>
+      <input matInput min="1" type="number" formControlName="duration" />
+    </mat-form-field>
+  </div>
+</form>

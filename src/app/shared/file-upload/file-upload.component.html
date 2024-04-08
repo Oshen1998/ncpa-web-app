@@ -1,0 +1,19 @@
+<div class="dropzone" (dragover)="onDragOver($event)" (drop)="onDrop($event)">
+  <input
+    class="fileInput"
+    type="file"
+    #fileDropRef
+    id="fileDropRef"
+    [multiple]="multiple"
+    (change)="onFileChange($event)"
+    [accept]="allowedTypes.join(', ')"
+  />
+  <img
+    style="width: 200px"
+    src="https://www.bakemyweb.com/files/public/de/69/2770cae8aabc7706c58dde69/i/af/bc/64f1b7f4c4d470001e9aafbc/original?name=24.gif-upload.gif&mimetype=image/gif&cd=inline"
+    alt=""
+  />
+  <h3>Drag and drop file here</h3>
+  <h3>or</h3>
+  <mat-label class="label">Browse For file</mat-label>
+</div>
