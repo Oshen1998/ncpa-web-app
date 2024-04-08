@@ -31,6 +31,7 @@ import { MastersQuestionComponent } from './pages/apply-form/components/masters-
 import { ProfessionalQuestionComponent } from './pages/apply-form/components/professional-question/professional-question.component';
 import { WorkQuestionComponent } from './pages/apply-form/components/work-question/work-question.component';
 import { OtherQuestionComponent } from './pages/apply-form/components/other-question/other-question.component';
+import { FileUploadComponent } from './shared/file-upload/file-upload.component';
 
 export function playerFactory() {
   return import('lottie-web');
@@ -55,6 +56,7 @@ export function playerFactory() {
     ProfessionalQuestionComponent,
     WorkQuestionComponent,
     OtherQuestionComponent,
+    FileUploadComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,4 +72,4 @@ export function playerFactory() {
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
