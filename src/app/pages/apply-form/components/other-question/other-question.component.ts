@@ -4,7 +4,7 @@ import { FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-other-question',
   templateUrl: './other-question.component.html',
-  styleUrls: ['./other-question.component.scss']
+  styleUrls: ['./other-question.component.scss'],
 })
 export class OtherQuestionComponent {
   @Input() form!: FormGroup;
@@ -12,5 +12,4 @@ export class OtherQuestionComponent {
   getFormGroup(key: string): FormGroup {
     return this.form.controls['other'] as FormGroup;
   }
-
 }

@@ -5,27 +5,20 @@ import { OLSubjects } from 'src/app/interfaces/question';
 @Component({
   selector: 'app-ol-question',
   templateUrl: './ol-question.component.html',
-  styleUrls: ['./ol-question.component.scss']
+  styleUrls: ['./ol-question.component.scss'],
 })
 export class OlQuestionComponent {
   @Input() form!: FormGroup;
 
+  grades = ['A', 'B', 'C', 'D', 'E'];
 
-  grades = [
-    'A',
-    'B',
-    'C',
-    'D',
-    'E',
-  ]
-
-  olSubjects = OLSubjects
+  olSubjects = OLSubjects;
 
   getFormGroup(key: string): FormGroup {
     return this.form.controls['olResult'] as FormGroup;
   }
 
   getSubjects(key: string) {
-    return this.olSubjects.find(subject => subject.key === key)!
+    return this.olSubjects.find((subject) => subject.key === key)!;
   }
 }
